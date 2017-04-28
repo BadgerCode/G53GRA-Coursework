@@ -11,7 +11,7 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-	AddObjectToScene(new Skybox(5000, "./Textures/skybox.bmp"));
+	AddObjectToScene(new Skybox(5000, "./Textures/skybox-2.bmp"));
 	AddObjectToScene(new TestObject());
 }
 
