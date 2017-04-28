@@ -18,8 +18,8 @@ void Skybox::Display()
 	{
 		// Front (locked -z)
 		{
-			float textureOrigin[] = { 0.25, 0.3333 };
-			float textureEnd[] = { 0.5, 0.6666 };
+			float textureOrigin[] = { 0.25, 0 };
+			float textureEnd[] = { 0.5, 0.5 };
 
 			glTexCoord2f(textureOrigin[0], textureEnd[1]);
 			glVertex3f(-halfSide, halfSide, -halfSide);
@@ -38,8 +38,8 @@ void Skybox::Display()
 
 		// Right (locked +x)
 		{
-			float textureOrigin[] = { 0.5, 0.3333 };
-			float textureEnd[] = { 0.75, 0.6666 };
+			float textureOrigin[] = { 0.5, 0 };
+			float textureEnd[] = { 0.75, 0.5 };
 
 			glTexCoord2f(textureOrigin[0], textureEnd[1]);
 			glVertex3f(halfSide, halfSide, -halfSide);
@@ -58,8 +58,8 @@ void Skybox::Display()
 
 		// Back (locked +z)
 		{
-			float textureOrigin[] = { 0.75, 0.3333 };
-			float textureEnd[] = { 1, 0.6666 };
+			float textureOrigin[] = { 0.75, 0 };
+			float textureEnd[] = { 1, 0.5 };
 
 			glTexCoord2f(textureOrigin[0], textureEnd[1]);
 			glVertex3f(halfSide, halfSide, halfSide);
@@ -78,8 +78,8 @@ void Skybox::Display()
 
 		// Left (locked -x)
 		{
-			float textureOrigin[] = { 0, 0.3333 };
-			float textureEnd[] = { 0.25, 0.6666 };
+			float textureOrigin[] = { 0, 0 };
+			float textureEnd[] = { 0.25, 0.5 };
 
 			glTexCoord2f(textureOrigin[0], textureEnd[1]);
 			glVertex3f(-halfSide, halfSide, halfSide);
@@ -98,8 +98,8 @@ void Skybox::Display()
 
 		// Top (locked +y)
 		{
-			float textureOrigin[] = { 0.25, 0.6666 };
-			float textureEnd[] = { 0.5, 0.9999 };
+			float textureOrigin[] = { 0.25, 0.5 };
+			float textureEnd[] = { 0.5, 1 };
 
 			glTexCoord2f(textureOrigin[0], textureEnd[1]);
 			glVertex3f(-halfSide, halfSide, halfSide);
@@ -118,8 +118,8 @@ void Skybox::Display()
 
 		// Bottom (locked -y)
 		{
-			float textureOrigin[] = { 0.25, 0 };
-			float textureEnd[] = { 0.5, 0.3333 };
+			float textureOrigin[] = { 0.5, 0.5 };
+			float textureEnd[] = { 0.75, 1 };
 
 			glTexCoord2f(textureOrigin[0], textureEnd[1]);
 			glVertex3f(-halfSide, -halfSide, -halfSide);
