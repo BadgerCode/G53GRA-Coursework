@@ -74,12 +74,12 @@ void TestObject::Display()
 		glVertex3f(-halfWidth, halfHeight, -halfDepth);
 
 		// Bottom
-		glVertex3f(-halfWidth, -halfHeight, halfDepth);
-		glVertex3f(halfWidth, -halfHeight, halfDepth);
 		glVertex3f(-halfWidth, -halfHeight, -halfDepth);
+		glVertex3f(halfWidth, -halfHeight, -halfDepth);
+		glVertex3f(halfWidth, -halfHeight, halfDepth);
 
 		glVertex3f(halfWidth, -halfHeight, halfDepth);
-		glVertex3f(halfWidth, -halfHeight, -halfDepth);
+		glVertex3f(-halfWidth, -halfHeight, halfDepth);
 		glVertex3f(-halfWidth, -halfHeight, -halfDepth);
 
 	}
