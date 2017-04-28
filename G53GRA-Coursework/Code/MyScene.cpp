@@ -1,4 +1,5 @@
 #include "MyScene.h"
+#include "TestObject.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -9,7 +10,7 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-
+	AddObjectToScene(new TestObject());
 }
 
 void MyScene::Projection()
