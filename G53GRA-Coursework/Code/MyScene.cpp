@@ -18,5 +18,5 @@ void MyScene::Initialise()
 void MyScene::Projection()
 {
 	GLdouble aspect = static_cast<GLdouble>(windowWidth) / static_cast<GLdouble>(windowHeight);
-	gluPerspective(60.0, aspect, 1.0, 5000.0);
+	gluPerspective(60.0, aspect, 1.0, 9000.0);
 }
