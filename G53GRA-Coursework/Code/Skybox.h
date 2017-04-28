@@ -1,12 +1,12 @@
 #pragma once
-
 #include "DisplayableObject.h"
 
-class TestObject : public DisplayableObject
+class Skybox : public DisplayableObject
 {
 public:
-	TestObject();
+	Skybox(int sideLength, std::string filepath);
 	void Display() override;
 private:
 	GLint _textureId;
+	int _sideLength;
 };
