@@ -20,9 +20,10 @@ void TestObject::Display()
 
 	glBegin(GL_TRIANGLES);
 	{
-		//glColor3f(1.f, 0.f, 0.f);
+		glColor4f(1, 1, 1, 1.0f);
 
 		// Front
+		glNormal3f(0.f, 0.f, 1.f);
 		glTexCoord2f(0.0f, 0.0f);
 		glVertex3f(-halfWidth, -halfHeight, halfDepth);
 		glTexCoord2f(1.0f, 0.0f);
@@ -38,6 +39,7 @@ void TestObject::Display()
 		glVertex3f(-halfWidth, halfHeight, halfDepth);
 
 		// Right
+		glNormal3f(1.f, 0.f, 0.f);
 		glVertex3f(halfWidth, -halfHeight, halfDepth);
 		glVertex3f(halfWidth, -halfHeight, -halfDepth);
 		glVertex3f(halfWidth, halfHeight, halfDepth);
@@ -47,6 +49,7 @@ void TestObject::Display()
 		glVertex3f(halfWidth, halfHeight, halfDepth);
 
 		// Back
+		glNormal3f(0.f, 0.f, -1.f);
 		glVertex3f(halfWidth, -halfHeight, -halfDepth);
 		glVertex3f(-halfWidth, -halfHeight, -halfDepth);
 		glVertex3f(halfWidth, halfHeight, -halfDepth);
@@ -56,6 +59,7 @@ void TestObject::Display()
 		glVertex3f(halfWidth, halfHeight, -halfDepth);
 
 		// Left
+		glNormal3f(-1.f, 0.f, 0.f);
 		glVertex3f(-halfWidth, -halfHeight, -halfDepth);
 		glVertex3f(-halfWidth, -halfHeight, halfDepth);
 		glVertex3f(-halfWidth, halfHeight, -halfDepth);
@@ -65,6 +69,7 @@ void TestObject::Display()
 		glVertex3f(-halfWidth, halfHeight, -halfDepth);
 
 		// Top
+		glNormal3f(0.f, 1.f, 0.f);
 		glVertex3f(-halfWidth, halfHeight, halfDepth);
 		glVertex3f(halfWidth, halfHeight, halfDepth);
 		glVertex3f(-halfWidth, halfHeight, -halfDepth);
@@ -74,6 +79,7 @@ void TestObject::Display()
 		glVertex3f(-halfWidth, halfHeight, -halfDepth);
 
 		// Bottom
+		glNormal3f(0.f, -1.f, 0.f);
 		glVertex3f(-halfWidth, -halfHeight, -halfDepth);
 		glVertex3f(halfWidth, -halfHeight, -halfDepth);
 		glVertex3f(halfWidth, -halfHeight, halfDepth);

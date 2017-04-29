@@ -9,6 +9,7 @@ void Skybox::Display()
 {
 	auto halfSide = _sideLength / 2;
 
+	glDisable(GL_LIGHTING);
 	glEnable(GL_TEXTURE_2D);
 //	glEnable(GL_COLOR_MATERIAL);
 
@@ -139,4 +140,15 @@ void Skybox::Display()
 
 	}
 	glEnd();
+
+	glEnable(GL_LIGHTING);
+	GLfloat ambience[] = { 0.2f, 0.2f, 0.2f, 1.0f };
+	GLfloat diffuse[] = { 0.8f, 0.8f, 0.8f, 1.0f };
+	GLfloat specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	GLfloat position[] = { 5000.0f, 5000.0f, -5000.0f, 0.0f };
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambience);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	glLightfv(GL_LIGHT0, GL_POSITION, position);
+	glEnable(GL_LIGHT0);
 }
