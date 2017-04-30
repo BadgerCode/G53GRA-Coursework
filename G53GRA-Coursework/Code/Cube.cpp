@@ -15,6 +15,9 @@ void Cube::Display()
 	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 	glTranslatef(pos[0], pos[1], pos[2]);
+	glRotatef(rotation[0], 1, 0, 0);
+	glRotatef(rotation[1], 0, 1, 0);
+	glRotatef(rotation[2], 0, 0, 1);
 
 	auto halfWidth = scale[0] / 2;
 	auto halfHeight = scale[1] / 2;
@@ -134,6 +137,15 @@ void Cube::Display()
 	glEnd();
 	glPopAttrib();
 	glPopMatrix();
+}
+
+void Cube::Update(const double& deltaTime)
+{
+	rotation[1] += deltaTime * 100;
+	if(rotation[1] > 360.f)
+	{
+		rotation[1] -= 360.f;
+	}
 }
 
 void Cube::SetTexture(std::string texturePath)
