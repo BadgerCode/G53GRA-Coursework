@@ -110,8 +110,9 @@ void House::BuildBackWall()
 
 void House::BuildFrontWall()
 {
-	int wallPieces = 5;
-	float wallPieceSize[3] = { _size[0] / wallPieces, _size[1], _wallThickness };
+	int wallPieces = 4;
+	float doorSize = 80.f;
+	float wallPieceSize[3] = { (_size[0] - doorSize) / wallPieces, _size[1], _wallThickness };
 
 	float wallPos[3] = {
 		-_size[0] / 2 + wallPieceSize[0] / 2,
@@ -121,11 +122,30 @@ void House::BuildFrontWall()
 
 	for (int i = 0; i < wallPieces; i++)
 	{
-		if (i != 2) {
-			auto wall = new Cube(wallPos, wallPieceSize);
+		if (i == 2)
+		{
+			float doorFrameTopSize[3] = { doorSize, 40.f, _wallThickness };
+
+			wallPos[0] -= wallPieceSize[0] / 2 - doorSize/2;
+			wallPos[1] = _size[1] / 2 - doorFrameTopSize[1] / 2;
+
+			auto wall = new Cube(wallPos, doorFrameTopSize);
 			wall->SetTexture("./Textures/wood.bmp");
 			_backWallPieces.push_back(wall);
+
+			wallPos[0] += doorSize / 2 + wallPieceSize[0] / 2;
+			wallPos[1] = 0.f;
 		}
+
+		auto wall = new Cube(wallPos, wallPieceSize);
+		wall->SetTexture("./Textures/wood.bmp");
+		_backWallPieces.push_back(wall);
+
 		wallPos[0] += wallPieceSize[0];
 	}
+}
+
+void House::BuildDoorFrame()
+{
+
 }
