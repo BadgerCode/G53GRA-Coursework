@@ -3,6 +3,7 @@
 Light::Light(GLenum lightNumber, float x, float y, float z)
 {
 	_lightNumber = lightNumber;
+	_distance = 100.f;
 	position(x, y, z);
 	size(10.f);
 
@@ -23,8 +24,8 @@ void Light::Display()
 	glLightfv(_lightNumber, GL_POSITION, _position);
 	if(!IsGlobalLight())
 	{
-		// TODO: This is really the general brightness of the light. It should be configurable
-		glLightf(_lightNumber, GL_LINEAR_ATTENUATION, 0.01f);
+		glLightf(_lightNumber, GL_CONSTANT_ATTENUATION, 1.f);
+		glLightf(_lightNumber, GL_LINEAR_ATTENUATION, 5.f / _distance);
 	}
 	glEnable(_lightNumber);
 
@@ -86,6 +87,11 @@ void Light::SetAsGlobalLight(bool isGlobalLight)
 void Light::SetOrbDrawing(bool shouldDrawOrb)
 {
 	_drawOrb = shouldDrawOrb;
+}
+
+void Light::SetDistance(float distance)
+{
+	_distance = distance;
 }
 
 bool Light::IsGlobalLight() const

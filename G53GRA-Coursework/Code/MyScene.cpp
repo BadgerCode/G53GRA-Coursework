@@ -33,6 +33,7 @@ void MyScene::SetupLighting()
 	flashLight->SetAmbience(0.25f, 0.25f, 0.25f, 1.f);
 	flashLight->SetDiffuse(0.4f, 0.4f, 0.4f, 1.f);
 	flashLight->SetSpecular(1.f, 1.f, 1.f, 1.f);
+	flashLight->SetDistance(300.f);
 
 	AddObjectToScene(flashLight);
 
@@ -41,6 +42,7 @@ void MyScene::SetupLighting()
 		houseLight->SetAmbience(1.f, 1.f, 1.f, 1.f);
 		houseLight->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
 		houseLight->SetSpecular(1.f, 1.f, 1.f, 1.f);
+		houseLight->SetDistance(750.f);
 
 		AddObjectToScene(houseLight);
 	}

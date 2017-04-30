@@ -14,8 +14,10 @@ public:
 	void SetPosition(float x, float y, float z);
 	void SetAsGlobalLight(bool isGlobalLight);
 	void SetOrbDrawing(bool shouldDrawOrb);
+	void SetDistance(float distance);
 private:
 	GLenum _lightNumber;
+	float _distance;
 
 	// Lighting components
 	GLfloat _ambience[4];
