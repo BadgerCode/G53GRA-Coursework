@@ -28,8 +28,8 @@ void MyScene::Projection()
 void MyScene::SetupLighting()
 {
 	auto flashLight = new Flashlight(GL_LIGHT1);
-	flashLight->SetAmbience(0.5f, 0.5f, 0.5f, 1.f);
-	flashLight->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
+	flashLight->SetAmbience(0.25f, 0.25f, 0.25f, 1.f);
+	flashLight->SetDiffuse(0.4f, 0.4f, 0.4f, 1.f);
 	flashLight->SetSpecular(1.f, 1.f, 1.f, 1.f);
 
 	AddObjectToScene(flashLight);

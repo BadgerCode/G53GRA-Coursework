@@ -4,6 +4,7 @@ Light::Light(GLenum lightNumber, float x, float y, float z)
 {
 	_lightNumber = lightNumber;
 	position(x, y, z);
+	size(10.f);
 
 	SetAmbience(0.f, 0.f, 0.f, 1.f);
 	SetDiffuse(0.f, 0.f, 0.f, 1.f);
@@ -38,7 +39,7 @@ void Light::Display()
 
 		glColor4f(1.f, 0.75f, 0.f, 1.f);
 		glTranslatef(pos[0], pos[1], pos[2]);
-		glutSolidSphere(10.0, 10, 10);
+		glutSolidSphere(scale[0], 10.f, 10.f);
 
 		glEnable(GL_LIGHTING);
 		glPopAttrib();

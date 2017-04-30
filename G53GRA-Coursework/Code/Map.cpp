@@ -7,7 +7,8 @@ Map::Map()
 
 	_lightLevel = -0.35f;
 
-	_sunlight = new Light(GL_LIGHT0, 2500.f, 2500.f, -2500.f);
+	_sunlight = new Light(GL_LIGHT0, _mapSize - 6600, _mapSize - 2200, -_mapSize + 100);
+	_sunlight->SetOrbDrawing(false);
 	_sunlight->SetAsGlobalLight(true);
 	_sunlight->SetAmbience(_lightLevel, _lightLevel, _lightLevel, 1.f);
 	_sunlight->SetDiffuse(0.f, 0.f, 0.f, 1.f);
