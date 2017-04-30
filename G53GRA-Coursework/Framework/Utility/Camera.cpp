@@ -1,6 +1,7 @@
 #include "Camera.h"
 #include "VectorMath.h"
 #include "Scene.h"
+#include "StaticObjectCollisionManager.h"
 
 Camera::Camera() : wKey(0), sKey(0), aKey(0), dKey(0), currentButton(0), mouseX(0), mouseY(0)
 {
@@ -52,18 +53,29 @@ void Camera::SetupCamera()
 void Camera::Update(const double& deltaTime)
 {
 	float speed = static_cast<float>(250.f * deltaTime);
+	float newEyePosition[3] = { eyePosition[0], eyePosition[1], eyePosition[2] };
 
 	if (aKey)
-		sub(eyePosition, right, speed);
+		sub(newEyePosition, right, speed);
 
 	if (dKey)
-		add(eyePosition, right, speed);
+		add(newEyePosition, right, speed);
 
 	if (wKey)
-		add(eyePosition, forward, speed);
+		add(newEyePosition, forward, speed);
 
 	if (sKey)
-		sub(eyePosition, forward, speed);
+		sub(newEyePosition, forward, speed);
+
+	if(StaticObjectCollisionManager::CheckPlayerForCollision(newEyePosition[0], newEyePosition[1], newEyePosition[2]))
+	{
+		printf("Player collided. Stopping movement\n");
+		return;
+	}
+
+	eyePosition[0] = newEyePosition[0];
+	eyePosition[1] = newEyePosition[1];
+	eyePosition[2] = newEyePosition[2];
 
 	SetupCamera();
 }

@@ -8,14 +8,15 @@ void StaticObjectCollisionManager::AddCollisionSphere(float x, float y, float z,
 	_collisionSpheres.push_back(collisionSphere);
 }
 
-void StaticObjectCollisionManager::Update(const double& deltaTime)
+bool StaticObjectCollisionManager::CheckPlayerForCollision(float x, float y, float z)
 {
-	float x, y, z, dx, dy, dz;
-	Scene::GetCamera()->GetEyePosition(x, y, z);
-	Scene::GetCamera()->GetViewDirection(dx, dy, dz);
-
-}
-
-void StaticObjectCollisionManager::Display()
-{
+	for (CollisionSphere* sphere : _collisionSpheres)
+	{
+		float distance = sqrt(pow((sphere->x - x), 2) + pow(sphere->y - y, 2) + pow(sphere->z - z, 2));
+		if(distance < sphere->radius)
+		{
+			return true;
+		}
+	}
+	return false;
 }

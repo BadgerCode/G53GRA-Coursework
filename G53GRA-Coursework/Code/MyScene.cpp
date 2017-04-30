@@ -18,7 +18,6 @@ void MyScene::Initialise()
 	SetupLighting();
 	AddObjectToScene(new Map());
 	SetupObjects();
-	AddObjectToScene(new StaticObjectCollisionManager());
 }
 
 void MyScene::Projection()
