@@ -5,6 +5,7 @@
 #include "Map.h"
 #include "Flashlight.h"
 #include "StaticObjectCollisionManager.h"
+#include "MapObjects/House.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -35,12 +36,14 @@ void MyScene::SetupLighting()
 
 	AddObjectToScene(flashLight);
 
-	auto light1 = new Light(GL_LIGHT2, -575.f, 50.f, 70.f);
-	light1->SetAmbience(1.f, 1.f, 1.f, 1.f);
-	light1->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
-	light1->SetSpecular(1.f, 1.f, 1.f, 1.f);
+	{
+		auto houseLight = new Light(GL_LIGHT2, 0.f, 150.f, 0.f);
+		houseLight->SetAmbience(1.f, 1.f, 1.f, 1.f);
+		houseLight->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
+		houseLight->SetSpecular(1.f, 1.f, 1.f, 1.f);
 
-	AddObjectToScene(light1);
+		AddObjectToScene(houseLight);
+	}
 }
 
 void MyScene::SetupObjects()
@@ -55,11 +58,16 @@ void MyScene::SetupObjects()
 	}
 
 	{
-		float pos[3] = { -450.f, 50.f, 0.f };
+		float pos[3] = { -400.f, 50.f, 0.f };
 		float size[3] = { 100.f, 100.f, 100.f };
 
 		auto object = new Cube(pos, size);
 		object->SetColour(1, 0, 0, 1);
+		AddObjectToScene(object);
+	}
+
+	{
+		auto object = new House();
 		AddObjectToScene(object);
 	}
 }
