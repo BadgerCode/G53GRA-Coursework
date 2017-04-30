@@ -26,7 +26,6 @@ void Map::Display()
 
 void Map::RenderFloor()
 {
-	auto yLevel = -10.f;
 	auto halfMapSize = _mapSize / 2;
 
 	glPushMatrix();
@@ -41,18 +40,18 @@ void Map::RenderFloor()
 	{
 		glNormal3f(0.f, 1.f, 0.f);
 		glTexCoord2f(0.0f, 1.0f);
-		glVertex3f(-halfMapSize, yLevel, -halfMapSize);
+		glVertex3f(-halfMapSize, 0, -halfMapSize);
 		glTexCoord2f(0.0f, 0.0f);
-		glVertex3f(-halfMapSize, yLevel, halfMapSize);
+		glVertex3f(-halfMapSize, 0, halfMapSize);
 		glTexCoord2f(1.0f, 0.0f);
-		glVertex3f(halfMapSize, yLevel, halfMapSize);
+		glVertex3f(halfMapSize, 0, halfMapSize);
 
 		glTexCoord2f(1.0f, 0.0f);
-		glVertex3f(halfMapSize, yLevel, halfMapSize);
+		glVertex3f(halfMapSize, 0, halfMapSize);
 		glTexCoord2f(1.0f, 1.0f);
-		glVertex3f(halfMapSize, yLevel, -halfMapSize);
+		glVertex3f(halfMapSize, 0, -halfMapSize);
 		glTexCoord2f(0.0f, 1.0f);
-		glVertex3f(-halfMapSize, yLevel, -halfMapSize);
+		glVertex3f(-halfMapSize, 0, -halfMapSize);
 	}
 	glEnd();
 	glPopAttrib();
