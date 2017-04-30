@@ -13,7 +13,7 @@ void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	SetupLighting();
-	AddObjectToScene(new Skybox(GL_LIGHT0, 5000, "./Textures/skybox-2.bmp"));
+	AddObjectToScene(new Skybox(5000, "./Textures/skybox.bmp"));
 	AddObjectToScene(new TestObject(0, 0, 0));
 	AddObjectToScene(new TestObject(-450, 0, 0));
 }

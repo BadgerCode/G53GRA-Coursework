@@ -1,12 +1,9 @@
 #include "Skybox.h"
 
-Skybox::Skybox(GLenum sunLightNumber, int sideLength, std::string filepath)
+Skybox::Skybox(int sideLength, std::string filepath)
 {
-	_sunLightNumber = sunLightNumber;
 	_sideLength = sideLength;
 	_textureId = Scene::GetTexture(filepath);
-
-	_ambientLightLevel = -0.15f;
 }
 
 void Skybox::Display()
@@ -15,7 +12,6 @@ void Skybox::Display()
 
 	glEnable(GL_LIGHTING);
 	disableAllLights();
-	glEnable(_sunLightNumber);
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);

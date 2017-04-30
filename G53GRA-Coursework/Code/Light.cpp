@@ -31,8 +31,9 @@ void Light::Display()
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
 	glDisable(GL_LIGHTING);
+	glDisable(GL_TEXTURE_2D);
 
-	glColor4f(1, 1, 1, 1);
+	glColor4f(1.f, 1.f, 1.f, 1.f);
 	glTranslatef(pos[0], pos[1], pos[2]);
 	glutSolidSphere(10.0, 10, 10);
 
