@@ -1,4 +1,5 @@
 #include "House.h"
+#include "VectorMath.h"
 
 House::House()
 {
@@ -18,9 +19,6 @@ House::House()
 
 void House::Display()
 {
-	glPushMatrix();
-	glTranslatef(pos[0], pos[1], pos[2]);
-
 	for (auto wall : _leftWallPieces)
 	{
 		wall->Display();
@@ -39,8 +37,6 @@ void House::Display()
 	{
 		wall->Display();
 	}
-
-	glPopMatrix();
 }
 
 void House::BuildLeftWall()
@@ -54,6 +50,8 @@ void House::BuildLeftWall()
 		0.f,
 		wallSize[2] / 2 - wallPieceSize[2] / 2
 	};
+
+	add(wallPos, pos);
 
 	for(int i = 0; i < 3; i++)
 	{
@@ -77,6 +75,8 @@ void House::BuildRightWall()
 		wallSize[2] / 2 - wallPieceSize[2] / 2
 	};
 
+	add(wallPos, pos);
+
 	for (int i = 0; i < 3; i++)
 	{
 		auto wall = new Cube(wallPos, wallPieceSize);
@@ -97,6 +97,8 @@ void House::BuildBackWall()
 		0.f,
 		-_size[2] / 2 - _wallThickness / 2
 	};
+
+	add(wallPos, pos);
 
 	for (int i = 0; i < wallPieces; i++)
 	{
@@ -120,22 +122,25 @@ void House::BuildFrontWall()
 		_size[2] / 2 + _wallThickness / 2
 	};
 
+	add(wallPos, pos);
+
 	for (int i = 0; i < wallPieces; i++)
 	{
 		if (i == 2)
 		{
 			float doorFrameTopSize[3] = { doorSize, 40.f, _wallThickness };
+			float doorFrameTopPos[3] = {
+				wallPos[0] - wallPieceSize[0] / 2 + doorSize / 2, 
+				wallPos[1] + _size[1] / 2 - doorFrameTopSize[1] / 2,
+				wallPos[2]
+			};
 
-			wallPos[0] -= wallPieceSize[0] / 2 - doorSize/2;
-			wallPos[1] = _size[1] / 2 - doorFrameTopSize[1] / 2;
-
-			auto wall = new Cube(wallPos, doorFrameTopSize);
+			auto wall = new Cube(doorFrameTopPos, doorFrameTopSize);
 			wall->SetTexture("./Textures/wood.bmp");
 			wall->SetTextureScale(wallPieceSize[0] / doorFrameTopSize[0], wallPieceSize[1] / doorFrameTopSize[1]);
 			_backWallPieces.push_back(wall);
 
-			wallPos[0] += doorSize / 2 + wallPieceSize[0] / 2;
-			wallPos[1] = 0.f;
+			wallPos[0] += doorSize;
 		}
 
 		auto wall = new Cube(wallPos, wallPieceSize);
@@ -144,9 +149,4 @@ void House::BuildFrontWall()
 
 		wallPos[0] += wallPieceSize[0];
 	}
-}
-
-void House::BuildDoorFrame()
-{
-
 }

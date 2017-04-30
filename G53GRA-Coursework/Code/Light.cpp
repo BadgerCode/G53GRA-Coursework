@@ -25,7 +25,7 @@ void Light::Display()
 	if(!IsGlobalLight())
 	{
 		glLightf(_lightNumber, GL_CONSTANT_ATTENUATION, 1.f);
-		glLightf(_lightNumber, GL_LINEAR_ATTENUATION, 5.f / _distance);
+		glLightf(_lightNumber, GL_LINEAR_ATTENUATION, 7.5f / _distance);
 	}
 	glEnable(_lightNumber);
 

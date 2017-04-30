@@ -20,5 +20,4 @@ private:
 	void BuildRightWall();
 	void BuildBackWall();
 	void BuildFrontWall();
-	void BuildDoorFrame();
 };
