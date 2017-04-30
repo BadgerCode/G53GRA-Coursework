@@ -28,7 +28,7 @@ void Light::Display()
 	glEnable(_lightNumber);
 
 	// Draw a blob where the light is
-	if (!IsGlobalLight())
+	if (_drawOrb)
 	{
 		glPushMatrix();
 		glPushAttrib(GL_ALL_ATTRIB_BITS);
@@ -80,6 +80,11 @@ void Light::SetPosition(float x, float y, float z)
 void Light::SetAsGlobalLight(bool isGlobalLight)
 {
 	_position[3] = isGlobalLight ? 0.f : 1.f;
+}
+
+void Light::SetOrbDrawing(bool shouldDrawOrb)
+{
+	_drawOrb = shouldDrawOrb;
 }
 
 bool Light::IsGlobalLight() const

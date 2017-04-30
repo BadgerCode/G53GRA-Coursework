@@ -13,6 +13,7 @@ public:
 	void SetSpecular(float r, float g, float b, float a);
 	void SetPosition(float x, float y, float z);
 	void SetAsGlobalLight(bool isGlobalLight);
+	void SetOrbDrawing(bool shouldDrawOrb);
 private:
 	GLenum _lightNumber;
 
@@ -22,5 +23,6 @@ private:
 	GLfloat _specular[4];
 	GLfloat _position[4];
 
+	bool _drawOrb;
 	bool IsGlobalLight() const;
 };

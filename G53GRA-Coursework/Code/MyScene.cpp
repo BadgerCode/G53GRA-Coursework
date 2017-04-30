@@ -3,6 +3,7 @@
 #include "Skybox.h"
 #include "Light.h"
 #include "Map.h"
+#include "Flashlight.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -26,7 +27,14 @@ void MyScene::Projection()
 
 void MyScene::SetupLighting()
 {
-	auto light1 = new Light(GL_LIGHT1, -575.f, 50.f, 70.f);
+	auto flashLight = new Flashlight(GL_LIGHT1);
+	flashLight->SetAmbience(0.5f, 0.5f, 0.5f, 1.f);
+	flashLight->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
+	flashLight->SetSpecular(1.f, 1.f, 1.f, 1.f);
+
+	AddObjectToScene(flashLight);
+
+	auto light1 = new Light(GL_LIGHT2, -575.f, 50.f, 70.f);
 	light1->SetAmbience(1.f, 1.f, 1.f, 1.f);
 	light1->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
 	light1->SetSpecular(1.f, 1.f, 1.f, 1.f);

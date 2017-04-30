@@ -7,6 +7,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Flashlight.cpp" />
     <ClCompile Include="Code\Light.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\Map.cpp" />
@@ -19,6 +20,7 @@
     <ClCompile Include="Framework\Utility\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Flashlight.h" />
     <ClInclude Include="Code\Light.h" />
     <ClInclude Include="Code\Map.h" />
     <ClInclude Include="Code\MyScene.h" />
