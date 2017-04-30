@@ -23,7 +23,7 @@ void Light::Display()
 	if(!IsGlobalLight())
 	{
 		// TODO: This is really the general brightness of the light. It should be configurable
-		glLightf(_lightNumber, GL_LINEAR_ATTENUATION, 0.01);
+		glLightf(_lightNumber, GL_LINEAR_ATTENUATION, 0.01f);
 	}
 	glEnable(_lightNumber);
 
@@ -79,7 +79,7 @@ void Light::SetPosition(float x, float y, float z)
 
 void Light::SetAsGlobalLight(bool isGlobalLight)
 {
-	_position[3] = isGlobalLight ? 0 : 1;
+	_position[3] = isGlobalLight ? 0.f : 1.f;
 }
 
 bool Light::IsGlobalLight() const

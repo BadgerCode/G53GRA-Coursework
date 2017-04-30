@@ -2,8 +2,8 @@
 
 Map::Map()
 {
-	_mapSize = 10000;
-	_skybox = new Skybox(_mapSize * 2, "./Textures/skybox.bmp");
+	_mapSize = 10000.f;
+	_skybox = new Skybox(_mapSize * 2.f, "./Textures/skybox.bmp");
 
 	_lightLevel = -0.35f;
 
@@ -60,13 +60,13 @@ void Map::RenderFloor()
 	auto numRowsOrCols = _mapSize / floorSquareSize;
 
 	float floorY = 0;
-	int left = -halfMapSize;
-	int right = left + floorSquareSize;
+	float left = -halfMapSize;
+	float right = left + floorSquareSize;
 
 	for (int i = 0; i < numRowsOrCols; i++)
 	{
-		int top = -halfMapSize;
-		int bottom = top + floorSquareSize;
+		float top = -halfMapSize;
+		float bottom = top + floorSquareSize;
 
 		for(int j = 0; j < numRowsOrCols; j++)
 		{

@@ -141,7 +141,7 @@ void Cube::Display()
 
 void Cube::Update(const double& deltaTime)
 {
-	rotation[1] += deltaTime * 100;
+	rotation[1] += static_cast<float>(deltaTime * 100);
 	if(rotation[1] > 360.f)
 	{
 		rotation[1] -= 360.f;

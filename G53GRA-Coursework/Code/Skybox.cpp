@@ -1,11 +1,11 @@
 #include "Skybox.h"
 
-Skybox::Skybox(int sideLength, std::string filepath)
+Skybox::Skybox(float sideLength, std::string filepath)
 {
-	_halfSideLength = sideLength / 2;
+	_halfSideLength = sideLength / 2.f;
 	_textureId = Scene::GetTexture(filepath);
 
-	_yOffset = 2 * _halfSideLength / 3;
+	_yOffset = 2.f * _halfSideLength / 3.f;
 }
 
 void Skybox::Display()
@@ -21,8 +21,8 @@ void Skybox::Display()
 
 	glRotatef(90.f, 0, 1, 0);
 
-	auto lazyEdgeRemovalOffset = 50;
-	auto third = static_cast<float>(1) / 3;
+	auto lazyEdgeRemovalOffset = 50.f;
+	auto third = 1.f / 3.f;
 
 	// Render sides
 	auto textureOriginX = 0.f;
@@ -30,29 +30,29 @@ void Skybox::Display()
 
 		if(i != 1)
 		{
-			glTranslatef(0, 0, lazyEdgeRemovalOffset);
+			glTranslatef(0.f, 0.f, lazyEdgeRemovalOffset);
 		}
 
 		RenderSide(textureOriginX, third);
 
 		if (i != 1)
 		{
-			glTranslatef(0, 0, -lazyEdgeRemovalOffset);
+			glTranslatef(0.f, 0.f, -lazyEdgeRemovalOffset);
 		}
 
-		glRotatef(-90.f, 0, 1, 0);
+		glRotatef(-90.f, 0.f, 1.f, 0.f);
 		textureOriginX += 0.25;
 	}
 
-	glRotatef(-90.f, 0, 1, 0);
-	glRotatef(-90.f, 1, 0, 0);
-	glTranslatef(0, -_halfSideLength + _yOffset, _halfSideLength - _yOffset + lazyEdgeRemovalOffset);
+	glRotatef(-90.f, 0.f, 1.f, 0.f);
+	glRotatef(-90.f, 1.f, 0.f, 0.f);
+	glTranslatef(0.f, -_halfSideLength + _yOffset, _halfSideLength - _yOffset + lazyEdgeRemovalOffset);
 
 	// Bottom
 	RenderSide(0.25, 0.f);
 
-	glRotatef(180.f, 1, 0, 0);
-	glTranslatef(0, -_halfSideLength * 2 + _yOffset * 2, 2 * lazyEdgeRemovalOffset);
+	glRotatef(180.f, 1.f, 0.f, 0.f);
+	glTranslatef(0.f, -_halfSideLength * 2 + _yOffset * 2, 2 * lazyEdgeRemovalOffset);
 
 	// Top
 	RenderSide(0.25, third * 2);
@@ -63,8 +63,8 @@ void Skybox::Display()
 
 void Skybox::RenderSide(float textureOriginX, float textureOriginY) const
 {
-	float textureEnd[] = { textureOriginX + 0.25, textureOriginY + static_cast<float>(1) / 3 };
-	float sideLength = _halfSideLength * 2;
+	float textureEnd[] = { textureOriginX + 0.25f, textureOriginY + 1.f / 3.f };
+	float sideLength = _halfSideLength * 2.f;
 
 	glBegin(GL_TRIANGLES);
 	{
