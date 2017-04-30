@@ -1,8 +1,11 @@
 #include "Skybox.h"
 
-Skybox::Skybox(int size, std::string filepath): _sideLength(size)
+Skybox::Skybox(GLenum sunLightNumber, int sideLength, std::string filepath)
 {
+	_sunLightNumber = sunLightNumber;
+	_sideLength = sideLength;
 	_textureId = Scene::GetTexture(filepath);
+
 	_ambientLightLevel = -0.15f;
 }
 
@@ -11,6 +14,8 @@ void Skybox::Display()
 	auto halfSide = _sideLength / 2;
 
 	glEnable(GL_LIGHTING);
+	disableAllLights();
+
 	GLfloat ambience[] = { _ambientLightLevel, _ambientLightLevel, _ambientLightLevel, 1.f };
 	GLfloat diffuse[] = { 0.f, 0.f, 0.f, 1.f };
 	GLfloat specular[] = { 0.f, 0.f, 0.f, 1.f };
@@ -20,7 +25,6 @@ void Skybox::Display()
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
 	glEnable(GL_LIGHT0);
-	glDisable(GL_LIGHT1);
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
@@ -150,4 +154,30 @@ void Skybox::Display()
 
 	}
 	glEnd();
+
+	enableAllLights();
+}
+
+void Skybox::disableAllLights()
+{
+	glDisable(GL_LIGHT0);
+	glDisable(GL_LIGHT1);
+	glDisable(GL_LIGHT2);
+	glDisable(GL_LIGHT3);
+	glDisable(GL_LIGHT4);
+	glDisable(GL_LIGHT5);
+	glDisable(GL_LIGHT6);
+	glDisable(GL_LIGHT7);
+}
+
+void Skybox::enableAllLights()
+{
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHT1);
+	glEnable(GL_LIGHT2);
+	glEnable(GL_LIGHT3);
+	glEnable(GL_LIGHT4);
+	glEnable(GL_LIGHT5);
+	glEnable(GL_LIGHT6);
+	glEnable(GL_LIGHT7);
 }

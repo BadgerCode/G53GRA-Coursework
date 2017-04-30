@@ -10,7 +10,7 @@ public:
 	~MyScene() {};
 
 private:
-	void Initialise();
-	void Projection();
-
+	void Initialise() override;
+	void Projection() override;
+	void SetupLighting();
 };
