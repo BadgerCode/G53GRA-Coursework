@@ -24,6 +24,7 @@ void Cube::Display()
 		glEnable(GL_TEXTURE_2D);
 		glEnable(GL_COLOR_MATERIAL);
 		glBindTexture(GL_TEXTURE_2D, _textureId);
+		glColor4f(1.f, 1.f, 1.f, 1.f);
 	}
 	else
 	{

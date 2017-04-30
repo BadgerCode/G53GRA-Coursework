@@ -12,4 +12,7 @@ private:
 	Skybox* _skybox;
 	Light* _sunlight;
 	float _mapSize;
+	GLint _floorTextureId;
+
+	void RenderFloor();
 };

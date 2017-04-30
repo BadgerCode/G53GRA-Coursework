@@ -16,6 +16,8 @@ void Skybox::Display()
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
 
+	glColor4f(1.f, 1.f, 1.f, 1.f);
+
 	glBegin(GL_TRIANGLES);
 	{
 		auto third = static_cast<float>(1) / 3;
