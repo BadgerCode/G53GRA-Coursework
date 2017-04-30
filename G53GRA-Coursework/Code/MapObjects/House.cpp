@@ -131,6 +131,7 @@ void House::BuildFrontWall()
 
 			auto wall = new Cube(wallPos, doorFrameTopSize);
 			wall->SetTexture("./Textures/wood.bmp");
+			wall->SetTextureScale(wallPieceSize[0] / doorFrameTopSize[0], wallPieceSize[1] / doorFrameTopSize[1]);
 			_backWallPieces.push_back(wall);
 
 			wallPos[0] += doorSize / 2 + wallPieceSize[0] / 2;
