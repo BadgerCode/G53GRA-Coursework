@@ -45,11 +45,21 @@ void MyScene::SetupLighting()
 
 void MyScene::SetupObjects()
 {
-	auto object1 = new Cube(100, 50, 0);
-	object1->SetTexture("./Textures/baked_beans_teaser.bmp");
-	AddObjectToScene(object1);
+	{
+		float pos[3] = { 100.f, 50.f, 0.f };
+		float size[3] = { 100.f, 100.f, 100.f };
 
-	auto object2 = new Cube(-450, 50, 0);
-	object2->SetColour(1, 0, 0, 1);
-	AddObjectToScene(object2);
+		auto object = new Cube(pos, size);
+		object->SetTexture("./Textures/baked_beans_teaser.bmp");
+		AddObjectToScene(object);
+	}
+
+	{
+		float pos[3] = { -450.f, 50.f, 0.f };
+		float size[3] = { 100.f, 100.f, 100.f };
+
+		auto object = new Cube(pos, size);
+		object->SetColour(1, 0, 0, 1);
+		AddObjectToScene(object);
+	}
 }

@@ -1,14 +1,12 @@
 #pragma once
 
 #include "DisplayableObject.h"
-#include "Animation.h"
 
-class Cube : public DisplayableObject, public Animation
+class Cube : public DisplayableObject
 {
 public:
-	Cube(float x, float y, float z);
+	Cube(float centerPos[], float cubeSize[]);
 	void Display() override;
-	void Update(const double& deltaTime) override;
 
 	void SetTexture(std::string texturePath);
 	void SetColour(float r, float g, float b, float a);

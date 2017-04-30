@@ -2,11 +2,10 @@
 #include "Scene.h"
 #include "StaticObjectCollisionManager.h"
 
-Cube::Cube(float x, float y, float z)
+Cube::Cube(float centerPos[], float cubeSize[])
 {
-	float cubeSize = 100.f;
-	size(cubeSize);
-	position(x, y, z);
+	size(cubeSize[0], cubeSize[1], cubeSize[2]);
+	position(centerPos[0], centerPos[1], centerPos[2]);
 	SetColour(1.f, 0.f, 0.f, 1.f);
 	_usingTexture = false;
 
@@ -141,15 +140,6 @@ void Cube::Display()
 	glEnd();
 	glPopAttrib();
 	glPopMatrix();
-}
-
-void Cube::Update(const double& deltaTime)
-{
-	rotation[1] += static_cast<float>(deltaTime * 100);
-	if(rotation[1] > 360.f)
-	{
-		rotation[1] -= 360.f;
-	}
 }
 
 void Cube::SetTexture(std::string texturePath)
