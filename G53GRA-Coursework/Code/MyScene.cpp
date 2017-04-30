@@ -1,5 +1,5 @@
 #include "MyScene.h"
-#include "TestObject.h"
+#include "Cube.h"
 #include "Skybox.h"
 #include "Light.h"
 
@@ -14,8 +14,7 @@ void MyScene::Initialise()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	SetupLighting();
 	AddObjectToScene(new Skybox(5000, "./Textures/skybox.bmp"));
-	AddObjectToScene(new TestObject(0, 0, 0));
-	AddObjectToScene(new TestObject(-450, 0, 0));
+	SetupObjects();
 }
 
 void MyScene::Projection()
@@ -40,4 +39,15 @@ void MyScene::SetupLighting()
 	light1->SetSpecular(1.f, 1.f, 1.f, 1.f);
 
 	AddObjectToScene(light1);
+}
+
+void MyScene::SetupObjects()
+{
+	auto object1 = new Cube(0, 0, 0);
+	object1->SetTexture("./Textures/baked_beans_teaser.bmp");
+	AddObjectToScene(object1);
+
+	auto object2 = new Cube(-450, 0, 0);
+	object2->SetColour(1, 0, 0, 1);
+	AddObjectToScene(object2);
 }

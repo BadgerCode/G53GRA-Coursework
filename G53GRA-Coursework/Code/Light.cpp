@@ -27,19 +27,23 @@ void Light::Display()
 	}
 	glEnable(_lightNumber);
 
-	glPushMatrix();
-	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	// Draw a blob where the light is
+	if (!IsGlobalLight())
+	{
+		glPushMatrix();
+		glPushAttrib(GL_ALL_ATTRIB_BITS);
 
-	glDisable(GL_LIGHTING);
-	glDisable(GL_TEXTURE_2D);
+		glDisable(GL_LIGHTING);
+		glDisable(GL_TEXTURE_2D);
 
-	glColor4f(1.f, 1.f, 1.f, 1.f);
-	glTranslatef(pos[0], pos[1], pos[2]);
-	glutSolidSphere(10.0, 10, 10);
+		glColor4f(1.f, 1.f, 1.f, 1.f);
+		glTranslatef(pos[0], pos[1], pos[2]);
+		glutSolidSphere(10.0, 10, 10);
 
-	glEnable(GL_LIGHTING);
-	glPopAttrib();
-	glPopMatrix();
+		glEnable(GL_LIGHTING);
+		glPopAttrib();
+		glPopMatrix();
+	}
 }
 
 void Light::SetAmbience(float r, float g, float b, float a)
