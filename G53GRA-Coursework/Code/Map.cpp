@@ -59,6 +59,7 @@ void Map::RenderFloor()
 	auto floorSquareSize = 100;
 	auto numRowsOrCols = _mapSize / floorSquareSize;
 
+	float floorY = 0;
 	int left = -halfMapSize;
 	int right = left + floorSquareSize;
 
@@ -70,18 +71,18 @@ void Map::RenderFloor()
 		for(int j = 0; j < numRowsOrCols; j++)
 		{
 			glTexCoord2f(0.0f, 1.0f);
-			glVertex3f(left, 0, top);
+			glVertex3f(left, floorY, top);
 			glTexCoord2f(0.0f, 0.0f);
-			glVertex3f(left, 0, bottom);
+			glVertex3f(left, floorY, bottom);
 			glTexCoord2f(1.0f, 0.0f);
-			glVertex3f(right, 0, bottom);
+			glVertex3f(right, floorY, bottom);
 
 			glTexCoord2f(1.0f, 0.0f);
-			glVertex3f(right, 0, bottom);
+			glVertex3f(right, floorY, bottom);
 			glTexCoord2f(1.0f, 1.0f);
-			glVertex3f(right, 0, top);
+			glVertex3f(right, floorY, top);
 			glTexCoord2f(0.0f, 1.0f);
-			glVertex3f(left, 0, top);
+			glVertex3f(left, floorY, top);
 
 			top += floorSquareSize;
 			bottom += floorSquareSize;

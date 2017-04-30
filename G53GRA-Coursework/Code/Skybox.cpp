@@ -2,171 +2,85 @@
 
 Skybox::Skybox(int sideLength, std::string filepath)
 {
-	_sideLength = sideLength;
+	_halfSideLength = sideLength / 2;
 	_textureId = Scene::GetTexture(filepath);
+
+	_yOffset = 2 * _halfSideLength / 3;
 }
 
 void Skybox::Display()
 {
-	auto halfSide = _sideLength / 2;
+	glPushMatrix();
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
-	glEnable(GL_LIGHTING);
-	disableAllLights();
+	glDisable(GL_LIGHTING);
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
-
 	glColor4f(1.f, 1.f, 1.f, 1.f);
+
+	glRotatef(90.f, 0, 1, 0);
+
+	auto lazyEdgeRemovalOffset = 50;
+	auto third = static_cast<float>(1) / 3;
+
+	// Render sides
+	auto textureOriginX = 0.f;
+	for (int i = 0; i < 4; i++) {
+
+		if(i != 1)
+		{
+			glTranslatef(0, 0, lazyEdgeRemovalOffset);
+		}
+
+		RenderSide(textureOriginX, third);
+
+		if (i != 1)
+		{
+			glTranslatef(0, 0, -lazyEdgeRemovalOffset);
+		}
+
+		glRotatef(-90.f, 0, 1, 0);
+		textureOriginX += 0.25;
+	}
+
+	glRotatef(-90.f, 0, 1, 0);
+	glRotatef(-90.f, 1, 0, 0);
+	glTranslatef(0, -_halfSideLength + _yOffset, _halfSideLength - _yOffset + lazyEdgeRemovalOffset);
+
+	// Bottom
+	RenderSide(0.25, 0.f);
+
+	glRotatef(180.f, 1, 0, 0);
+	glTranslatef(0, -_halfSideLength * 2 + _yOffset * 2, 2 * lazyEdgeRemovalOffset);
+
+	// Top
+	RenderSide(0.25, third * 2);
+
+	glPopAttrib();
+	glPopMatrix();
+}
+
+void Skybox::RenderSide(float textureOriginX, float textureOriginY) const
+{
+	float textureEnd[] = { textureOriginX + 0.25, textureOriginY + static_cast<float>(1) / 3 };
+	float sideLength = _halfSideLength * 2;
 
 	glBegin(GL_TRIANGLES);
 	{
-		auto third = static_cast<float>(1) / 3;
-		// Front (locked -z)
-		{
-			float textureOrigin[] = { 0.25, third };
-			float textureEnd[] = { 0.5, third * 2 };
+		glTexCoord2f(textureOriginX, textureEnd[1]);
+		glVertex3f(-_halfSideLength, sideLength - _yOffset, -_halfSideLength);
+		glTexCoord2f(textureOriginX, textureOriginY);
+		glVertex3f(-_halfSideLength, 0 - _yOffset, -_halfSideLength);
+		glTexCoord2f(textureEnd[0], textureOriginY);
+		glVertex3f(_halfSideLength, 0 - _yOffset, -_halfSideLength);
 
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(-halfSide, halfSide, -halfSide);
-			glTexCoord2f(textureOrigin[0], textureOrigin[1]);
-			glVertex3f(-halfSide, -halfSide, -halfSide);
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(halfSide, -halfSide, -halfSide);
-
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(halfSide, -halfSide, -halfSide);
-			glTexCoord2f(textureEnd[0], textureEnd[1]);
-			glVertex3f(halfSide, halfSide, -halfSide);
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(-halfSide, halfSide, -halfSide);
-		}
-
-		// Right (locked +x)
-		{
-			float textureOrigin[] = { 0.5, third };
-			float textureEnd[] = { 0.75, third * 2 };
-
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(halfSide - 10, halfSide, -halfSide);
-			glTexCoord2f(textureOrigin[0], textureOrigin[1]);
-			glVertex3f(halfSide - 10, -halfSide, -halfSide);
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(halfSide - 10, -halfSide, halfSide);
-
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(halfSide - 10, -halfSide, halfSide);
-			glTexCoord2f(textureEnd[0], textureEnd[1]);
-			glVertex3f(halfSide - 10, halfSide, halfSide);
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(halfSide - 10, halfSide, -halfSide);
-		}
-
-		// Back (locked +z)
-		{
-			float textureOrigin[] = { 0.75, third };
-			float textureEnd[] = { 1, third * 2 };
-
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(halfSide, halfSide, halfSide);
-			glTexCoord2f(textureOrigin[0], textureOrigin[1]);
-			glVertex3f(halfSide, -halfSide, halfSide);
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(-halfSide, -halfSide, halfSide);
-
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(-halfSide, -halfSide, halfSide);
-			glTexCoord2f(textureEnd[0], textureEnd[1]);
-			glVertex3f(-halfSide, halfSide, halfSide);
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(halfSide, halfSide, halfSide);
-		}
-
-		// Left (locked -x)
-		{
-			float textureOrigin[] = { 0, third };
-			float textureEnd[] = { 0.25, third * 2 };
-
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(-halfSide + 10, halfSide, halfSide);
-			glTexCoord2f(textureOrigin[0], textureOrigin[1]);
-			glVertex3f(-halfSide + 10, -halfSide, halfSide);
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(-halfSide + 10, -halfSide, -halfSide);
-
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(-halfSide + 10, -halfSide, -halfSide);
-			glTexCoord2f(textureEnd[0], textureEnd[1]);
-			glVertex3f(-halfSide + 10, halfSide, -halfSide);
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(-halfSide + 10, halfSide, halfSide);
-		}
-
-		// Top (locked +y)
-		{
-			float textureOrigin[] = { 0.25, third * 2 };
-			float textureEnd[] = { 0.5, third * 3 };
-
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(-halfSide, halfSide - 10, halfSide);
-			glTexCoord2f(textureOrigin[0], textureOrigin[1]);
-			glVertex3f(-halfSide, halfSide - 10, -halfSide);
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(halfSide, halfSide - 10, -halfSide);
-
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(halfSide, halfSide - 10, -halfSide);
-			glTexCoord2f(textureEnd[0], textureEnd[1]);
-			glVertex3f(halfSide, halfSide - 10, halfSide);
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(-halfSide, halfSide - 10, halfSide);
-		}
-
-		// Bottom (locked -y)
-		{
-			float textureOrigin[] = { 0.25, 0 };
-			float textureEnd[] = { 0.5, third };
-
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(-halfSide, -halfSide + 10, -halfSide);
-			glTexCoord2f(textureOrigin[0], textureOrigin[1]);
-			glVertex3f(-halfSide, -halfSide + 10, halfSide);
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(halfSide, -halfSide + 10, halfSide);
-
-			glTexCoord2f(textureEnd[0], textureOrigin[1]);
-			glVertex3f(halfSide, -halfSide + 10, halfSide);
-			glTexCoord2f(textureEnd[0], textureEnd[1]);
-			glVertex3f(halfSide, -halfSide + 10, -halfSide);
-			glTexCoord2f(textureOrigin[0], textureEnd[1]);
-			glVertex3f(-halfSide, -halfSide + 10, -halfSide);
-		}
-
+		glTexCoord2f(textureEnd[0], textureOriginY);
+		glVertex3f(_halfSideLength, 0 - _yOffset, -_halfSideLength);
+		glTexCoord2f(textureEnd[0], textureEnd[1]);
+		glVertex3f(_halfSideLength, sideLength - _yOffset, -_halfSideLength);
+		glTexCoord2f(textureOriginX, textureEnd[1]);
+		glVertex3f(-_halfSideLength, sideLength - _yOffset, -_halfSideLength);
 	}
 	glEnd();
-
-	enableAllLights();
-}
-
-void Skybox::disableAllLights()
-{
-	glDisable(GL_LIGHT0);
-	glDisable(GL_LIGHT1);
-	glDisable(GL_LIGHT2);
-	glDisable(GL_LIGHT3);
-	glDisable(GL_LIGHT4);
-	glDisable(GL_LIGHT5);
-	glDisable(GL_LIGHT6);
-	glDisable(GL_LIGHT7);
-}
-
-void Skybox::enableAllLights()
-{
-	glEnable(GL_LIGHT0);
-	glEnable(GL_LIGHT1);
-	glEnable(GL_LIGHT2);
-	glEnable(GL_LIGHT3);
-	glEnable(GL_LIGHT4);
-	glEnable(GL_LIGHT5);
-	glEnable(GL_LIGHT6);
-	glEnable(GL_LIGHT7);
 }
