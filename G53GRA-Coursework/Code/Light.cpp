@@ -36,7 +36,7 @@ void Light::Display()
 		glDisable(GL_LIGHTING);
 		glDisable(GL_TEXTURE_2D);
 
-		glColor4f(1.f, 1.f, 1.f, 1.f);
+		glColor4f(1.f, 0.75f, 0.f, 1.f);
 		glTranslatef(pos[0], pos[1], pos[2]);
 		glutSolidSphere(10.0, 10, 10);
 
