@@ -5,9 +5,9 @@
 
 Camera::Camera() : wKey(0), sKey(0), aKey(0), dKey(0), currentButton(0), mouseX(0), mouseY(0)
 {
-	_playerSize[0] = 20.f;
+	_playerSize[0] = 50.f;
 	_playerSize[1] = 120.f;
-	_playerSize[2] = 20.f;
+	_playerSize[2] = 50.f;
 
 	_playerCenterCameraOffset[0] = 0.f;
 	_playerCenterCameraOffset[1] = -_playerSize[1] / 2 - 5;
