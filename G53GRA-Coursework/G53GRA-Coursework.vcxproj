@@ -21,7 +21,7 @@
     <ClCompile Include="Framework\Utility\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\CollisionSphere.h" />
+    <ClInclude Include="Code\CollisionCube.h" />
     <ClInclude Include="Code\Flashlight.h" />
     <ClInclude Include="Code\Light.h" />
     <ClInclude Include="Code\Map.h" />

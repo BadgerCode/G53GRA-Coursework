@@ -4,12 +4,13 @@
 
 Cube::Cube(float x, float y, float z)
 {
-	size(100);
+	float cubeSize = 100.f;
+	size(cubeSize);
 	position(x, y, z);
 	SetColour(1.f, 0.f, 0.f, 1.f);
 	_usingTexture = false;
 
-	StaticObjectCollisionManager::AddCollisionSphere(x, y, z, 100);
+	StaticObjectCollisionManager::AddCollisionCube(pos, scale);
 }
 
 

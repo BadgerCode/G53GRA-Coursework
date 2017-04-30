@@ -114,4 +114,7 @@ private:
 	int currentButton;
 	/** Previous mouse coordinates */
 	GLint mouseX, mouseY;
+
+	float _playerSize[3];
+	float _playerCenterCameraOffset[3];
 };

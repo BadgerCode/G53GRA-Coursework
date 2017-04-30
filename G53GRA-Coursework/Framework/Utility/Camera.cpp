@@ -5,6 +5,14 @@
 
 Camera::Camera() : wKey(0), sKey(0), aKey(0), dKey(0), currentButton(0), mouseX(0), mouseY(0)
 {
+	_playerSize[0] = 20.f;
+	_playerSize[1] = 120.f;
+	_playerSize[2] = 20.f;
+
+	_playerCenterCameraOffset[0] = 0.f;
+	_playerCenterCameraOffset[1] = -_playerSize[1] / 2 - 5;
+	_playerCenterCameraOffset[2] = -_playerSize[2] / 2;
+
 	Reset();
 }
 
@@ -53,29 +61,30 @@ void Camera::SetupCamera()
 void Camera::Update(const double& deltaTime)
 {
 	float speed = static_cast<float>(250.f * deltaTime);
-	float newEyePosition[3] = { eyePosition[0], eyePosition[1], eyePosition[2] };
+	float movement[3] = { 0, 0, 0 };
 
 	if (aKey)
-		sub(newEyePosition, right, speed);
+		sub(movement, right, speed);
 
 	if (dKey)
-		add(newEyePosition, right, speed);
+		add(movement, right, speed);
 
 	if (wKey)
-		add(newEyePosition, forward, speed);
+		add(movement, forward, speed);
 
 	if (sKey)
-		sub(newEyePosition, forward, speed);
+		sub(movement, forward, speed);
 
-	if(StaticObjectCollisionManager::CheckPlayerForCollision(newEyePosition[0], newEyePosition[1], newEyePosition[2]))
-	{
-		printf("Player collided. Stopping movement\n");
-		return;
-	}
+	float playerPos[3] = { 0, 0, 0 };
+	add(playerPos, eyePosition);
+	add(playerPos, _playerCenterCameraOffset);
 
-	eyePosition[0] = newEyePosition[0];
-	eyePosition[1] = newEyePosition[1];
-	eyePosition[2] = newEyePosition[2];
+	auto updatedPosition = StaticObjectCollisionManager::RestrainMovement(playerPos, movement, _playerSize);
+	sub(updatedPosition, _playerCenterCameraOffset);
+
+	eyePosition[0] = updatedPosition[0];
+	eyePosition[1] = updatedPosition[1];
+	eyePosition[2] = updatedPosition[2];
 
 	SetupCamera();
 }

@@ -1,22 +1,33 @@
 #include "StaticObjectCollisionManager.h"
 
-std::vector<CollisionSphere*> StaticObjectCollisionManager::_collisionSpheres;
+std::vector<CollisionCube*> StaticObjectCollisionManager::_collisionCubes;
 
-void StaticObjectCollisionManager::AddCollisionSphere(float x, float y, float z, float radius)
+void StaticObjectCollisionManager::AddCollisionCube(float centerPos[], float size[])
 {
-	auto collisionSphere = new CollisionSphere(x, y, z, radius);
-	_collisionSpheres.push_back(collisionSphere);
+	_collisionCubes.push_back(new CollisionCube(centerPos, size));
 }
 
-bool StaticObjectCollisionManager::CheckPlayerForCollision(float x, float y, float z)
+float* StaticObjectCollisionManager::RestrainMovement(float currentPos[], float direction[], float size[])
 {
-	for (CollisionSphere* sphere : _collisionSpheres)
+	float x = currentPos[0] + direction[0];
+	float y = currentPos[1] + direction[1];
+	float z = currentPos[2] + direction[2];
+
+	float minX = x - size[0] / 2;
+	float maxX = x + size[0] / 2;
+	float minY = y - size[1] / 2;
+	float maxY = y + size[1] / 2;
+	float minZ = z - size[2] / 2;
+	float maxZ = z + size[2] / 2;
+
+	for (CollisionCube* cube : _collisionCubes)
 	{
-		float distance = sqrt(pow((sphere->x - x), 2) + pow(sphere->y - y, 2) + pow(sphere->z - z, 2));
-		if(distance < sphere->radius)
+		if((minX <= cube->maxX && maxX >= cube->minX)
+			&& (minY <= cube->maxY && maxY >= cube->minY)
+			&& (minZ <= cube->maxZ && maxZ >= cube->minZ))
 		{
-			return true;
+			return currentPos;
 		}
 	}
-	return false;
+	return new float[3]{ x, y, z};
 }

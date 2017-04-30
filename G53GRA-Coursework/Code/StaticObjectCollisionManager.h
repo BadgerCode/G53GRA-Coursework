@@ -1,14 +1,14 @@
 #pragma once
 #include <vector>
-#include "CollisionSphere.h"
+#include "CollisionCube.h"
 
 
 class StaticObjectCollisionManager
 {
 public:
-	static void AddCollisionSphere(float x, float y, float z, float radius);
-	static bool CheckPlayerForCollision(float x, float y, float z);
+	static void AddCollisionCube(float centerPos[], float size[]);
+	static float* RestrainMovement(float currentPos[], float direction[], float size[]);
 private:
-	static std::vector<CollisionSphere*> _collisionSpheres;
+	static std::vector<CollisionCube*> _collisionCubes;
 };
 
