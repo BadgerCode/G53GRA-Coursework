@@ -13,7 +13,7 @@ Map::Map()
 	_sunlight->SetDiffuse(0.f, 0.f, 0.f, 1.f);
 	_sunlight->SetSpecular(0.f, 0.f, 0.f, 1.f);
 
-	_floorTextureId = Scene::GetTexture("./Textures/baked_beans_teaser.bmp");
+	_floorTextureId = Scene::GetTexture("./Textures/grass.bmp");
 }
 
 void Map::Display()
