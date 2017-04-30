@@ -1,14 +1,21 @@
 #include "TestObject.h"
 #include "Scene.h"
 
-TestObject::TestObject()
+TestObject::TestObject(float x, float y, float z)
 {
 	size(100);
 	_textureId = Scene::GetTexture("./Textures/baked_beans_teaser.bmp");
+	pos[0] = x;
+	pos[1] = y;
+	pos[2] = z;
 }
 
 void TestObject::Display()
 {
+	glPushMatrix();
+	glPushAttrib(GL_ALL_ATTRIB_BITS);
+	glTranslatef(pos[0], pos[1], pos[2]);
+
 	auto halfWidth = scale[0] / 2;
 	auto halfHeight = scale[1] / 2;
 	auto halfDepth = scale[2] / 2;
@@ -90,4 +97,6 @@ void TestObject::Display()
 
 	}
 	glEnd();
+	glPopAttrib();
+	glPopMatrix();
 }

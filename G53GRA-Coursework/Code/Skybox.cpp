@@ -3,6 +3,7 @@
 Skybox::Skybox(int size, std::string filepath): _sideLength(size)
 {
 	_textureId = Scene::GetTexture(filepath);
+	_ambientLightLevel = -0.15f;
 }
 
 void Skybox::Display()
@@ -10,7 +11,7 @@ void Skybox::Display()
 	auto halfSide = _sideLength / 2;
 
 	glEnable(GL_LIGHTING);
-	GLfloat ambience[] = { 0.f, 0.f, 0.f, 1.f };
+	GLfloat ambience[] = { _ambientLightLevel, _ambientLightLevel, _ambientLightLevel, 1.f };
 	GLfloat diffuse[] = { 0.f, 0.f, 0.f, 1.f };
 	GLfloat specular[] = { 0.f, 0.f, 0.f, 1.f };
 	GLfloat position[] = { 5000.0f, 5000.0f, -5000.0f, 0.0f };
@@ -19,6 +20,7 @@ void Skybox::Display()
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
 	glEnable(GL_LIGHT0);
+	glDisable(GL_LIGHT1);
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
@@ -148,4 +150,30 @@ void Skybox::Display()
 
 	}
 	glEnd();
+
+	{
+		GLfloat ambience[] = { 0.f, 0.f, 0.f, 0.f };
+		GLfloat diffuse[] = { 0.8f, 0.8f, 0.8f, 1.5f };
+		GLfloat specular[] = { 1.f, 1.f, 1.f, 1.f };
+		GLfloat position[] = { -75.0f, 0.f, 60.f, 1.0f };
+
+		glLightfv(GL_LIGHT1, GL_AMBIENT, ambience);
+		glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
+		glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
+		glLightfv(GL_LIGHT1, GL_POSITION, position);
+		glEnable(GL_LIGHT1);
+
+		glPushMatrix();
+		glPushAttrib(GL_ALL_ATTRIB_BITS);
+
+		glDisable(GL_LIGHTING);
+
+		glColor4f(1, 1, 1, 1);
+		glTranslatef(position[0], position[1], position[2]);
+		glutSolidSphere(10.0, 10, 10);
+
+		glEnable(GL_LIGHTING);
+		glPopAttrib();
+		glPopMatrix();
+	}
 }

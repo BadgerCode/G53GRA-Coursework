@@ -9,4 +9,5 @@ public:
 private:
 	GLint _textureId;
 	int _sideLength;
+	float _ambientLightLevel;
 };

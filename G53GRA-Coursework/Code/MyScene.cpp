@@ -12,7 +12,8 @@ void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	AddObjectToScene(new Skybox(5000, "./Textures/skybox-2.bmp"));
-	AddObjectToScene(new TestObject());
+	AddObjectToScene(new TestObject(0, 0, 0));
+	AddObjectToScene(new TestObject(-150, 0, 0));
 }
 
 void MyScene::Projection()
