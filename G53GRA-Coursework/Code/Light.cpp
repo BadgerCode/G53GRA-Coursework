@@ -20,6 +20,11 @@ void Light::Display()
 	glLightfv(_lightNumber, GL_DIFFUSE, _diffuse);
 	glLightfv(_lightNumber, GL_SPECULAR, _specular);
 	glLightfv(_lightNumber, GL_POSITION, _position);
+	if(!IsGlobalLight())
+	{
+		// TODO: This is really the general brightness of the light. It should be configurable
+		glLightf(_lightNumber, GL_LINEAR_ATTENUATION, 0.01);
+	}
 	glEnable(_lightNumber);
 
 	glPushMatrix();
@@ -70,4 +75,9 @@ void Light::SetPosition(float x, float y, float z)
 void Light::SetAsGlobalLight(bool isGlobalLight)
 {
 	_position[3] = isGlobalLight ? 0 : 1;
+}
+
+bool Light::IsGlobalLight() const
+{
+	return _position[3] == 0;
 }

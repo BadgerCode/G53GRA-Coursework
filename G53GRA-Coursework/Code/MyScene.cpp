@@ -15,7 +15,7 @@ void MyScene::Initialise()
 	SetupLighting();
 	AddObjectToScene(new Skybox(GL_LIGHT0, 5000, "./Textures/skybox-2.bmp"));
 	AddObjectToScene(new TestObject(0, 0, 0));
-	AddObjectToScene(new TestObject(-150, 0, 0));
+	AddObjectToScene(new TestObject(-450, 0, 0));
 }
 
 void MyScene::Projection()
@@ -34,8 +34,8 @@ void MyScene::SetupLighting()
 
 	AddObjectToScene(sunlight);
 
-	auto light1 = new Light(GL_LIGHT1, -75.f, 0.f, 70.f);
-	light1->SetAmbience(0.f, 0.f, 0.f, 1.f);
+	auto light1 = new Light(GL_LIGHT1, -575.f, 0.f, 70.f);
+	light1->SetAmbience(1.f, 1.f, 1.f, 1.f);
 	light1->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
 	light1->SetSpecular(1.f, 1.f, 1.f, 1.f);
 

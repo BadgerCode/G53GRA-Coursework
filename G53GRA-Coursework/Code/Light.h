@@ -21,4 +21,6 @@ private:
 	GLfloat _diffuse[4];
 	GLfloat _specular[4];
 	GLfloat _position[4];
+
+	bool IsGlobalLight() const;
 };
