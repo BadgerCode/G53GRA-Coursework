@@ -37,23 +37,45 @@ void Map::RenderFloor()
 	glColor4f(1.f, 1.f, 1.f, 1.f);
 
 	glBegin(GL_TRIANGLES);
-	{
-		glNormal3f(0.f, 1.f, 0.f);
-		glTexCoord2f(0.0f, 1.0f);
-		glVertex3f(-halfMapSize, 0, -halfMapSize);
-		glTexCoord2f(0.0f, 0.0f);
-		glVertex3f(-halfMapSize, 0, halfMapSize);
-		glTexCoord2f(1.0f, 0.0f);
-		glVertex3f(halfMapSize, 0, halfMapSize);
+	glNormal3f(0.f, 1.f, 0.f);
 
-		glTexCoord2f(1.0f, 0.0f);
-		glVertex3f(halfMapSize, 0, halfMapSize);
-		glTexCoord2f(1.0f, 1.0f);
-		glVertex3f(halfMapSize, 0, -halfMapSize);
-		glTexCoord2f(0.0f, 1.0f);
-		glVertex3f(-halfMapSize, 0, -halfMapSize);
+	auto floorSquareSize = 100;
+	auto numRowsOrCols = _mapSize / floorSquareSize;
+
+	int left = -halfMapSize;
+	int right = left + floorSquareSize;
+
+	for (int i = 0; i < numRowsOrCols; i++)
+	{
+		int top = -halfMapSize;
+		int bottom = top + floorSquareSize;
+
+		for(int j = 0; j < numRowsOrCols; j++)
+		{
+			glTexCoord2f(0.0f, 1.0f);
+			glVertex3f(left, 0, top);
+			glTexCoord2f(0.0f, 0.0f);
+			glVertex3f(left, 0, bottom);
+			glTexCoord2f(1.0f, 0.0f);
+			glVertex3f(right, 0, bottom);
+
+			glTexCoord2f(1.0f, 0.0f);
+			glVertex3f(right, 0, bottom);
+			glTexCoord2f(1.0f, 1.0f);
+			glVertex3f(right, 0, top);
+			glTexCoord2f(0.0f, 1.0f);
+			glVertex3f(left, 0, top);
+
+			top += floorSquareSize;
+			bottom += floorSquareSize;
+		}
+
+		left += floorSquareSize;
+		right += floorSquareSize;
 	}
+
 	glEnd();
+
 	glPopAttrib();
 	glPopMatrix();
 }
