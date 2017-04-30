@@ -2,8 +2,8 @@
 
 Map::Map()
 {
-	_mapSize = 5000;
-	_skybox = new Skybox(5000, "./Textures/skybox.bmp");
+	_mapSize = 10000;
+	_skybox = new Skybox(_mapSize * 2, "./Textures/skybox.bmp");
 
 	auto lightLevel = -0.35f; // -0.35
 
