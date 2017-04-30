@@ -15,16 +15,7 @@ void Skybox::Display()
 
 	glEnable(GL_LIGHTING);
 	disableAllLights();
-
-	GLfloat ambience[] = { _ambientLightLevel, _ambientLightLevel, _ambientLightLevel, 1.f };
-	GLfloat diffuse[] = { 0.f, 0.f, 0.f, 1.f };
-	GLfloat specular[] = { 0.f, 0.f, 0.f, 1.f };
-	GLfloat position[] = { 5000.0f, 5000.0f, -5000.0f, 0.0f };
-	glLightfv(GL_LIGHT0, GL_AMBIENT, ambience);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
-	glLightfv(GL_LIGHT0, GL_POSITION, position);
-	glEnable(GL_LIGHT0);
+	glEnable(_sunLightNumber);
 
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, _textureId);
