@@ -150,30 +150,4 @@ void Skybox::Display()
 
 	}
 	glEnd();
-
-	{
-		GLfloat ambience[] = { 0.f, 0.f, 0.f, 0.f };
-		GLfloat diffuse[] = { 0.8f, 0.8f, 0.8f, 1.5f };
-		GLfloat specular[] = { 1.f, 1.f, 1.f, 1.f };
-		GLfloat position[] = { -75.0f, 0.f, 60.f, 1.0f };
-
-		glLightfv(GL_LIGHT1, GL_AMBIENT, ambience);
-		glLightfv(GL_LIGHT1, GL_DIFFUSE, diffuse);
-		glLightfv(GL_LIGHT1, GL_SPECULAR, specular);
-		glLightfv(GL_LIGHT1, GL_POSITION, position);
-		glEnable(GL_LIGHT1);
-
-		glPushMatrix();
-		glPushAttrib(GL_ALL_ATTRIB_BITS);
-
-		glDisable(GL_LIGHTING);
-
-		glColor4f(1, 1, 1, 1);
-		glTranslatef(position[0], position[1], position[2]);
-		glutSolidSphere(10.0, 10, 10);
-
-		glEnable(GL_LIGHTING);
-		glPopAttrib();
-		glPopMatrix();
-	}
 }

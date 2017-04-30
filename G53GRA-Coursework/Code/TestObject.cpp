@@ -4,10 +4,8 @@
 TestObject::TestObject(float x, float y, float z)
 {
 	size(100);
+	position(x, y, z);
 	_textureId = Scene::GetTexture("./Textures/baked_beans_teaser.bmp");
-	pos[0] = x;
-	pos[1] = y;
-	pos[2] = z;
 }
 
 void TestObject::Display()
