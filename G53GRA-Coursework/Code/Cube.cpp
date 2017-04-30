@@ -1,5 +1,6 @@
 #include "Cube.h"
 #include "Scene.h"
+#include "StaticObjectCollisionManager.h"
 
 Cube::Cube(float x, float y, float z)
 {
@@ -7,6 +8,8 @@ Cube::Cube(float x, float y, float z)
 	position(x, y, z);
 	SetColour(1.f, 0.f, 0.f, 1.f);
 	_usingTexture = false;
+
+	StaticObjectCollisionManager::AddCollisionSphere(x, y, z, 100);
 }
 
 

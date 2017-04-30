@@ -14,18 +14,21 @@
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\Skybox.cpp" />
     <ClCompile Include="Code\Cube.cpp" />
+    <ClCompile Include="Code\StaticObjectCollisionManager.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
     <ClCompile Include="Framework\Utility\Camera.cpp" />
     <ClCompile Include="Framework\Utility\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\CollisionSphere.h" />
     <ClInclude Include="Code\Flashlight.h" />
     <ClInclude Include="Code\Light.h" />
     <ClInclude Include="Code\Map.h" />
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\Skybox.h" />
     <ClInclude Include="Code\Cube.h" />
+    <ClInclude Include="Code\StaticObjectCollisionManager.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />
     <ClInclude Include="Framework\Interface\Animation.h" />

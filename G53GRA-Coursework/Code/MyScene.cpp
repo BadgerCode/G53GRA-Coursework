@@ -4,6 +4,7 @@
 #include "Light.h"
 #include "Map.h"
 #include "Flashlight.h"
+#include "StaticObjectCollisionManager.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -17,6 +18,7 @@ void MyScene::Initialise()
 	SetupLighting();
 	AddObjectToScene(new Map());
 	SetupObjects();
+	AddObjectToScene(new StaticObjectCollisionManager());
 }
 
 void MyScene::Projection()
