@@ -1,6 +1,7 @@
 #include "Cube.h"
 #include "Scene.h"
 #include "StaticObjectCollisionManager.h"
+#include "Utility/Materials.h"
 
 Cube::Cube(float centerPos[], float cubeSize[])
 {
@@ -144,9 +145,9 @@ void Cube::Display()
 	glPopMatrix();
 }
 
-void Cube::SetTexture(std::string texturePath)
+void Cube::SetTexture(std::string materialName)
 {
-	_textureId = Scene::GetTexture(texturePath);
+	_textureId = Scene::GetTexture(Materials::GetPath(materialName));
 	auto textureNotLoaded = _textureId < 0;
 	
 	if (textureNotLoaded)

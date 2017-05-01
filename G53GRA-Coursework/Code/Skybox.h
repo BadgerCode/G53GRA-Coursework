@@ -4,7 +4,7 @@
 class Skybox : public DisplayableObject
 {
 public:
-	Skybox(float sideLength, std::string filepath);
+	Skybox(float sideLength);
 	void Display() override;
 private:
 	void RenderSide(float textureOriginX, float textureOriginY) const;

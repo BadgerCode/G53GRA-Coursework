@@ -4,8 +4,8 @@
 #include "Light.h"
 #include "Map.h"
 #include "Flashlight.h"
-#include "StaticObjectCollisionManager.h"
 #include "MapObjects/House.h"
+#include "Utility/Materials.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -16,6 +16,9 @@ MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidt
 void MyScene::Initialise()
 {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+
+	Materials::ReloadMaterials();
+
 	SetupLighting();
 	AddObjectToScene(new Map());
 	SetupObjects();
@@ -55,7 +58,7 @@ void MyScene::SetupObjects()
 		float size[3] = { 100.f, 100.f, 100.f };
 
 		auto object = new Cube(pos, size);
-		object->SetTexture("./Textures/baked_beans_teaser.bmp");
+		object->SetTexture("material_placeholder");
 		AddObjectToScene(object);
 	}
 

@@ -54,6 +54,9 @@
     <ClCompile Include="Code\MapObjects\House.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Utility\Materials.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Engine\Engine.h">
@@ -107,5 +110,14 @@
     <ClInclude Include="Code\MapObjects\House.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Utility\Materials.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\include\json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Code\Data\Materials.json" />
   </ItemGroup>
 </Project>

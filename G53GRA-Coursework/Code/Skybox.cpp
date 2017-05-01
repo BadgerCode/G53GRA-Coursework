@@ -1,9 +1,10 @@
 #include "Skybox.h"
+#include "Utility/Materials.h"
 
-Skybox::Skybox(float sideLength, std::string filepath)
+Skybox::Skybox(float sideLength)
 {
 	_halfSideLength = sideLength / 2.f;
-	_textureId = Scene::GetTexture(filepath);
+	_textureId = Scene::GetTexture(Materials::GetPath("material_skybox"));
 
 	_yOffset = 2.f * _halfSideLength / 3.f;
 }

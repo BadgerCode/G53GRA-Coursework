@@ -16,6 +16,7 @@
     <ClCompile Include="Code\Skybox.cpp" />
     <ClCompile Include="Code\Cube.cpp" />
     <ClCompile Include="Code\StaticObjectCollisionManager.cpp" />
+    <ClCompile Include="Code\Utility\Materials.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
     <ClCompile Include="Framework\Utility\Camera.cpp" />
@@ -24,9 +25,11 @@
   <ItemGroup>
     <ClInclude Include="Code\CollisionCube.h" />
     <ClInclude Include="Code\Flashlight.h" />
+    <ClInclude Include="Code\include\json.hpp" />
     <ClInclude Include="Code\Light.h" />
     <ClInclude Include="Code\Map.h" />
     <ClInclude Include="Code\MapObjects\House.h" />
+    <ClInclude Include="Code\Utility\Materials.h" />
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\Skybox.h" />
     <ClInclude Include="Code\Cube.h" />
@@ -39,6 +42,9 @@
     <ClInclude Include="Framework\Utility\Camera.h" />
     <ClInclude Include="Framework\Utility\Texture.h" />
     <ClInclude Include="Framework\Utility\VectorMath.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Code\Data\Materials.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>
@@ -64,7 +70,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>.\Framework;.\Code;.\Code\Demos;.\Framework\Utility;.\Framework\Interface;.\Framework\Engine;../freeglut/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\Framework;.\Code;.\Code\Demos;.\Framework\Utility;.\Framework\Interface;.\Framework\Engine;../freeglut/include;.\Code\include</AdditionalIncludeDirectories>
       <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
@@ -75,4 +81,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

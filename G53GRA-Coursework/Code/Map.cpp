@@ -1,9 +1,10 @@
 #include "Map.h"
+#include "Utility/Materials.h"
 
 Map::Map()
 {
 	_mapSize = 10000.f;
-	_skybox = new Skybox(_mapSize * 2.f, "./Textures/skybox.bmp");
+	_skybox = new Skybox(_mapSize * 2.f);
 
 	_lightLevel = -0.35f;
 
@@ -14,7 +15,7 @@ Map::Map()
 	_sunlight->SetDiffuse(0.f, 0.f, 0.f, 1.f);
 	_sunlight->SetSpecular(0.f, 0.f, 0.f, 1.f);
 
-	_floorTextureId = Scene::GetTexture("./Textures/grass.bmp");
+	_floorTextureId = Scene::GetTexture(Materials::GetPath("material_grass"));
 }
 
 void Map::Display()

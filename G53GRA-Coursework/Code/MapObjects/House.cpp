@@ -56,7 +56,7 @@ void House::BuildLeftWall()
 	for(int i = 0; i < 3; i++)
 	{
 		auto wall = new Cube(wallPos, wallPieceSize);
-		wall->SetTexture("./Textures/wood.bmp");
+		wall->SetTexture("material_woodshackboards");
 		_leftWallPieces.push_back(wall);
 
 		wallPos[2] -= wallPieceSize[2];
@@ -80,7 +80,7 @@ void House::BuildRightWall()
 	for (int i = 0; i < 3; i++)
 	{
 		auto wall = new Cube(wallPos, wallPieceSize);
-		wall->SetTexture("./Textures/wood.bmp");
+		wall->SetTexture("material_woodshackboards");
 		_rightWallPieces.push_back(wall);
 
 		wallPos[2] -= wallPieceSize[2];
@@ -103,7 +103,7 @@ void House::BuildBackWall()
 	for (int i = 0; i < wallPieces; i++)
 	{
 		auto wall = new Cube(wallPos, wallPieceSize);
-		wall->SetTexture("./Textures/wood.bmp");
+		wall->SetTexture("material_woodshackboards");
 		_backWallPieces.push_back(wall);
 
 		wallPos[0] += wallPieceSize[0];
@@ -136,7 +136,7 @@ void House::BuildFrontWall()
 			};
 
 			auto wall = new Cube(doorFrameTopPos, doorFrameTopSize);
-			wall->SetTexture("./Textures/wood.bmp");
+			wall->SetTexture("material_woodshackboards");
 			wall->SetTextureScale(wallPieceSize[0] / doorFrameTopSize[0], wallPieceSize[1] / doorFrameTopSize[1]);
 			_backWallPieces.push_back(wall);
 
@@ -144,7 +144,7 @@ void House::BuildFrontWall()
 		}
 
 		auto wall = new Cube(wallPos, wallPieceSize);
-		wall->SetTexture("./Textures/wood.bmp");
+		wall->SetTexture("material_woodshackboards");
 		_backWallPieces.push_back(wall);
 
 		wallPos[0] += wallPieceSize[0];

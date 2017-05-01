@@ -6,6 +6,7 @@
 * @date 09/02/16
 */
 #include "MyScene.h"
+
 /**
  * Entry method, takes command line arguments and creates new Scene engine to render your G53GRA Coursework
  *
