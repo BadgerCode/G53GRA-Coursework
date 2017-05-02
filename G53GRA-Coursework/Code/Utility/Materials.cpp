@@ -1,11 +1,12 @@
 #include "Materials.h"
-#include "json.hpp"
 #include <fstream>
 #include "Scene.h"
+#include "SOIL.h"
 
 
 nlohmann::json Materials::_mappedNames;
-std::string Materials::_defaultTexturePath;
+std::string Materials::_defaultMaterialPath;
+std::map<std::string, GLuint> Materials::_materialCache;
 
 void Materials::ReloadMaterials()
 {
@@ -14,12 +15,12 @@ void Materials::ReloadMaterials()
 	std::ifstream i("./Code/Data/Materials.json");
 	i >> _mappedNames;
 
-	_defaultTexturePath = "";
-	_defaultTexturePath = GetPath("material_missing");
+	_defaultMaterialPath = "";
+	_defaultMaterialPath = GetPath("material_missing");
 
-	if(_defaultTexturePath == "")
+	if(_defaultMaterialPath == "")
 	{
-		printf("MATERIAL ERROR: Failed to load missing texture\n");
+		printf("MATERIAL ERROR: Failed to load 'missing texture' material\n");
 	}
 }
 
@@ -31,11 +32,44 @@ std::string Materials::GetPath(std::string name)
 	catch (std::out_of_range&)
 	{
 		printf("MATERIAL ERROR: Unknown material: '%s'\n", name.c_str());
-		return _defaultTexturePath;
+		return _defaultMaterialPath;
 	}
 }
 
 int Materials::Get(std::string name)
 {
-	return Scene::GetTexture(GetPath(name));
+	try
+	{
+		return _materialCache.at(name);
+	}
+	catch (std::out_of_range&) {}
+
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_BLEND);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+	GLuint tex_2d = SOIL_load_OGL_texture
+	(
+		GetPath(name).c_str(),
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		SOIL_FLAG_MIPMAPS | SOIL_FLAG_INVERT_Y
+	);
+
+	/* check for an error during the load process */
+	if (tex_2d == 0)
+	{
+		printf("MATERIAL ERROR: Error loading material '%s': '%s'\n", name.c_str(), SOIL_last_result());
+		return -1;
+	}
+
+	_materialCache.insert(make_pair(name, tex_2d));
+
+	glDisable(GL_TEXTURE_2D);
+
+	return static_cast<int>(tex_2d);
 }

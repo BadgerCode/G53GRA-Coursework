@@ -33,6 +33,7 @@
     <ClInclude Include="Code\Map\House.h" />
     <ClInclude Include="Code\Objects\ObjectLoader.h" />
     <ClInclude Include="Code\Objects\Object.h" />
+    <ClInclude Include="Code\Utility\GlutDependency.h" />
     <ClInclude Include="Code\Utility\Materials.h" />
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\Map\Skybox.h" />
@@ -80,7 +81,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../freeglut/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../freeglut/lib;.\Code\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SOIL.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

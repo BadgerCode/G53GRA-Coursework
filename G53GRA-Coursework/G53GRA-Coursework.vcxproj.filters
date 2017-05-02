@@ -128,6 +128,9 @@
     <ClInclude Include="Code\Objects\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Utility\GlutDependency.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />

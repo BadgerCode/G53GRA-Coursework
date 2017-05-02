@@ -1,7 +1,7 @@
 {
-  "material_placeholder": "./Textures/baked_beans_teaser.bmp",
-  "material_missing":  "./Textures/missing_texture.bmp",
-  "material_grass": "./Textures/grass.bmp",
-  "material_skybox": "./Textures/skybox.bmp",
-  "material_woodshackboards": "./Textures/wood.bmp"
+  "material_placeholder": "./Textures/baked_beans_teaser.png",
+  "material_missing":  "./Textures/missing_texture.png",
+  "material_grass": "./Textures/grass.png",
+  "material_skybox": "./Textures/skybox.png",
+  "material_woodshackboards": "./Textures/wood.png"
 }
