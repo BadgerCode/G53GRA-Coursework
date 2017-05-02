@@ -4,6 +4,7 @@
 #include "Utility/Materials.h"
 #include "Map/Map.h"
 #include "Map/House.h"
+#include "Objects/Object.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -52,25 +53,20 @@ void MyScene::SetupLighting()
 void MyScene::SetupObjects()
 {
 	{
-		float pos[3] = { 100.f, 50.f, 0.f };
-		float size[3] = { 100.f, 100.f, 100.f };
-
-		auto object = new Cube(pos, size);
-		object->SetTexture("material_placeholder");
-		AddObjectToScene(object);
-	}
-
-	{
-		float pos[3] = { -400.f, 50.f, 0.f };
-		float size[3] = { 100.f, 100.f, 100.f };
-
-		auto object = new Cube(pos, size);
-		object->SetColour(1, 0, 0, 1);
-		AddObjectToScene(object);
-	}
-
-	{
 		auto object = new House();
+		AddObjectToScene(object);
+	}
+
+	{
+		auto object = new Object("TestObject");
+		object->position(-200, 0, -100);
+		object->orientation(0.f, 45.f, 0.f);
+		AddObjectToScene(object);
+	}
+
+	{
+		auto object = new Object("Another");
+		object->position(200, 0, -100);
 		AddObjectToScene(object);
 	}
 }

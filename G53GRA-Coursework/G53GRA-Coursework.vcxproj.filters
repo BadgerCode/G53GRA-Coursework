@@ -48,9 +48,6 @@
     <ClCompile Include="Code\Map\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\TestObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Objects\Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -58,6 +55,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Objects\ObjectLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Objects\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -107,9 +110,6 @@
     <ClInclude Include="Code\Map\Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\TestObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Objects\CollisionCube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -122,8 +122,16 @@
     <ClInclude Include="Code\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Objects\ObjectLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Objects\Object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
+    <None Include="Code\Data\Objects\TestObject.json" />
+    <None Include="Code\Data\Objects\Another.json" />
   </ItemGroup>
 </Project>

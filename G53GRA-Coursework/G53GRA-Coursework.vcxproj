@@ -15,8 +15,9 @@
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\Map\Skybox.cpp" />
     <ClCompile Include="Code\Objects\Cube.cpp" />
+    <ClCompile Include="Code\Objects\ObjectLoader.cpp" />
     <ClCompile Include="Code\StaticObjectCollisionManager.cpp" />
-    <ClCompile Include="Code\TestObject.cpp" />
+    <ClCompile Include="Code\Objects\Object.cpp" />
     <ClCompile Include="Code\Utility\Materials.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
@@ -30,7 +31,8 @@
     <ClInclude Include="Code\Light.h" />
     <ClInclude Include="Code\Map\Map.h" />
     <ClInclude Include="Code\Map\House.h" />
-    <ClInclude Include="Code\TestObject.h" />
+    <ClInclude Include="Code\Objects\ObjectLoader.h" />
+    <ClInclude Include="Code\Objects\Object.h" />
     <ClInclude Include="Code\Utility\Materials.h" />
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\Map\Skybox.h" />
@@ -47,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
+    <None Include="Code\Data\Objects\Another.json" />
+    <None Include="Code\Data\Objects\TestObject.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>
