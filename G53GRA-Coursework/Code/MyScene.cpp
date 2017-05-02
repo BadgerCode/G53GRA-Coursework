@@ -1,11 +1,10 @@
 #include "MyScene.h"
 #include "Cube.h"
-#include "Skybox.h"
 #include "Light.h"
-#include "Map.h"
 #include "Flashlight.h"
-#include "MapObjects/House.h"
 #include "Utility/Materials.h"
+#include "Map/Map.h"
+#include "Map/House.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)

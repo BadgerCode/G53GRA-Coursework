@@ -33,16 +33,10 @@
     <ClCompile Include="Code\MyScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Skybox.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Cube.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Flashlight.cpp">
@@ -51,10 +45,16 @@
     <ClCompile Include="Code\StaticObjectCollisionManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\MapObjects\House.cpp">
+    <ClCompile Include="Code\Utility\Materials.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Utility\Materials.cpp">
+    <ClCompile Include="Code\Map\House.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Map\Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Map\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,16 +86,10 @@
     <ClInclude Include="Code\MyScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Skybox.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Cube.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Flashlight.h">
@@ -107,13 +101,19 @@
     <ClInclude Include="Code\CollisionCube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\MapObjects\House.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Utility\Materials.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\include\json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Map\House.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Map\Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Map\Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
