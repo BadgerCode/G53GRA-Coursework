@@ -1,5 +1,4 @@
 #include "Cube.h"
-#include "Scene.h"
 #include "StaticObjectCollisionManager.h"
 #include "Utility/Materials.h"
 
@@ -32,7 +31,7 @@ void Cube::Display()
 	if (_usingTexture) {
 		glEnable(GL_TEXTURE_2D);
 		glEnable(GL_COLOR_MATERIAL);
-		glBindTexture(GL_TEXTURE_2D, _textureId);
+		glBindTexture(GL_TEXTURE_2D, _material);
 		glColor4f(1.f, 1.f, 1.f, 1.f);
 	}
 	else
@@ -147,12 +146,12 @@ void Cube::Display()
 
 void Cube::SetTexture(std::string materialName)
 {
-	_textureId = Scene::GetTexture(Materials::GetPath(materialName));
-	auto textureNotLoaded = _textureId < 0;
+	_material = Materials::Get(materialName);
+	auto textureNotLoaded = _material < 0;
 	
 	if (textureNotLoaded)
 	{
-		_textureId = -1;
+		_material = -1;
 		_usingTexture = false;
 		return;
 	}

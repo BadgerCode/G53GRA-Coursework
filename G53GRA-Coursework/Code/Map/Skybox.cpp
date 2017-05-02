@@ -4,7 +4,7 @@
 Skybox::Skybox(float sideLength)
 {
 	_halfSideLength = sideLength / 2.f;
-	_textureId = Scene::GetTexture(Materials::GetPath("material_skybox"));
+	_material = Materials::Get("material_skybox");
 
 	_yOffset = 2.f * _halfSideLength / 3.f;
 }
@@ -17,7 +17,7 @@ void Skybox::Display()
 	glDisable(GL_LIGHTING);
 
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, _textureId);
+	glBindTexture(GL_TEXTURE_2D, _material);
 	glColor4f(1.f, 1.f, 1.f, 1.f);
 
 	glRotatef(90.f, 0, 1, 0);

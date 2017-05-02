@@ -1,7 +1,6 @@
 #include "ObjectLoader.h"
 #include "json.hpp"
 #include <fstream>
-#include "Scene.h"
 #include "Utility/Materials.h"
 
 const std::string ObjectLoader::ObjectsPath = "./Code/Data/Objects/";
@@ -41,7 +40,7 @@ std::vector<int> ObjectLoader::loadMaterials(std::vector<std::string> materials,
 	auto useCustomMaterial = customMaterialName != "";
 	if (useCustomMaterial)
 	{
-		auto customMaterial = Scene::GetTexture(Materials::GetPath(customMaterialName));
+		auto customMaterial = Materials::Get(customMaterialName);
 		for (uint32_t i = 0; i < materials.size(); i++)
 		{
 			loadedMaterials.push_back(customMaterial);
@@ -51,7 +50,7 @@ std::vector<int> ObjectLoader::loadMaterials(std::vector<std::string> materials,
 	{
 		for (auto material : materials)
 		{
-			loadedMaterials.push_back(Scene::GetTexture(Materials::GetPath(material)));
+			loadedMaterials.push_back(Materials::Get(material));
 		}
 	}
 

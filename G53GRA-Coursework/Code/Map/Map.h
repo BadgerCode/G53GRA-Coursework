@@ -19,7 +19,7 @@ private:
 	Skybox* _skybox;
 	Light* _sunlight;
 	float _mapSize;
-	GLint _floorTextureId;
+	int _floorMaterial;
 
 	float _lightLevel;
 	bool _debugEnableLighting = true;

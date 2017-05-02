@@ -16,7 +16,7 @@ Map::Map()
 	_sunlight->SetDiffuse(0.f, 0.f, 0.f, 1.f);
 	_sunlight->SetSpecular(0.f, 0.f, 0.f, 1.f);
 
-	_floorTextureId = Scene::GetTexture(Materials::GetPath("material_grass"));
+	_floorMaterial = Materials::Get("material_grass");
 }
 
 void Map::Display()
@@ -53,7 +53,7 @@ void Map::RenderFloor()
 
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_COLOR_MATERIAL);
-	glBindTexture(GL_TEXTURE_2D, _floorTextureId);
+	glBindTexture(GL_TEXTURE_2D, _floorMaterial);
 	glColor4f(1.f, 1.f, 1.f, 1.f);
 
 	glBegin(GL_TRIANGLES);

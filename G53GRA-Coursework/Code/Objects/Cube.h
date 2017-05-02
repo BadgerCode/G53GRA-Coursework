@@ -12,7 +12,7 @@ public:
 	void SetTextureScale(float x, float y);
 	void SetColour(float r, float g, float b, float a);
 private:
-	GLint _textureId;
+	int _material;
 	GLfloat _colour[4];
 	bool _usingTexture;
 	float _textureScale[2];
