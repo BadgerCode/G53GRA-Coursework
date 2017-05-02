@@ -14,8 +14,9 @@
     <ClCompile Include="Code\Map\House.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\Map\Skybox.cpp" />
-    <ClCompile Include="Code\Cube.cpp" />
+    <ClCompile Include="Code\Objects\Cube.cpp" />
     <ClCompile Include="Code\StaticObjectCollisionManager.cpp" />
+    <ClCompile Include="Code\TestObject.cpp" />
     <ClCompile Include="Code\Utility\Materials.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
@@ -23,16 +24,17 @@
     <ClCompile Include="Framework\Utility\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Code\CollisionCube.h" />
+    <ClInclude Include="Code\Objects\CollisionCube.h" />
     <ClInclude Include="Code\Flashlight.h" />
     <ClInclude Include="Code\include\json.hpp" />
     <ClInclude Include="Code\Light.h" />
     <ClInclude Include="Code\Map\Map.h" />
     <ClInclude Include="Code\Map\House.h" />
+    <ClInclude Include="Code\TestObject.h" />
     <ClInclude Include="Code\Utility\Materials.h" />
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\Map\Skybox.h" />
-    <ClInclude Include="Code\Cube.h" />
+    <ClInclude Include="Code\Objects\Cube.h" />
     <ClInclude Include="Code\StaticObjectCollisionManager.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />

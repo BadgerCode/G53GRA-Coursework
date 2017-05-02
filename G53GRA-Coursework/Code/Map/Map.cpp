@@ -1,5 +1,6 @@
 #include "Map.h"
 #include "Utility/Materials.h"
+#include "Light.h"
 
 Map::Map()
 {

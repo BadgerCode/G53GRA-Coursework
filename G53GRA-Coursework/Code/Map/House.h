@@ -1,6 +1,6 @@
 #pragma once
 #include "DisplayableObject.h"
-#include "Cube.h"
+#include "Objects/Cube.h"
 
 class House : public DisplayableObject
 {

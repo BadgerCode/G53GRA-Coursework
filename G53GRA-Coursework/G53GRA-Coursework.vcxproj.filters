@@ -33,15 +33,6 @@
     <ClCompile Include="Code\MyScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Light.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Cube.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Code\Flashlight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\StaticObjectCollisionManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -55,6 +46,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Map\Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\TestObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Objects\Cube.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Flashlight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,19 +89,7 @@
     <ClInclude Include="Code\MyScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Light.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Cube.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Flashlight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\StaticObjectCollisionManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\CollisionCube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Utility\Materials.h">
@@ -114,6 +105,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Map\Map.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\TestObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Objects\CollisionCube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Objects\Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Flashlight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "CollisionCube.h"
+#include "Objects/CollisionCube.h"
 
 
 class StaticObjectCollisionManager
