@@ -19,19 +19,37 @@ void Object::Display()
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_COLOR_MATERIAL);
 
-	for (auto face : _faces) {
-		glBindTexture(GL_TEXTURE_2D, face->TextureId);
-		glColor4f(1.f, 1.f, 1.f, 1.f);
+	bool firstItem = true;
+	int currentTextureId = -1;
 
-		glBegin(GL_TRIANGLES);
+	for (auto face : _faces) {
+		// We only need to glBegin again when the texture changes
+		if (face->TextureId != currentTextureId) {
+
+			if(firstItem)
+			{
+				firstItem = false;
+			}
+			else
+			{
+				glEnd();
+			}
+
+			currentTextureId = face->TextureId;
+			glBindTexture(GL_TEXTURE_2D, currentTextureId);
+			glColor4f(1.f, 1.f, 1.f, 1.f);
+
+			glBegin(GL_TRIANGLES);
+		}
+
 		for (uint32_t i = 0; i < face->Vertices.size(); i++)
 		{
 			glNormal3f(face->Normals[i][0], face->Normals[i][1], face->Normals[i][2]);
 			glTexCoord2f(face->MaterialCoordinates[i][0], face->MaterialCoordinates[i][1]);
 			glVertex3f(face->Vertices[i][0], face->Vertices[i][1], face->Vertices[i][2]);
 		}
-		glEnd();
 	}
+	glEnd();
 
 	glPopAttrib();
 	glPopMatrix();
