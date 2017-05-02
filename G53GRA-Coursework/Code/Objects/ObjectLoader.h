@@ -15,7 +15,7 @@ public:
 class ObjectLoader
 {
 public:
-	static std::vector<ObjectFace*> LoadObject(std::string name);
+	static std::vector<ObjectFace*> LoadObject(const std::string& name, const std::string& materialName = "");
 private:
 	static const std::string ObjectsPath;
 };

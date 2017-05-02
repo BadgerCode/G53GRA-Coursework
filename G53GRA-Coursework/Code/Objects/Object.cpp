@@ -1,9 +1,9 @@
 #include "Object.h"
 #include "Utility/Materials.h"
 
-Object::Object(std::string objectName)
+Object::Object(const std::string& objectName, const std::string& customMaterial)
 {
-	_faces = ObjectLoader::LoadObject(objectName);
+	_faces = ObjectLoader::LoadObject(objectName, customMaterial);
 }
 
 void Object::Display()

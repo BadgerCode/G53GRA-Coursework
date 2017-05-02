@@ -5,7 +5,7 @@
 class Object : public DisplayableObject
 {
 public:
-	Object(std::string objectName);
+	Object(const std::string& objectName, const std::string& customMaterial = "");
 	void Display() override;
 private:
 	std::vector<ObjectFace*> _faces;

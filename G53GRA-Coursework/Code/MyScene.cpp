@@ -65,7 +65,7 @@ void MyScene::SetupObjects()
 	}
 
 	{
-		auto object = new Object("Another");
+		auto object = new Object("TestObject", "material_grass");
 		object->position(200, 0, -100);
 		AddObjectToScene(object);
 	}
