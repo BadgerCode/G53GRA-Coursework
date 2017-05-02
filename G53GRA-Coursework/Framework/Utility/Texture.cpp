@@ -44,9 +44,9 @@ Texture::~Texture(void)
 {
 	GLuint t;
 	// free up all the textures
-	for (map<int, string>::iterator it = textures.begin(); it != textures.end(); ++it)
+	for (map<string, int>::iterator it = textureCache.begin(); it != textureCache.end(); ++it)
 	{
-		t = static_cast<GLuint>(it->first);
+		t = static_cast<GLuint>(it->second);
 		glDeleteTextures(static_cast<GLsizei>(1), &t);
 	}
 }
@@ -54,13 +54,11 @@ Texture::~Texture(void)
 // Loads a bitmap into texture memory
 int Texture::GetTexture(string fileName)
 {
-	for (map<int, string>::iterator ii = textures.begin(); ii != textures.end(); ++ii)
+	try
 	{
-		if (ii->second == fileName)
-		{
-			return ii->first;
-		}
+		return textureCache.at(fileName);
 	}
+	catch(out_of_range&){}
 
 	BITMAPFILEHEADER fileHeader;
 	BITMAPINFOHEADER infoHeader;
@@ -141,7 +139,7 @@ int Texture::GetTexture(string fileName)
 		static_cast<GLvoid*>(pixelBuffer));
 
 	// insert texture into texture list
-	textures.insert(textures.end(), pair<int, string>(static_cast<int>(texObject), fileName));
+	textureCache.insert(textureCache.end(), pair<string, int>(fileName, static_cast<int>(texObject)));
 
 	// Delete old copy of pixel data
 	delete[] pixelBuffer;

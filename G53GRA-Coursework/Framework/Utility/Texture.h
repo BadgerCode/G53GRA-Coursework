@@ -18,5 +18,5 @@ public:
 	/** Loads a texture into memory and returns the id of the texture object created */
 	int GetTexture(std::string fileName);
 private:
-	std::map<int, std::string> textures;
+	std::map<std::string, int> textureCache;
 };
