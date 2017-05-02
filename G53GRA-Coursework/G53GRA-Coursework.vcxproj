@@ -49,7 +49,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
-    <None Include="Code\Data\Objects\Another.json" />
     <None Include="Code\Data\Objects\TestObject.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

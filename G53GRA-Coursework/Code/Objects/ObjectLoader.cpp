@@ -6,26 +6,24 @@
 
 const std::string ObjectLoader::ObjectsPath = "./Code/Data/Objects/";
 
-std::vector<ObjectFace*> ObjectLoader::LoadObject(const std::string& name, const std::string& materialName)
+std::vector<ObjectFace*> ObjectLoader::LoadObject(const std::string& name, const std::string& customMaterialName)
 {
 	std::vector<ObjectFace*> objectFaces;
 
 	auto path = ObjectsPath + name + ".json";
 	
 	nlohmann::json parsedJson;
-	std::ifstream i(path);
-	i >> parsedJson;
+	std::ifstream fileStream(path);
+	fileStream >> parsedJson;
 
-	auto customMaterialId = materialName == "" ? -1 : Scene::GetTexture(Materials::GetPath(materialName));
+	auto materials = parsedJson.at("materials").get<std::vector<std::string>>();
+	auto loadedMaterials = loadMaterials(materials, customMaterialName);
 
 	for (auto face : parsedJson.at("faces"))
 	{
 		auto objectFace = new ObjectFace();
 
-		objectFace->TextureId = customMaterialId > 0 ? 
-			customMaterialId 
-			: Scene::GetTexture(Materials::GetPath(face.at("materialName").get<std::string>()));
-
+		objectFace->TextureId = loadedMaterials[face.at("matIdx").get<int>()];
 		objectFace->Vertices = face.at("vertices").get<std::vector<std::vector<float>>>();
 		objectFace->Normals = face.at("normals").get<std::vector<std::vector<float>>>();
 		objectFace->MaterialCoordinates = face.at("materialCoordinates").get<std::vector<std::vector<float>>>();
@@ -34,4 +32,28 @@ std::vector<ObjectFace*> ObjectLoader::LoadObject(const std::string& name, const
 	}
 
 	return objectFaces;
+}
+
+std::vector<int> ObjectLoader::loadMaterials(std::vector<std::string> materials, std::string customMaterialName)
+{
+	std::vector<int> loadedMaterials = {};
+
+	auto useCustomMaterial = customMaterialName != "";
+	if (useCustomMaterial)
+	{
+		auto customMaterial = Scene::GetTexture(Materials::GetPath(customMaterialName));
+		for (uint32_t i = 0; i < materials.size(); i++)
+		{
+			loadedMaterials.push_back(customMaterial);
+		}
+	}
+	else
+	{
+		for (auto material : materials)
+		{
+			loadedMaterials.push_back(Scene::GetTexture(Materials::GetPath(material)));
+		}
+	}
+
+	return loadedMaterials;
 }
