@@ -40,7 +40,7 @@ void Light::Display()
 
 		glColor4f(1.f, 0.75f, 0.f, 1.f);
 		glTranslatef(pos[0], pos[1], pos[2]);
-		glutSolidSphere(scale[0], 10.f, 10.f);
+		glutSolidSphere(scale[0], 10, 10);
 
 		glEnable(GL_LIGHTING);
 		glPopAttrib();
