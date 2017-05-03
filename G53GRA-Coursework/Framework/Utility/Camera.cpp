@@ -11,7 +11,7 @@ Camera::Camera() : wKey(0), sKey(0), aKey(0), dKey(0), currentButton(0), mouseX(
 
 	_playerCenterCameraOffset[0] = 0.f;
 	_playerCenterCameraOffset[1] = -_playerSize[1] / 2 - 5;
-	_playerCenterCameraOffset[2] = -_playerSize[2] / 2 + 5;
+	_playerCenterCameraOffset[2] = 0.f;
 
 	Reset();
 }
