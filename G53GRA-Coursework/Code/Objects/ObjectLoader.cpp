@@ -16,7 +16,7 @@
 #include <fstream>
 #include "Utility/Materials.h"
 
-const std::string ObjectLoader::ObjectsPath = "./Code/Data/Objects/";
+const std::string ObjectLoader::ObjectsPath = "./Code/Data/Models/";
 
 std::vector<ObjectFace*> ObjectLoader::LoadObject(const std::string& name, const std::string& customMaterialName)
 {
@@ -100,6 +100,29 @@ std::vector<ObjectFace*> ObjectLoader::LoadObject(const std::string& name, const
 	}
 
 	fileStream.close();
+
+	printf("\nLoaded object %s\n", name.c_str());
+
+	int faceNum = 0;
+	for (auto face : objectFaces)
+	{
+		printf("Face %d\n", faceNum++);
+		printf("Vertices:\n");
+		for (auto vertex : face->Vertices)
+		{
+			printf("%f, %f, %f\n", vertex[0], vertex[1], vertex[2]);
+		}
+		printf("Mat Coords:\n");
+		for (auto vertex : face->MaterialCoordinates)
+		{
+			printf("%f, %f\n", vertex[0], vertex[1]);
+		}
+		printf("Normals:\n");
+		for (auto vertex : face->Normals)
+		{
+			printf("%f, %f, %f\n", vertex[0], vertex[1], vertex[2]);
+		}
+	}
 
 	return objectFaces;
 }

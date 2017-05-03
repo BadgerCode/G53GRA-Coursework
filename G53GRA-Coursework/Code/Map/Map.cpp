@@ -24,7 +24,7 @@ void Map::Display()
 	_skybox->Display();
 	_sunlight->Display();
 
-	RenderFloor();
+//	RenderFloor();
 }
 
 void Map::HandleKey(unsigned char key, int state, int x, int y)
