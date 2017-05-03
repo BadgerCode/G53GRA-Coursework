@@ -19,9 +19,9 @@ void Object::Display()
 	auto firstItem = true;
 	auto currentTextureId = Materials::NONE;
 
-	for (int i = 0; i < _model._faces.size(); i++) {
-		auto face = _model._faces[i];
-		auto faceMaterial = _model._faceMaterials[i];
+	for (uint32_t faceIdx = 0; faceIdx < _model._faces.size(); faceIdx++) {
+		auto face = _model._faces[faceIdx];
+		auto faceMaterial = _model._faceMaterials[faceIdx];
 
 		if (firstItem || faceMaterial != currentTextureId) {
 			// Texture change
@@ -44,9 +44,9 @@ void Object::Display()
 			glBegin(GL_TRIANGLES);
 		}
 
-		for (uint32_t i = 0; i < face.size(); i++)
+		for (uint32_t vertexIdx = 0; vertexIdx < face.size(); vertexIdx++)
 		{
-			auto vertex = face[i];
+			auto vertex = face[vertexIdx];
 			auto normal = _model._normals[vertex[_model.FACES_NORMAL_INDEX]];
 			auto matCoord = _model._materialCoordinates[vertex[_model.FACES_MATCOORD_INDEX]];
 			auto vertexCoords = _model._vertices[vertex[_model.FACES_VERTEX_INDEX]];

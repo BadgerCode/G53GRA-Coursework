@@ -2,17 +2,6 @@
 #include <vector>
 #include "Utility/Materials.h"
 
-class ObjectFace
-{
-public:
-	ObjectFace() : MaterialId(Materials::NONE) { }
-
-	int MaterialId;
-	std::vector<float*> Vertices;
-	std::vector<float*> Normals;
-	std::vector<float*> MaterialCoordinates;
-};
-
 class ObjectModel
 {
 public:
@@ -30,7 +19,6 @@ public:
 class ObjectLoader
 {
 public:
-	static std::vector<ObjectFace*> LoadObject(const std::string& name, const std::string& customMaterialName = "");
 	static ObjectModel LoadObject2(const std::string& name, const std::string& customMaterialName = "");
 private:
 	static const std::string ObjectsPath;

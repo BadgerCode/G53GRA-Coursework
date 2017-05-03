@@ -9,6 +9,5 @@ public:
 
 	void Display() override;
 private:
-	std::vector<ObjectFace*> _faces;
 	ObjectModel _model;
 };

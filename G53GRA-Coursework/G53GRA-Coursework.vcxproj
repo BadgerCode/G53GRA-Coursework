@@ -51,17 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
-    <None Include="Code\Data\Models\TestObject.json" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Code\Data\Models\Map\HouseFloor.obj">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    <None Include="Code\Data\Models\Map\HouseFloor.mdl">
       <FileType>Document</FileType>
-    </Text>
-    <Object Include="Code\Data\Models\TestObject.obj">
+    </None>
+    <None Include="Code\Data\Models\Table.mdl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="Code\Data\Models\TestObject.mdl">
       <FileType>Text</FileType>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </Object>
+    </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>
