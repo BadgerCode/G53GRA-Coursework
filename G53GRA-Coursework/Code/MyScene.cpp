@@ -65,20 +65,7 @@ void MyScene::SetupObjects()
 
 	{
 		auto object = new Object("Table");
-		object->position(0.f, 27.5f, 50.f);
-		AddObjectToScene(object);
-	}
-
-	{
-		auto object = new Object("TestObject");
-		object->position(-200, 0, -100);
-		object->orientation(0.f, 45.f, 0.f);
-		AddObjectToScene(object);
-	}
-
-	{
-		auto object = new Object("TestObject", "material_grass");
-		object->position(200, 0, -100);
+		object->position(0.f, 27.5f, -200.f);
 		AddObjectToScene(object);
 	}
 }
