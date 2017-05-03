@@ -137,8 +137,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
-    <None Include="Code\Data\Models\TestObject.mdl" />
-    <None Include="Code\Data\Models\Table.mdl" />
-    <None Include="Code\Data\Models\Map\HouseFloor.mdl" />
   </ItemGroup>
 </Project>

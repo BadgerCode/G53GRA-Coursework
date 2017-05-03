@@ -52,17 +52,6 @@
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Code\Data\Models\Map\HouseFloor.mdl">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="Code\Data\Models\Table.mdl">
-      <FileType>Document</FileType>
-    </None>
-    <None Include="Code\Data\Models\TestObject.mdl">
-      <FileType>Text</FileType>
-    </None>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>
     <RootNamespace>G53GRA-Coursework</RootNamespace>

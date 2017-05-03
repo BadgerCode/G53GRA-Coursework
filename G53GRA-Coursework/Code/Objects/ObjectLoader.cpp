@@ -23,7 +23,7 @@ ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string
 	ObjectModel model;
 
 	auto path = ObjectsPath;
-	path.append(name).append(".mdl");
+	path.append(name).append(".obj");
 
 	std::ifstream fileStream(path, std::ios_base::in);
 
