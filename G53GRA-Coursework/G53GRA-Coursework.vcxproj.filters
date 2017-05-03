@@ -131,6 +131,9 @@
     <ClInclude Include="Code\Utility\GlutDependency.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Utility\ModelBuilder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
@@ -141,5 +144,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Code\Data\Models\Map\Map.obj" />
+    <Text Include="Code\Data\Models\Map\Floor.obj" />
   </ItemGroup>
 </Project>

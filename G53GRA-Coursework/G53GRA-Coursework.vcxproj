@@ -39,6 +39,7 @@
     <ClInclude Include="Code\Map\Skybox.h" />
     <ClInclude Include="Code\Objects\Cube.h" />
     <ClInclude Include="Code\StaticObjectCollisionManager.h" />
+    <ClInclude Include="Code\Utility\ModelBuilder.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />
     <ClInclude Include="Framework\Interface\Animation.h" />
@@ -54,6 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Code\Data\Models\Map\Map.obj">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <FileType>Document</FileType>
+    </Text>
+    <Text Include="Code\Data\Models\Map\Floor.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <FileType>Document</FileType>
     </Text>
