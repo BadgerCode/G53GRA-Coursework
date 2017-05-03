@@ -155,7 +155,7 @@ std::vector<int*> ObjectLoader::parseObjectFace(std::stringstream& lineStream)
 
 	for(int i = 0; i < 3; i++)
 	{
-		auto vertexIndeces = new int[3];
+		auto vertexIndeces = new int[3]{ -1, -1, -1 };
 		std::string faceVertex;
 		lineStream >> faceVertex;
 
@@ -163,8 +163,12 @@ std::vector<int*> ObjectLoader::parseObjectFace(std::stringstream& lineStream)
 		auto secondSlashPos = faceVertex.find('/', firstSlashPos + 1);
 
 		vertexIndeces[0] = std::stoi(faceVertex.substr(0, firstSlashPos).c_str()) - 1;
-		vertexIndeces[1] = std::stoi(faceVertex.substr(firstSlashPos + 1, secondSlashPos - firstSlashPos).c_str()) - 1;
-		vertexIndeces[2] = std::stoi(faceVertex.substr(secondSlashPos + 1, faceVertex.length() - secondSlashPos).c_str()) - 1;
+		if (secondSlashPos - firstSlashPos > 1) {
+			vertexIndeces[1] = std::stoi(faceVertex.substr(firstSlashPos + 1, secondSlashPos - firstSlashPos).c_str()) - 1;
+		}
+		if (faceVertex.length() - secondSlashPos > 1) {
+			vertexIndeces[2] = std::stoi(faceVertex.substr(secondSlashPos + 1, faceVertex.length() - secondSlashPos).c_str()) - 1;
+		}
 
 		result.push_back(vertexIndeces);
 	}

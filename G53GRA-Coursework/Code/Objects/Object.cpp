@@ -47,12 +47,21 @@ void Object::Display()
 		for (uint32_t vertexIdx = 0; vertexIdx < face.size(); vertexIdx++)
 		{
 			auto vertex = face[vertexIdx];
-			auto normal = _model._normals[vertex[_model.FACES_NORMAL_INDEX]];
-			auto matCoord = _model._materialCoordinates[vertex[_model.FACES_MATCOORD_INDEX]];
-			auto vertexCoords = _model._vertices[vertex[_model.FACES_VERTEX_INDEX]];
+			
+			auto normalIndex = vertex[_model.FACES_NORMAL_INDEX];
+			if(normalIndex > -1)
+			{
+				auto normal = _model._normals[normalIndex];
+				glNormal3f(normal[0], normal[1], normal[2]);
+			}
 
-			glNormal3f(normal[0], normal[1], normal[2]);
-			glTexCoord2f(matCoord[0], matCoord[1]);
+			auto matCoordIndex = vertex[_model.FACES_MATCOORD_INDEX];
+			if (matCoordIndex > -1) {
+				auto matCoord = _model._materialCoordinates[matCoordIndex];
+				glTexCoord2f(matCoord[0], matCoord[1]);
+			}
+
+			auto vertexCoords = _model._vertices[vertex[_model.FACES_VERTEX_INDEX]];
 			glVertex3f(vertexCoords[0], vertexCoords[1], vertexCoords[2]);
 		}
 	}
