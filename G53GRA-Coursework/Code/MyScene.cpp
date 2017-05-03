@@ -59,20 +59,15 @@ void MyScene::SetupObjects()
 	}
 
 	{
-		auto object = new Object("Map/Floor");
+		auto object = new Object("TestObject");
+		object->position(-200, 0, -100);
+		object->orientation(0.f, 45.f, 0.f);
 		AddObjectToScene(object);
 	}
 
-//	{
-//		auto object = new Object("TestObject");
-//		object->position(-200, 0, -100);
-//		object->orientation(0.f, 45.f, 0.f);
-//		AddObjectToScene(object);
-//	}
-//
-//	{
-//		auto object = new Object("TestObject", "material_grass");
-//		object->position(200, 0, -100);
-//		AddObjectToScene(object);
-//	}
+	{
+		auto object = new Object("TestObject", "material_grass");
+		object->position(200, 0, -100);
+		AddObjectToScene(object);
+	}
 }

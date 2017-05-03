@@ -6,7 +6,9 @@ class Object : public DisplayableObject
 {
 public:
 	Object(const std::string& objectName, const std::string& customMaterial = "");
+
 	void Display() override;
 private:
 	std::vector<ObjectFace*> _faces;
+	ObjectModel _model;
 };
