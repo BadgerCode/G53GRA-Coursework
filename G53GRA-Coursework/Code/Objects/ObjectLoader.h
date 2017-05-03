@@ -1,12 +1,13 @@
 #pragma once
 #include <vector>
+#include "Utility/Materials.h"
 
 class ObjectFace
 {
 public:
-	ObjectFace() : TextureId(-1) { }
+	ObjectFace() : MaterialId(Materials::NONE) { }
 
-	int TextureId;
+	int MaterialId;
 	std::vector<float*> Vertices;
 	std::vector<float*> Normals;
 	std::vector<float*> MaterialCoordinates;

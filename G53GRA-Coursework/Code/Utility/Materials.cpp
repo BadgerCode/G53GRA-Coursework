@@ -24,7 +24,7 @@ void Materials::ReloadMaterials()
 	}
 }
 
-std::string Materials::GetPath(std::string name)
+std::string Materials::GetPath(const std::string& name)
 {
 	try {
 		return _mappedNames.at(name);
@@ -36,8 +36,13 @@ std::string Materials::GetPath(std::string name)
 	}
 }
 
-int Materials::Get(std::string name)
+int Materials::Get(const std::string& name)
 {
+	if(name == "material_none")
+	{
+		return NONE;
+	}
+
 	try
 	{
 		return _materialCache.at(name);
@@ -64,7 +69,7 @@ int Materials::Get(std::string name)
 	if (tex_2d == 0)
 	{
 		printf("MATERIAL ERROR: Error loading material '%s': '%s'\n", name.c_str(), SOIL_last_result());
-		return -1;
+		return NONE;
 	}
 
 	_materialCache.insert(make_pair(name, tex_2d));

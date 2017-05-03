@@ -37,7 +37,7 @@ std::vector<ObjectFace*> ObjectLoader::LoadObject(const std::string& name, const
 	std::vector<float*> textureCoordinates;
 	std::vector<float*> normals;
 
-	GLuint currentMaterial = -1;
+	auto currentMaterial = Materials::NONE;
 
 	auto overrideMaterial = customMaterialName != "";
 	if(overrideMaterial)
@@ -82,7 +82,7 @@ std::vector<ObjectFace*> ObjectLoader::LoadObject(const std::string& name, const
 			{
 				auto faceVertex = faceIndeces[i];
 
-				objectFace->TextureId = currentMaterial;
+				objectFace->MaterialId = currentMaterial;
 				objectFace->Vertices.push_back(vertices[faceVertex[0]]);
 				objectFace->MaterialCoordinates.push_back(textureCoordinates[faceVertex[1]]);
 				objectFace->Normals.push_back(normals[faceVertex[2]]);
