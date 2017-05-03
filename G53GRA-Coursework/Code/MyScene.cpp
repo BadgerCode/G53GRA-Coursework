@@ -59,6 +59,11 @@ void MyScene::SetupObjects()
 	}
 
 	{
+		auto object = new Object("Map/HouseFloor");
+		AddObjectToScene(object);
+	}
+
+	{
 		auto object = new Object("TestObject");
 		object->position(-200, 0, -100);
 		object->orientation(0.f, 45.f, 0.f);

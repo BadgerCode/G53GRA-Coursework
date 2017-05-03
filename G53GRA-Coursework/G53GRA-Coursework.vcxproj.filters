@@ -143,7 +143,6 @@
     <Object Include="Code\Data\Models\TestObject.obj" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Code\Data\Models\Map\Map.obj" />
-    <Text Include="Code\Data\Models\Map\Floor.obj" />
+    <Text Include="Code\Data\Models\Map\HouseFloor.obj" />
   </ItemGroup>
 </Project>

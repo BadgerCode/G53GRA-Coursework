@@ -54,11 +54,7 @@
     <None Include="Code\Data\Models\TestObject.json" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Code\Data\Models\Map\Map.obj">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <FileType>Document</FileType>
-    </Text>
-    <Text Include="Code\Data\Models\Map\Floor.obj">
+    <Text Include="Code\Data\Models\Map\HouseFloor.obj">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <FileType>Document</FileType>
     </Text>

@@ -3,5 +3,6 @@
   "material_missing":  "./Textures/missing_texture.png",
   "material_grass": "./Textures/grass.png",
   "material_skybox": "./Textures/skybox.png",
-  "material_woodshackboards": "./Textures/wood.png"
+  "material_woodshackboards": "./Textures/wood.png",
+  "material_woodfloor": "./Textures/woodfloor.png"
 }

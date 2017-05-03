@@ -19,11 +19,7 @@ private:
 	Skybox* _skybox;
 	Light* _sunlight;
 	float _mapSize;
-	int _floorMaterial;
 
 	float _lightLevel;
 	bool _debugEnableLighting = true;
-	bool _debugFKeyDown = false;
-
-	void RenderFloor();
 };
