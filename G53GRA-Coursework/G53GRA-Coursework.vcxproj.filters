@@ -136,4 +136,7 @@
     <None Include="Code\Data\Materials.json" />
     <None Include="Code\Data\Objects\TestObject.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="Code\Data\Objects\TestObject.obj" />
+  </ItemGroup>
 </Project>

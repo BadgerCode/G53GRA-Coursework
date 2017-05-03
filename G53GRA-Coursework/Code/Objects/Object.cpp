@@ -16,15 +16,25 @@ void Object::Display()
 	glRotatef(rotation[1], 0.0f, 1.f, 0.f);
 	glRotatef(rotation[2], 0.0f, 0.f, 1.f);
 
-	glEnable(GL_TEXTURE_2D);
-	glEnable(GL_COLOR_MATERIAL);
-
 	bool firstItem = true;
+	bool textureDisabled = false;
 	int currentTextureId = -1;
 
 	for (auto face : _faces) {
-		// We only need to glBegin again when the texture changes
-		if (face->TextureId != currentTextureId) {
+		if(face->TextureId == -1 && !textureDisabled)
+		{
+			// Either this is the first face of a textureless object
+			// Or a textureless face after textured objects
+			textureDisabled = true;
+			currentTextureId = -1;
+
+			glDisable(GL_TEXTURE_2D);
+			glColor4f(1.f, 1.f, 1.f, 1.f);
+
+			glBegin(GL_TRIANGLES);
+		}
+		else if (face->TextureId != currentTextureId) {
+			// Texture change
 
 			if(firstItem)
 			{
@@ -32,14 +42,21 @@ void Object::Display()
 			}
 			else
 			{
+				// Indicates texture change between faces. End the previous faces.
 				glEnd();
 			}
 
 			currentTextureId = face->TextureId;
+
+			glEnable(GL_TEXTURE_2D);
+			glEnable(GL_COLOR_MATERIAL);
+
 			glBindTexture(GL_TEXTURE_2D, currentTextureId);
 			glColor4f(1.f, 1.f, 1.f, 1.f);
 
 			glBegin(GL_TRIANGLES);
+
+			textureDisabled = false;
 		}
 
 		for (uint32_t i = 0; i < face->Vertices.size(); i++)

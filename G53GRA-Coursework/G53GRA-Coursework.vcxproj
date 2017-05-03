@@ -52,6 +52,12 @@
     <None Include="Code\Data\Materials.json" />
     <None Include="Code\Data\Objects\TestObject.json" />
   </ItemGroup>
+  <ItemGroup>
+    <Object Include="Code\Data\Objects\TestObject.obj">
+      <FileType>Text</FileType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </Object>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>
     <RootNamespace>G53GRA-Coursework</RootNamespace>

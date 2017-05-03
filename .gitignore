@@ -169,3 +169,10 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 *.tlog
+
+
+
+
+
+# PROJECT SPECIFIC FILES
+!**/Code/Data/**/*.obj
