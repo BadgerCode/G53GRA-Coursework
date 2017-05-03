@@ -176,3 +176,4 @@ $RECYCLE.BIN/
 
 # PROJECT SPECIFIC FILES
 !**/Code/Data/**/*.obj
+*.mtl

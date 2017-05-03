@@ -4,5 +4,6 @@
   "material_grass": "./Textures/grass.png",
   "material_skybox": "./Textures/skybox.png",
   "material_woodshackboards": "./Textures/wood.png",
-  "material_woodfloor": "./Textures/woodfloor.png"
+  "material_woodfloor": "./Textures/woodfloor.png",
+  "material_woodfurniture": "./Textures/woodfurniture.png"
 }
