@@ -1,6 +1,6 @@
 #include "Map.h"
 #include "Utility/Materials.h"
-#include "Light.h"
+#include "Objects/Object.h"
 
 Map::Map()
 {
@@ -15,12 +15,18 @@ Map::Map()
 	_sunlight->SetAmbience(_lightLevel, _lightLevel, _lightLevel, 1.f);
 	_sunlight->SetDiffuse(0.f, 0.f, 0.f, 1.f);
 	_sunlight->SetSpecular(0.f, 0.f, 0.f, 1.f);
+
+	loadObjects();
 }
 
 void Map::Display()
 {
 	_skybox->Display();
 	_sunlight->Display();
+	for(auto i = 0; i < _numObjects; i++)
+	{
+		_mapObjects[i]->Display();
+	}
 }
 
 void Map::HandleKey(unsigned char key, int state, int x, int y)
@@ -43,5 +49,43 @@ void Map::HandleKey(unsigned char key, int state, int x, int y)
 		float px, py, pz;
 		Scene::GetCamera()->GetEyePosition(px, py, pz);
 		printf("%f, %f, %f\n", px, py, pz);
+	}
+}
+
+void Map::loadObjects()
+{
+	std::vector<DisplayableObject*> mapObjects;
+
+	{
+		auto object = new Object("Map/House");
+		mapObjects.push_back(object);
+	}
+
+	{
+		auto object = new Object("Table");
+		object->position(300.f, 27.5f, 200.f);
+		mapObjects.push_back(object);
+	}
+
+	{
+		auto houseLight = new Light(GL_LIGHT2, 0.f, 150.f, 0.f);
+		houseLight->SetAmbience(1.f, 1.f, 1.f, 1.f);
+		houseLight->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
+		houseLight->SetSpecular(1.f, 1.f, 1.f, 1.f);
+		houseLight->SetDistance(750.f);
+
+		mapObjects.push_back(houseLight);
+	}
+
+	setObjects(mapObjects);
+}
+
+void Map::setObjects(std::vector<DisplayableObject*> objects)
+{
+	_numObjects = objects.size();
+	_mapObjects = new DisplayableObject*[_numObjects];
+	for (int i = 0; i < _numObjects; i++)
+	{
+		_mapObjects[i] = objects[i];
 	}
 }

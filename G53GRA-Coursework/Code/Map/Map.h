@@ -1,7 +1,7 @@
 #pragma once
 #include "DisplayableObject.h"
-#include "Light.h"
 #include "Skybox.h"
+#include "Objects/Light.h"
 
 class Map : public DisplayableObject, public Input
 {
@@ -19,6 +19,11 @@ private:
 	Skybox* _skybox;
 	Light* _sunlight;
 	float _mapSize;
+
+	void loadObjects();
+	void setObjects(std::vector<DisplayableObject*> objects);
+	DisplayableObject** _mapObjects;
+	int _numObjects;
 
 	float _lightLevel;
 	bool _debugEnableLighting = true;

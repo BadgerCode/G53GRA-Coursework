@@ -12,6 +12,5 @@ public:
 private:
 	void Initialise() override;
 	void Projection() override;
-	void SetupLighting();
-	void SetupObjects();
+	void AddFlashlight();
 };

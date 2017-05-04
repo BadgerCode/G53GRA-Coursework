@@ -1,6 +1,5 @@
 #include "Object.h"
 #include "Utility/Materials.h"
-#include <ctime>
 
 Object::Object(const std::string& objectName, const std::string& customMaterial)
 {
@@ -9,8 +8,6 @@ Object::Object(const std::string& objectName, const std::string& customMaterial)
 
 void Object::Display()
 {
-	auto startTime = clock();
-
 	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
@@ -72,6 +69,4 @@ void Object::Display()
 
 	glPopAttrib();
 	glPopMatrix();
-
-	printf("%f seconds\n", (static_cast<double>(clock()) - static_cast<double>(startTime)) / CLOCKS_PER_SEC);
 }

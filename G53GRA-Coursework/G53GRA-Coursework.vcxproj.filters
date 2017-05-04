@@ -39,9 +39,6 @@
     <ClCompile Include="Code\Utility\Materials.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Map\House.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Map\Skybox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,13 +51,13 @@
     <ClCompile Include="Code\Flashlight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Light.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Objects\ObjectLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Objects\Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Objects\Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,9 +98,6 @@
     <ClInclude Include="Code\include\json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Map\House.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Map\Skybox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -119,9 +113,6 @@
     <ClInclude Include="Code\Flashlight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Light.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Objects\ObjectLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -131,10 +122,10 @@
     <ClInclude Include="Code\Utility\GlutDependency.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Utility\ModelBuilder.h">
+    <ClInclude Include="Code\Objects\ObjectModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Objects\ObjectModel.h">
+    <ClInclude Include="Code\Objects\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
