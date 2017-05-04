@@ -65,7 +65,7 @@ void MyScene::SetupObjects()
 
 	{
 		auto object = new Object("Table");
-		object->position(0.f, 27.5f, -200.f);
+		object->position(300.f, 27.5f, 200.f);
 		AddObjectToScene(object);
 	}
 }

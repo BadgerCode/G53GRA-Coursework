@@ -6,5 +6,6 @@
   "material_woodwall": "./Textures/woodwall.png",
   "material_woodfloor": "./Textures/woodfloor.png",
   "material_woodfurniture": "./Textures/woodfurniture.png",
-  "material_woodtable": "./Textures/woodtable.png"
+  "material_woodtable": "./Textures/woodtable.png",
+  "material_woodtableleg": "./Textures/woodtableleg.png"
 }
