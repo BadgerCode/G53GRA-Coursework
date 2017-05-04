@@ -38,7 +38,7 @@ std::string Materials::GetPath(const std::string& name)
 
 int Materials::Get(const std::string& name)
 {
-	if(name == "material_none")
+	if(name == "None")
 	{
 		return NONE;
 	}
