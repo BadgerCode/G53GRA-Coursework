@@ -53,13 +53,13 @@ void MyScene::SetupLighting()
 
 void MyScene::SetupObjects()
 {
-	{
-		auto object = new House();
-		AddObjectToScene(object);
-	}
+//	{
+//		auto object = new House();
+//		AddObjectToScene(object);
+//	}
 
 	{
-		auto object = new Object("Map/HouseFloor");
+		auto object = new Object("Map/House");
 		AddObjectToScene(object);
 	}
 

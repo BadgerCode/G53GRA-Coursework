@@ -3,9 +3,9 @@
 
 House::House()
 {
-	_size[0] = 1000.f;
-	_size[1] = 200.f;
-	_size[2] = 750.f;
+	_size[0] = 750.f;
+	_size[1] = 150.f;
+	_size[2] = 500.f;
 
 	_wallThickness = 10.f;
 
