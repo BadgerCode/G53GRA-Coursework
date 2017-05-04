@@ -1,5 +1,6 @@
 #include "Object.h"
 #include "Utility/Materials.h"
+#include <ctime>
 
 Object::Object(const std::string& objectName, const std::string& customMaterial)
 {
@@ -8,6 +9,8 @@ Object::Object(const std::string& objectName, const std::string& customMaterial)
 
 void Object::Display()
 {
+	auto startTime = clock();
+
 	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
@@ -19,9 +22,9 @@ void Object::Display()
 	auto firstItem = true;
 	auto currentTextureId = Materials::NONE;
 
-	for (uint32_t faceIdx = 0; faceIdx < _model._faces.size(); faceIdx++) {
-		auto face = _model._faces[faceIdx];
-		auto faceMaterial = _model._faceMaterials[faceIdx];
+	for (auto faceIdx = 0; faceIdx < _model.NumFaces; faceIdx++) {
+		auto face = _model.Faces[faceIdx];
+		auto faceMaterial = _model.FaceMaterials[faceIdx];
 
 		if (firstItem || faceMaterial != currentTextureId) {
 			// Texture change
@@ -44,24 +47,24 @@ void Object::Display()
 			glBegin(GL_TRIANGLES);
 		}
 
-		for (uint32_t vertexIdx = 0; vertexIdx < face.size(); vertexIdx++)
+		for (uint32_t vertexIdx = 0; vertexIdx < 3; vertexIdx++)
 		{
 			auto vertex = face[vertexIdx];
 			
 			auto normalIndex = vertex[_model.FACES_NORMAL_INDEX];
 			if(normalIndex > -1)
 			{
-				auto normal = _model._normals[normalIndex];
+				auto normal = _model.Normals[normalIndex];
 				glNormal3f(normal[0], normal[1], normal[2]);
 			}
 
 			auto matCoordIndex = vertex[_model.FACES_MATCOORD_INDEX];
 			if (matCoordIndex > -1) {
-				auto matCoord = _model._materialCoordinates[matCoordIndex];
+				auto matCoord = _model.UVCoordinates[matCoordIndex];
 				glTexCoord2f(matCoord[0], matCoord[1]);
 			}
 
-			auto vertexCoords = _model._vertices[vertex[_model.FACES_VERTEX_INDEX]];
+			auto vertexCoords = _model.Vertices[vertex[_model.FACES_VERTEX_INDEX]];
 			glVertex3f(vertexCoords[0], vertexCoords[1], vertexCoords[2]);
 		}
 	}
@@ -69,4 +72,6 @@ void Object::Display()
 
 	glPopAttrib();
 	glPopMatrix();
+
+	printf("%f seconds\n", (static_cast<double>(clock()) - static_cast<double>(startTime)) / CLOCKS_PER_SEC);
 }

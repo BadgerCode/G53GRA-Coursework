@@ -134,6 +134,9 @@
     <ClInclude Include="Code\Utility\ModelBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Objects\ObjectModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />

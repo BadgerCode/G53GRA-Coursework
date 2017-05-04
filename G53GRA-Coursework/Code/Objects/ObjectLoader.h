@@ -1,20 +1,7 @@
 #pragma once
 #include <vector>
 #include "Utility/Materials.h"
-
-class ObjectModel
-{
-public:
-	std::vector<float*> _vertices;
-	std::vector<float*> _materialCoordinates;
-	std::vector<float*> _normals;
-	std::vector<std::vector<int*>> _faces;
-	std::vector<int> _faceMaterials;
-
-	static const int FACES_VERTEX_INDEX = 0;
-	static const int FACES_MATCOORD_INDEX = 1;
-	static const int FACES_NORMAL_INDEX = 2;
-};
+#include "ObjectModel.h"
 
 class ObjectLoader
 {

@@ -20,8 +20,6 @@ const std::string ObjectLoader::ObjectsPath = "./Code/Data/Models/";
 
 ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string& customMaterialName)
 {
-	ObjectModel model;
-
 	auto path = ObjectsPath;
 	path.append(name).append(".obj");
 
@@ -36,7 +34,8 @@ ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string
 	std::vector<float*> vertices;
 	std::vector<float*> textureCoordinates;
 	std::vector<float*> normals;
-	std::vector<int*> faces;
+	std::vector<int**> faces;
+	std::vector<int> faceMaterials;
 
 	auto currentMaterial = Materials::NONE;
 
@@ -76,21 +75,23 @@ ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string
 		}
 		else if (firstWord == "f")
 		{
-			std::vector<int*> face;
+			auto face = new int*[3];
 			auto faceVertices = parseObjectFace(lineStream);
 
-			for (auto faceVertex : faceVertices)
+			for (int i = 0; i < 3; i++)
 			{
+				auto faceVertex = faceVertices[i];
+
 				auto faceIndeces = new int[3];
 				faceIndeces[0] = faceVertex[0];
 				faceIndeces[1] = faceVertex[1];
 				faceIndeces[2] = faceVertex[2];
 
-				face.push_back(faceIndeces);
+				face[i] = faceIndeces;
 			}
 
-			model._faces.push_back(face);
-			model._faceMaterials.push_back(currentMaterial);
+			faces.push_back(face);
+			faceMaterials.push_back(currentMaterial);
 		}
 		else if (firstWord == "usemtl" && !overrideMaterial)
 		{
@@ -102,10 +103,12 @@ ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string
 	}
 
 	fileStream.close();
-
-	model._vertices = vertices;
-	model._materialCoordinates = textureCoordinates;
-	model._normals = normals;
+	
+	ObjectModel model;
+	model.SetFaces(faces, faceMaterials);
+	model.SetVertices(vertices);
+	model.SetUVCoordinates(textureCoordinates);
+	model.SetNormals(normals);
 
 	//	printf("\nLoaded object %s\n", name.c_str());
 	//
