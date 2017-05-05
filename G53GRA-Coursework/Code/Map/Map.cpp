@@ -81,8 +81,6 @@ void Map::loadObjects()
 	{
 		auto fireplace = new Light(GL_LIGHT4, 0.f, 46.875f, -220.f);
 		fireplace->SetAmbience(1.f, 1.f, 0.9f, 1.f);
-//		fireplace->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
-//		fireplace->SetAmbience(0.75f, 0.75f, 0.65f, 1.f);
 		fireplace->SetDiffuse(0.8f, 0.8f, 0.6f, 1.f);
 		fireplace->SetSpecular(0.f, 0.f, 0.f, 1.f);
 		fireplace->SetDistance(750.f);
