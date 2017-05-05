@@ -1,7 +1,7 @@
 #include "MyScene.h"
-#include "Flashlight.h"
 #include "Utility/Materials.h"
 #include "Map/Map.h"
+#include "Lighting/Flashlight.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)

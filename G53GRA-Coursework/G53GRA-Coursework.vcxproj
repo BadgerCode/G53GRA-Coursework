@@ -7,9 +7,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Code\Flashlight.cpp" />
-    <ClCompile Include="Code\Objects\Lantern.cpp" />
-    <ClCompile Include="Code\Objects\Light.cpp" />
+    <ClCompile Include="Code\Lighting\Flashlight.cpp" />
+    <ClCompile Include="Code\Lighting\Lantern.cpp" />
+    <ClCompile Include="Code\Lighting\Light.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\Map\Map.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
@@ -26,10 +26,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Objects\CollisionCube.h" />
-    <ClInclude Include="Code\Flashlight.h" />
+    <ClInclude Include="Code\Lighting\Flashlight.h" />
     <ClInclude Include="Code\include\json.hpp" />
-    <ClInclude Include="Code\Objects\Lantern.h" />
-    <ClInclude Include="Code\Objects\Light.h" />
+    <ClInclude Include="Code\Lighting\Lantern.h" />
+    <ClInclude Include="Code\Lighting\Light.h" />
     <ClInclude Include="Code\Map\Map.h" />
     <ClInclude Include="Code\Objects\ObjectLoader.h" />
     <ClInclude Include="Code\Objects\Object.h" />

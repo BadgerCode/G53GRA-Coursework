@@ -1,6 +1,6 @@
 #pragma once
 #include "Animation.h"
-#include "Objects/Light.h"
+#include "Light.h"
 
 class Flashlight : public Light, public Animation
 {

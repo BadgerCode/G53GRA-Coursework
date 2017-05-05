@@ -1,6 +1,6 @@
 #pragma once
 #include "Light.h"
-#include "Object.h"
+#include "Objects/Object.h"
 
 class Lantern : public DisplayableObject
 {

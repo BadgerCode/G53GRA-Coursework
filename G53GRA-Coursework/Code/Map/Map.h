@@ -1,7 +1,7 @@
 #pragma once
 #include "DisplayableObject.h"
 #include "Skybox.h"
-#include "Objects/Light.h"
+#include "Lighting/Light.h"
 
 class Map : public DisplayableObject, public Input
 {

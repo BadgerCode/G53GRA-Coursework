@@ -48,19 +48,19 @@
     <ClCompile Include="Code\Objects\Cube.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Flashlight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Objects\ObjectLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Code\Objects\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Objects\Light.cpp">
+    <ClCompile Include="Code\Lighting\Flashlight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Objects\Lantern.cpp">
+    <ClCompile Include="Code\Lighting\Lantern.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\Lighting\Light.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,9 +113,6 @@
     <ClInclude Include="Code\Objects\Cube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Flashlight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Objects\ObjectLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -128,10 +125,13 @@
     <ClInclude Include="Code\Objects\ObjectModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Objects\Light.h">
+    <ClInclude Include="Code\Lighting\Flashlight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Objects\Lantern.h">
+    <ClInclude Include="Code\Lighting\Lantern.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Lighting\Light.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
