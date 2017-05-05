@@ -63,7 +63,7 @@ void Map::loadObjects()
 
 	{
 		auto object = new Object("Table");
-		object->position(300.f, 27.5f, 200.f);
+		object->position(227.f, 27.5f, 210.f);
 		mapObjects.push_back(object);
 	}
 
