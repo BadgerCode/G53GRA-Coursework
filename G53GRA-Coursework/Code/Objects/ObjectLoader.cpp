@@ -37,6 +37,7 @@ ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string
 	std::vector<int**> faces;
 	std::vector<int> faceMaterials;
 
+	auto noRender = false;
 	auto currentMaterial = Materials::NONE;
 
 	auto overrideMaterial = customMaterialName != "";
@@ -75,6 +76,8 @@ ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string
 		}
 		else if (firstWord == "f")
 		{
+			if (noRender) continue;
+
 			auto face = new int*[3];
 			auto faceVertices = parseObjectFace(lineStream);
 
@@ -98,7 +101,15 @@ ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string
 			std::string materialName;
 			lineStream >> materialName;
 
-			currentMaterial = Materials::Get(materialName);
+			if(materialName == "material_norender")
+			{
+				noRender = true;
+				currentMaterial = Materials::NONE;
+			}
+			else {
+				noRender = false;
+				currentMaterial = Materials::Get(materialName);
+			}
 		}
 	}
 
