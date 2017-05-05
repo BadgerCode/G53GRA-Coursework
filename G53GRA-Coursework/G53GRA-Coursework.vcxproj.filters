@@ -140,6 +140,9 @@
     <ClInclude Include="Code\Lighting\Fire.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Utility\ExtraMaths.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />

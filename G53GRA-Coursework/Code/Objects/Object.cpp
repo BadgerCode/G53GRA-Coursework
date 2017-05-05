@@ -1,5 +1,6 @@
 #include "Object.h"
 #include "Utility/Materials.h"
+#include "Utility/ExtraMaths.h"
 
 Object::Object(const std::string& objectName, const std::string& customMaterial)
 {
@@ -12,9 +13,12 @@ void Object::Display()
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
 	glTranslatef(pos[0], pos[1], pos[2]);
+
+	auto xRadians = degreesToRadians(rotation[0]);
+	auto yRadians = degreesToRadians(rotation[1]);
 	glRotatef(rotation[0], 1.0f, 0.f, 0.f);
-	glRotatef(rotation[1], 0.0f, 1.f, 0.f);
-	glRotatef(rotation[2], 0.0f, 0.f, 1.f);
+	glRotatef(rotation[1], 0.0f, cos(xRadians), sin(xRadians));
+	glRotatef(rotation[2], sin(yRadians) * cos(xRadians), -sin(xRadians), cos(yRadians) * cos(xRadians));
 
 	auto firstItem = true;
 	auto currentTextureId = Materials::NONE;

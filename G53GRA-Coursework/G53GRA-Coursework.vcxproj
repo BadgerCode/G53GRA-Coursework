@@ -36,6 +36,7 @@
     <ClInclude Include="Code\Objects\ObjectLoader.h" />
     <ClInclude Include="Code\Objects\Object.h" />
     <ClInclude Include="Code\Objects\ObjectModel.h" />
+    <ClInclude Include="Code\Utility\ExtraMaths.h" />
     <ClInclude Include="Code\Utility\GlutDependency.h" />
     <ClInclude Include="Code\Utility\Materials.h" />
     <ClInclude Include="Code\MyScene.h" />

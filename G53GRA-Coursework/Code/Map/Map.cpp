@@ -78,7 +78,7 @@ void Map::loadObjects()
 	{
 		auto object = new Object("Chair");
 		object->position(165.f, 18.15f, 125.f);
-		object->orientation(-90.f, 0.f, 0.f);
+		object->orientation(-90.f, -50.f, 0.f);
 		mapObjects.push_back(object);
 	}
 
