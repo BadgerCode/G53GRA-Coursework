@@ -1,6 +1,7 @@
 #include "Map.h"
 #include "Utility/Materials.h"
 #include "Objects/Object.h"
+#include "Objects/Lantern.h"
 
 Map::Map()
 {
@@ -68,13 +69,23 @@ void Map::loadObjects()
 	}
 
 	{
-		auto houseLight = new Light(GL_LIGHT2, 0.f, 150.f, 0.f);
-		houseLight->SetAmbience(1.f, 1.f, 1.f, 1.f);
-		houseLight->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
-		houseLight->SetSpecular(1.f, 1.f, 1.f, 1.f);
-		houseLight->SetDistance(750.f);
+		auto lantern = new Lantern(GL_LIGHT2, -180.f, 90.f, 210.f);
+		mapObjects.push_back(lantern);
+	}
 
-		mapObjects.push_back(houseLight);
+	{
+		auto lantern = new Lantern(GL_LIGHT3, 175.f, 80.f, 215.f);
+		mapObjects.push_back(lantern);
+	}
+
+	{
+		auto fireplace = new Light(GL_LIGHT4, 0.f, 46.875f, -220.f);
+		fireplace->SetAmbience(1.f, 1.f, 1.f, 1.f);
+		fireplace->SetDiffuse(0.8f, 0.8f, 0.8f, 1.f);
+		fireplace->SetSpecular(1.f, 1.f, 1.f, 1.f);
+		fireplace->SetDistance(400.f);
+
+		mapObjects.push_back(fireplace);
 	}
 
 	setObjects(mapObjects);
