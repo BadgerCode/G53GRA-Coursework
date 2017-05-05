@@ -18,14 +18,14 @@ Camera::Camera() : wKey(0), sKey(0), aKey(0), dKey(0), currentButton(0), mouseX(
 
 void Camera::Reset(){
 	// set the camera position to start at (0,110,0)
-	eyePosition[0] = 0.0f;
+	eyePosition[0] = 340.0f;
 	eyePosition[1] = 110.0f;
-	eyePosition[2] = 0.f;
+	eyePosition[2] = -58.f;
 
 	// set the view direction vector of the camera to be (0,0,-1)
-	vd[0] = 0.0f;
+	vd[0] = -1.0f;
 	vd[1] = 0.0f;
-	vd[2] = -1.0f;
+	vd[2] = 0.0f;
 
 	// set the planar forward direction vector of the camera to be (0,0,-1)
 	forward[0] = 0.0f;
