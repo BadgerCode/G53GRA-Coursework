@@ -15,15 +15,15 @@ public:
 	void SetAsGlobalLight(bool isGlobalLight);
 	void SetOrbDrawing(bool shouldDrawOrb);
 	void SetDistance(float distance);
-private:
-	GLenum _lightNumber;
-	float _distance;
-
+protected:
 	// Lighting components
 	GLfloat _ambience[4];
 	GLfloat _diffuse[4];
 	GLfloat _specular[4];
 	GLfloat _position[4];
+	float _distance;
+private:
+	GLenum _lightNumber;
 
 	bool _drawOrb;
 	bool IsGlobalLight() const;

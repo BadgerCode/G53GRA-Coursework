@@ -1,6 +1,6 @@
 #pragma once
-#include "Light.h"
 #include "Objects/Object.h"
+#include "Fire.h"
 
 class Lantern : public DisplayableObject
 {
@@ -9,6 +9,6 @@ public:
 
 	void Display() override;
 private:
-	Light* _light;
+	Fire* _light;
 	Object* _model;
 };

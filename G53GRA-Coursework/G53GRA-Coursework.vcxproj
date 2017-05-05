@@ -7,6 +7,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Lighting\Fire.cpp" />
     <ClCompile Include="Code\Lighting\Flashlight.cpp" />
     <ClCompile Include="Code\Lighting\Lantern.cpp" />
     <ClCompile Include="Code\Lighting\Light.cpp" />
@@ -25,6 +26,7 @@
     <ClCompile Include="Framework\Utility\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Lighting\Fire.h" />
     <ClInclude Include="Code\Objects\CollisionCube.h" />
     <ClInclude Include="Code\Lighting\Flashlight.h" />
     <ClInclude Include="Code\include\json.hpp" />
