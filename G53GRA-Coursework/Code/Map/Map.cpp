@@ -69,6 +69,20 @@ void Map::loadObjects()
 	}
 
 	{
+		auto object = new Object("Chair");
+		object->position(335.f, 45.35f, 209.f);
+		object->orientation(0.f, -90.f, 0.f);
+		mapObjects.push_back(object);
+	}
+
+	{
+		auto object = new Object("Chair");
+		object->position(165.f, 18.15f, 125.f);
+		object->orientation(-90.f, 0.f, 0.f);
+		mapObjects.push_back(object);
+	}
+
+	{
 		auto lantern = new Lantern(GL_LIGHT2, -180.f, 90.f, 210.f);
 		mapObjects.push_back(lantern);
 	}
