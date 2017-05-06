@@ -12,23 +12,22 @@ Map::Map()
 
 	_lightLevel = -0.35f;
 
-	_sunlight = new Light(_mapSize - 6600, _mapSize - 2200, -_mapSize + 100);
-	_sunlight->SetOrbDrawing(false);
-	_sunlight->SetAsGlobalLight(true);
-	_sunlight->SetAmbience(_lightLevel, _lightLevel, _lightLevel, 1.f);
-	_sunlight->SetDiffuse(0.f, 0.f, 0.f, 1.f);
-	_sunlight->SetSpecular(0.f, 0.f, 0.f, 1.f);
-
 	loadObjects();
+	loadLights();
 }
 
 void Map::Display()
 {
 	_skybox->Display();
-	_sunlight->Display();
+
 	for(auto i = 0; i < _numObjects; i++)
 	{
 		_mapObjects[i]->Display();
+	}
+
+	for (auto i = 0; i < _numLights; i++)
+	{
+		_mapLights[i]->Display();
 	}
 }
 
@@ -57,18 +56,16 @@ void Map::HandleKey(unsigned char key, int state, int x, int y)
 
 void Map::loadObjects()
 {
-	int numLights = 3;
-
 	nlohmann::json parsedJson;
 	std::ifstream fileStream(Configuration::DataPath + "Map.json");
 	fileStream >> parsedJson;
 
 	auto mapObjects = parsedJson.at("objects").get<std::vector<nlohmann::json>>();
 
-	_numObjects = mapObjects.size() + numLights;
+	_numObjects = mapObjects.size();
 	_mapObjects = new DisplayableObject*[_numObjects];
 
-	for (int i = 0; i < _numObjects - numLights; i++)
+	for (int i = 0; i < _numObjects; i++)
 	{
 		auto mapObject = mapObjects[i];
 		auto pos = mapObject["pos"].get<std::vector<float>>();
@@ -80,15 +77,30 @@ void Map::loadObjects()
 
 		_mapObjects[i] = object;
 	}
+}
+
+void Map::loadLights()
+{
+	std::vector<Light*> lights;
+
+	{
+		_sunlight = new Light(_mapSize - 6600, _mapSize - 2200, -_mapSize + 100);
+		_sunlight->SetOrbDrawing(false);
+		_sunlight->SetAsGlobalLight(true);
+		_sunlight->SetAmbience(_lightLevel, _lightLevel, _lightLevel, 1.f);
+		_sunlight->SetDiffuse(0.f, 0.f, 0.f, 1.f);
+		_sunlight->SetSpecular(0.f, 0.f, 0.f, 1.f);
+		lights.push_back(_sunlight);
+	}
 
 	{
 		auto lantern = new Lantern(-180.f, 90.f, 210.f);
-		_mapObjects[_numObjects - 3] = lantern;
+		lights.push_back(reinterpret_cast<Light*>(lantern));
 	}
 
 	{
 		auto lantern = new Lantern(175.f, 80.f, 215.f);
-		_mapObjects[_numObjects - 2] = lantern;
+		lights.push_back(reinterpret_cast<Light*>(lantern));
 	}
 
 	{
@@ -98,6 +110,14 @@ void Map::loadObjects()
 		fireplace->SetSpecular(0.f, 0.f, 0.f, 1.f);
 		fireplace->SetDistance(350.f);
 
-		_mapObjects[_numObjects - 1] = fireplace;
+		lights.push_back(reinterpret_cast<Light*>(fireplace));
+	}
+
+	_numLights = lights.size();
+	_mapLights = new Light*[_numLights];
+
+	for(int i = 0; i < _numLights; i++)
+	{
+		_mapLights[i] = lights[i];
 	}
 }

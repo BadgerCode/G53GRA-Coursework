@@ -23,6 +23,10 @@ private:
 	void loadObjects();
 	DisplayableObject** _mapObjects;
 	int _numObjects;
+	
+	void loadLights();
+	Light** _mapLights;
+	int _numLights;
 
 	float _lightLevel;
 	bool _debugEnableLighting = true;
