@@ -1,5 +1,5 @@
 {
-  "mapObjects": [
+  "objects": [
     {
       "name": "Map/House",
       "pos": [ 0.0, 0.0, 0.0 ],

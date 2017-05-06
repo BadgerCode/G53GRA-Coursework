@@ -21,7 +21,6 @@ private:
 	float _mapSize;
 
 	void loadObjects();
-	void setObjects(std::vector<DisplayableObject*> objects);
 	DisplayableObject** _mapObjects;
 	int _numObjects;
 

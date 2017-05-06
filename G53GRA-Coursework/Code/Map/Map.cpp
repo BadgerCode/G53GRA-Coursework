@@ -2,6 +2,8 @@
 #include "Utility/Materials.h"
 #include "Objects/Object.h"
 #include "Lighting/Lantern.h"
+#include <fstream>
+#include "Configuration.h"
 
 Map::Map()
 {
@@ -55,47 +57,38 @@ void Map::HandleKey(unsigned char key, int state, int x, int y)
 
 void Map::loadObjects()
 {
-	std::vector<DisplayableObject*> mapObjects;
+	int numLights = 3;
 
-	{
-		auto object = new Object("Map/House");
-		mapObjects.push_back(object);
-	}
+	nlohmann::json parsedJson;
+	std::ifstream fileStream(Configuration::DataPath + "Map.json");
+	fileStream >> parsedJson;
 
-	{
-		auto object = new Object("Table");
-		object->position(227.f, 35.5f, 210.f);
-		mapObjects.push_back(object);
-	}
+	auto mapObjects = parsedJson.at("objects").get<std::vector<nlohmann::json>>();
 
-	{
-		auto object = new Object("Chair");
-		object->position(335.f, 45.35f, 209.f);
-		object->orientation(0.f, -90.f, 0.f);
-		mapObjects.push_back(object);
-	}
+	_numObjects = mapObjects.size() + numLights;
+	_mapObjects = new DisplayableObject*[_numObjects];
 
+	for (int i = 0; i < _numObjects - numLights; i++)
 	{
-		auto object = new Object("Chair");
-		object->position(145.f, 18.15f, 105.f);
-		object->orientation(-90.f, -50.f, 0.f);
-		mapObjects.push_back(object);
-	}
+		auto mapObject = mapObjects[i];
+		auto pos = mapObject["pos"].get<std::vector<float>>();
+		auto rotation = mapObject["rotation"].get<std::vector<float>>();
 
-	{
-		auto object = new Object("Bookshelf");
-		object->position(-290.f, 75.f, -230.f);
-		mapObjects.push_back(object);
+		auto object = new Object(mapObject["name"].get<std::string>());
+		object->position(pos[0], pos[1], pos[2]);
+		object->orientation(rotation[0], rotation[1], rotation[2]);
+
+		_mapObjects[i] = object;
 	}
 
 	{
 		auto lantern = new Lantern(GL_LIGHT2, -180.f, 90.f, 210.f);
-		mapObjects.push_back(lantern);
+		_mapObjects[_numObjects - 3] = lantern;
 	}
 
 	{
 		auto lantern = new Lantern(GL_LIGHT3, 175.f, 80.f, 215.f);
-		mapObjects.push_back(lantern);
+		_mapObjects[_numObjects - 2] = lantern;
 	}
 
 	{
@@ -105,18 +98,6 @@ void Map::loadObjects()
 		fireplace->SetSpecular(0.f, 0.f, 0.f, 1.f);
 		fireplace->SetDistance(350.f);
 
-		mapObjects.push_back(fireplace);
-	}
-
-	setObjects(mapObjects);
-}
-
-void Map::setObjects(std::vector<DisplayableObject*> objects)
-{
-	_numObjects = objects.size();
-	_mapObjects = new DisplayableObject*[_numObjects];
-	for (int i = 0; i < _numObjects; i++)
-	{
-		_mapObjects[i] = objects[i];
+		_mapObjects[_numObjects - 1] = fireplace;
 	}
 }
