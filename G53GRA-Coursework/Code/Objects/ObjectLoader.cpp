@@ -15,8 +15,12 @@
 #include "json.hpp"
 #include <fstream>
 #include "Utility/Materials.h"
+#include "Configuration.h"
 
-const std::string ObjectLoader::ObjectsPath = "./Code/Data/Models/";
+std::string ObjectLoader::GetPath(const std::string& name)
+{
+	return Configuration::ModelsPath + name + ".obj";
+}
 
 ObjectModel ObjectLoader::LoadObject(const std::string& name, const std::string& customMaterialName)
 {
@@ -142,13 +146,6 @@ ObjectModel ObjectLoader::LoadObject(const std::string& name, const std::string&
 	//	}
 
 	return model;
-}
-
-std::string ObjectLoader::GetPath(const std::string& name)
-{
-	auto path = ObjectsPath;
-	path.append(name).append(".obj");
-	return path;
 }
 
 float* ObjectLoader::parseVector(std::stringstream& lineStream)

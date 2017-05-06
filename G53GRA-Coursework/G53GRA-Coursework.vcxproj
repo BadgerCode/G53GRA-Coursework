@@ -7,6 +7,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Code\Configuration.cpp" />
     <ClCompile Include="Code\Lighting\Fire.cpp" />
     <ClCompile Include="Code\Lighting\Flashlight.cpp" />
     <ClCompile Include="Code\Lighting\Lantern.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="Framework\Utility\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Code\Configuration.h" />
     <ClInclude Include="Code\Lighting\Fire.h" />
     <ClInclude Include="Code\Objects\CollisionCube.h" />
     <ClInclude Include="Code\Lighting\Flashlight.h" />
@@ -53,6 +55,7 @@
     <ClInclude Include="Framework\Utility\VectorMath.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Code\Data\Map.json" />
     <None Include="Code\Data\Materials.json" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

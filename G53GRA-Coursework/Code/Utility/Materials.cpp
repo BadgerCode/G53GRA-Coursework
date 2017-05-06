@@ -2,6 +2,7 @@
 #include <fstream>
 #include "Scene.h"
 #include "SOIL.h"
+#include "Configuration.h"
 
 
 nlohmann::json Materials::_mappedNames;
@@ -12,7 +13,7 @@ void Materials::ReloadMaterials()
 {
 	printf("Initialising materials list.\n");
 
-	std::ifstream i("./Code/Data/Materials.json");
+	std::ifstream i(Configuration::DataPath + "Materials.json");
 	i >> _mappedNames;
 
 	_defaultMaterialPath = "";

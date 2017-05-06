@@ -4,7 +4,7 @@
 
 Object::Object(const std::string& objectName, const std::string& customMaterial)
 {
-	_model = ObjectLoader::LoadObject2(objectName, customMaterial);
+	_model = ObjectLoader::LoadObject(objectName, customMaterial);
 }
 
 void Object::Display()

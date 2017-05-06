@@ -66,6 +66,9 @@
     <ClCompile Include="Code\Lighting\Fire.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Configuration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Engine\Engine.h">
@@ -143,8 +146,12 @@
     <ClInclude Include="Code\Utility\ExtraMaths.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\Configuration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
+    <None Include="Code\Data\Map.json" />
   </ItemGroup>
 </Project>
