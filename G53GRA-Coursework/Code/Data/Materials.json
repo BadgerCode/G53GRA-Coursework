@@ -11,5 +11,7 @@
   "material_wood_chair": "./Textures/woodtable.png",
   "material_wood_chairleg": "./Textures/woodtableleg.png",
   "material_wood_bookshelf": "./Textures/woodtable.png",
-  "material_stone_wall":  "./Textures/stonewall.png" 
+  "material_stone_wall": "./Textures/stonewall.png",
+  "material_wood_countertop": "./Textures/woodtable.png",
+  "material_wood_boards": "./Textures/woodplanks.png" 
 }
