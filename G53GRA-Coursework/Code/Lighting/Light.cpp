@@ -1,8 +1,9 @@
 #include "Light.h"
+#include "LightManager.h"
 
-Light::Light(GLenum lightNumber, float x, float y, float z)
+Light::Light(float x, float y, float z)
 {
-	_lightNumber = lightNumber;
+	_lightNumber = LightManager::AllocateLightNumber();
 	_distance = 100.f;
 	position(x, y, z);
 	size(10.f);

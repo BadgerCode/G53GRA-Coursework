@@ -12,6 +12,7 @@
     <ClCompile Include="Code\Lighting\Flashlight.cpp" />
     <ClCompile Include="Code\Lighting\Lantern.cpp" />
     <ClCompile Include="Code\Lighting\Light.cpp" />
+    <ClCompile Include="Code\Lighting\LightManager.cpp" />
     <ClCompile Include="Code\main.cpp" />
     <ClCompile Include="Code\Map\Map.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
@@ -29,6 +30,7 @@
   <ItemGroup>
     <ClInclude Include="Code\Configuration.h" />
     <ClInclude Include="Code\Lighting\Fire.h" />
+    <ClInclude Include="Code\Lighting\LightManager.h" />
     <ClInclude Include="Code\Objects\CollisionCube.h" />
     <ClInclude Include="Code\Lighting\Flashlight.h" />
     <ClInclude Include="Code\include\json.hpp" />

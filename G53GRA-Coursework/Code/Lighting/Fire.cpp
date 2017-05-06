@@ -1,6 +1,6 @@
 #include "Fire.h"
 
-Fire::Fire(GLenum lightNumber, float x, float y, float z): Light(lightNumber, x, y, z)
+Fire::Fire(float x, float y, float z): Light(x, y, z)
 {
 }
 

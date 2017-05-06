@@ -5,6 +5,6 @@
 class Fire: public Light, public Animation
 {
 public:
-	Fire(GLenum lightNumber, float x, float y, float z);
+	Fire(float x, float y, float z);
 	void Update(const double& deltaTime) override;
 };

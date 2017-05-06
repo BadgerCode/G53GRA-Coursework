@@ -4,7 +4,7 @@
 class Light : public DisplayableObject
 {
 public:
-	Light(GLenum lightNumber, float x, float y, float z);
+	Light(float x, float y, float z);
 	void Display() override;
 
 	// Lighting components

@@ -12,7 +12,7 @@ Map::Map()
 
 	_lightLevel = -0.35f;
 
-	_sunlight = new Light(GL_LIGHT0, _mapSize - 6600, _mapSize - 2200, -_mapSize + 100);
+	_sunlight = new Light(_mapSize - 6600, _mapSize - 2200, -_mapSize + 100);
 	_sunlight->SetOrbDrawing(false);
 	_sunlight->SetAsGlobalLight(true);
 	_sunlight->SetAmbience(_lightLevel, _lightLevel, _lightLevel, 1.f);
@@ -82,17 +82,17 @@ void Map::loadObjects()
 	}
 
 	{
-		auto lantern = new Lantern(GL_LIGHT2, -180.f, 90.f, 210.f);
+		auto lantern = new Lantern(-180.f, 90.f, 210.f);
 		_mapObjects[_numObjects - 3] = lantern;
 	}
 
 	{
-		auto lantern = new Lantern(GL_LIGHT3, 175.f, 80.f, 215.f);
+		auto lantern = new Lantern(175.f, 80.f, 215.f);
 		_mapObjects[_numObjects - 2] = lantern;
 	}
 
 	{
-		auto fireplace = new Fire(GL_LIGHT4, 0.f, 46.875f, -220.f);
+		auto fireplace = new Fire(0.f, 46.875f, -220.f);
 		fireplace->SetAmbience(0.8f, 0.8f, 0.7f, 1.f);
 		fireplace->SetDiffuse(0.8f, 0.8f, 0.6f, 1.f);
 		fireplace->SetSpecular(0.f, 0.f, 0.f, 1.f);

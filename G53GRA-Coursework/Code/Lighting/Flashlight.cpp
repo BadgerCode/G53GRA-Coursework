@@ -1,7 +1,7 @@
 #include "Flashlight.h"
 
 
-Flashlight::Flashlight(GLenum lightNumber): Light(lightNumber, 0, 0, 0)
+Flashlight::Flashlight(): Light(0, 0, 0)
 {
 	SetOrbDrawing(false);
 }

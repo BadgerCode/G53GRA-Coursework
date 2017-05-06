@@ -5,7 +5,7 @@
 class Flashlight : public Light, public Animation
 {
 public:
-	Flashlight(GLenum lightNumber);
+	Flashlight();
 
 	void Update(const double& deltaTime) override;
 };

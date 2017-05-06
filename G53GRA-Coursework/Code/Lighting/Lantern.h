@@ -5,7 +5,7 @@
 class Lantern : public DisplayableObject
 {
 public:
-	Lantern(GLenum lightNumber, float x, float y, float z);
+	Lantern(float x, float y, float z);
 
 	void Display() override;
 private:
