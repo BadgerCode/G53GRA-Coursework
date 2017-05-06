@@ -106,7 +106,8 @@ void Map::loadLights()
 	}
 
 	{
-		auto fireplace = new Fire(0.f, 46.875f, -220.f);
+		auto fireplace = new Fire(0.f, 26.875f, -234.061f);
+		fireplace->SetOrbDrawing(false);
 		fireplace->SetAmbience(0.8f, 0.8f, 0.7f, 1.f);
 		fireplace->SetDiffuse(0.8f, 0.8f, 0.6f, 1.f);
 		fireplace->SetSpecular(0.f, 0.f, 0.f, 1.f);
