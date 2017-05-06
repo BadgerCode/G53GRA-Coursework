@@ -19,6 +19,7 @@
     <ClCompile Include="Code\Map\Skybox.cpp" />
     <ClCompile Include="Code\Objects\Cube.cpp" />
     <ClCompile Include="Code\Objects\ObjectLoader.cpp" />
+    <ClCompile Include="Code\Objects\ObjectModel.cpp" />
     <ClCompile Include="Code\StaticObjectCollisionManager.cpp" />
     <ClCompile Include="Code\Objects\Object.cpp" />
     <ClCompile Include="Code\Utility\Materials.cpp" />

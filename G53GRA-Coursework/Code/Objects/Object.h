@@ -9,5 +9,5 @@ public:
 
 	void Display() override;
 private:
-	ObjectModel _model;
+	ObjectModel* _model;
 };

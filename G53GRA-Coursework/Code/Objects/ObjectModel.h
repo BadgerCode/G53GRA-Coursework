@@ -4,6 +4,13 @@
 class ObjectModel
 {
 public:
+	void SetVertices(std::vector<float*> vertices);
+	void SetUVCoordinates(std::vector<float*> uvCoordinates);
+	void SetNormals(std::vector<float*> normals);
+	void SetFaces(std::vector<int**> faces, std::vector<int> faceMaterials);
+
+	void Render() const;
+private:
 	float** Vertices;
 	float** UVCoordinates;
 	float** Normals;
@@ -19,47 +26,5 @@ public:
 	static const int FACES_MATCOORD_INDEX = 1;
 	static const int FACES_NORMAL_INDEX = 2;
 
-	void SetVertices(std::vector<float*> vertices)
-	{
-		NumVertices = vertices.size();
-		Vertices = new float*[NumVertices];
-		for (auto i = 0; i < NumVertices; i++)
-		{
-			Vertices[i] = vertices[i];
-		}
-	}
-
-	void SetUVCoordinates(std::vector<float*> uvCoordinates)
-	{
-		NumUVCoordinates = uvCoordinates.size();
-		UVCoordinates = new float*[NumUVCoordinates];
-		for (auto i = 0; i < NumUVCoordinates; i++)
-		{
-			UVCoordinates[i] = uvCoordinates[i];
-		}
-	}
-
-
-	void SetNormals(std::vector<float*> normals)
-	{
-		NumNormals = normals.size();
-		Normals = new float*[NumNormals];
-		for (auto i = 0; i < NumNormals; i++)
-		{
-			Normals[i] = normals[i];
-		}
-	}
-
-	void SetFaces(std::vector<int**> faces, std::vector<int> faceMaterials)
-	{
-		NumFaces = faces.size();
-		Faces = new int**[NumFaces];
-		FaceMaterials = new int[NumFaces];
-
-		for (auto i = 0; i < NumFaces; i++)
-		{
-			Faces[i] = faces[i];
-			FaceMaterials[i] = faceMaterials[i];
-		}
-	}
+	void renderFace(int** face) const;
 };

@@ -17,13 +17,21 @@
 #include "Utility/Materials.h"
 #include "Configuration.h"
 
+std::map<std::string, ObjectModel*> ObjectLoader::_modelsCache;
+
 std::string ObjectLoader::GetPath(const std::string& name)
 {
 	return Configuration::ModelsPath + name + ".obj";
 }
 
-ObjectModel ObjectLoader::LoadObject(const std::string& name, const std::string& customMaterialName)
+ObjectModel* ObjectLoader::LoadObject(const std::string& name, const std::string& customMaterialName)
 {
+	try
+	{
+		return _modelsCache.at(name);
+	}
+	catch (std::out_of_range&) {}
+
 	std::ifstream fileStream(GetPath(name), std::ios_base::in);
 
 	if (!fileStream)
@@ -116,34 +124,13 @@ ObjectModel ObjectLoader::LoadObject(const std::string& name, const std::string&
 
 	fileStream.close();
 	
-	ObjectModel model;
-	model.SetFaces(faces, faceMaterials);
-	model.SetVertices(vertices);
-	model.SetUVCoordinates(textureCoordinates);
-	model.SetNormals(normals);
+	auto model = new ObjectModel();
+	model->SetFaces(faces, faceMaterials);
+	model->SetVertices(vertices);
+	model->SetUVCoordinates(textureCoordinates);
+	model->SetNormals(normals);
 
-	//	printf("\nLoaded object %s\n", name.c_str());
-	//
-	//	int faceNum = 0;
-	//	for (auto face : objectFaces)
-	//	{
-	//		printf("Face %d\n", faceNum++);
-	//		printf("Vertices:\n");
-	//		for (auto vertex : face->Vertices)
-	//		{
-	//			printf("%f, %f, %f\n", vertex[0], vertex[1], vertex[2]);
-	//		}
-	//		printf("Mat Coords:\n");
-	//		for (auto vertex : face->MaterialCoordinates)
-	//		{
-	//			printf("%f, %f\n", vertex[0], vertex[1]);
-	//		}
-	//		printf("Normals:\n");
-	//		for (auto vertex : face->Normals)
-	//		{
-	//			printf("%f, %f, %f\n", vertex[0], vertex[1], vertex[2]);
-	//		}
-	//	}
+	_modelsCache.insert(make_pair(name, model));
 
 	return model;
 }
