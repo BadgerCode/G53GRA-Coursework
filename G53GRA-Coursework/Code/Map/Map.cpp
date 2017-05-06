@@ -83,6 +83,12 @@ void Map::loadObjects()
 	}
 
 	{
+		auto object = new Object("Bookshelf");
+		object->position(-290.f, 75.f, -230.f);
+		mapObjects.push_back(object);
+	}
+
+	{
 		auto lantern = new Lantern(GL_LIGHT2, -180.f, 90.f, 210.f);
 		mapObjects.push_back(lantern);
 	}
