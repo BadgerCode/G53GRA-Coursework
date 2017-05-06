@@ -18,12 +18,9 @@
 
 const std::string ObjectLoader::ObjectsPath = "./Code/Data/Models/";
 
-ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string& customMaterialName)
+ObjectModel ObjectLoader::LoadObject(const std::string& name, const std::string& customMaterialName)
 {
-	auto path = ObjectsPath;
-	path.append(name).append(".obj");
-
-	std::ifstream fileStream(path, std::ios_base::in);
+	std::ifstream fileStream(GetPath(name), std::ios_base::in);
 
 	if (!fileStream)
 	{
@@ -145,6 +142,13 @@ ObjectModel ObjectLoader::LoadObject2(const std::string& name, const std::string
 	//	}
 
 	return model;
+}
+
+std::string ObjectLoader::GetPath(const std::string& name)
+{
+	auto path = ObjectsPath;
+	path.append(name).append(".obj");
+	return path;
 }
 
 float* ObjectLoader::parseVector(std::stringstream& lineStream)
