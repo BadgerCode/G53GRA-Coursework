@@ -26,6 +26,8 @@ void Object::Display()
 	glRotatef(rotation[1], 0.0f, cosX, sinX);
 	glRotatef(rotation[2], sinY * cosX, -sinX, cosY * cosX);
 
+	glScalef(scale[0], scale[1], scale[2]);
+
 	auto firstItem = true;
 	auto currentTextureId = Materials::NONE;
 

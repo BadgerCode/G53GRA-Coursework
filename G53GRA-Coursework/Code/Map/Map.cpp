@@ -70,10 +70,12 @@ void Map::loadObjects()
 		auto mapObject = mapObjects[i];
 		auto pos = mapObject["pos"].get<std::vector<float>>();
 		auto rotation = mapObject["rotation"].get<std::vector<float>>();
+		auto scale = mapObject["scale"].get<std::vector<float>>();
 
 		auto object = new Object(mapObject["name"].get<std::string>());
 		object->position(pos[0], pos[1], pos[2]);
 		object->orientation(rotation[0], rotation[1], rotation[2]);
+		object->size(scale[0], scale[1], scale[2]);
 
 		_mapObjects[i] = object;
 	}
