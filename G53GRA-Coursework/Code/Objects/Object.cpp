@@ -16,9 +16,15 @@ void Object::Display()
 
 	auto xRadians = degreesToRadians(rotation[0]);
 	auto yRadians = degreesToRadians(rotation[1]);
+
+	auto cosX = static_cast<GLfloat>(cos(xRadians));
+	auto cosY = static_cast<GLfloat>(cos(yRadians));
+	auto sinX = static_cast<GLfloat>(sin(xRadians));
+	auto sinY = static_cast<GLfloat>(sin(yRadians));
+
 	glRotatef(rotation[0], 1.0f, 0.f, 0.f);
-	glRotatef(rotation[1], 0.0f, cos(xRadians), sin(xRadians));
-	glRotatef(rotation[2], sin(yRadians) * cos(xRadians), -sin(xRadians), cos(yRadians) * cos(xRadians));
+	glRotatef(rotation[1], 0.0f, cosX, sinX);
+	glRotatef(rotation[2], sinY * cosX, -sinX, cosY * cosX);
 
 	auto firstItem = true;
 	auto currentTextureId = Materials::NONE;
