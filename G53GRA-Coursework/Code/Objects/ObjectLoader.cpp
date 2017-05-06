@@ -14,7 +14,6 @@
 #include "ObjectLoader.h"
 #include "json.hpp"
 #include <fstream>
-#include "Utility/Materials.h"
 #include "Configuration.h"
 
 std::map<std::string, ObjectModel*> ObjectLoader::_modelsCache;

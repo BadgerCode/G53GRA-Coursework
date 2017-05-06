@@ -1,6 +1,6 @@
 #include "ObjectModel.h"
-#include "Utility/GlutDependency.h"
-#include "Utility/Materials.h"
+#include "Services/GlutDependency.h"
+#include "Services/Materials.h"
 
 void ObjectModel::SetVertices(std::vector<float*> vertices)
 {

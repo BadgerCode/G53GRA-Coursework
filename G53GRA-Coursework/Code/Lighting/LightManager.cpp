@@ -1,6 +1,5 @@
 #include "LightManager.h"
 #include <cstdio>
-#include "Utility/GlutDependency.h"
 
 int LightManager::_lightsCount;
 

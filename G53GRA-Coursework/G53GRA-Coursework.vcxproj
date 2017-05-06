@@ -22,7 +22,7 @@
     <ClCompile Include="Code\Objects\ObjectModel.cpp" />
     <ClCompile Include="Code\StaticObjectCollisionManager.cpp" />
     <ClCompile Include="Code\Objects\Object.cpp" />
-    <ClCompile Include="Code\Utility\Materials.cpp" />
+    <ClCompile Include="Code\Services\Materials.cpp" />
     <ClCompile Include="Framework\Engine\Engine.cpp" />
     <ClCompile Include="Framework\Engine\Scene.cpp" />
     <ClCompile Include="Framework\Utility\Camera.cpp" />
@@ -41,9 +41,9 @@
     <ClInclude Include="Code\Objects\ObjectLoader.h" />
     <ClInclude Include="Code\Objects\Object.h" />
     <ClInclude Include="Code\Objects\ObjectModel.h" />
-    <ClInclude Include="Code\Utility\ExtraMaths.h" />
-    <ClInclude Include="Code\Utility\GlutDependency.h" />
-    <ClInclude Include="Code\Utility\Materials.h" />
+    <ClInclude Include="Code\Services\ExtraMaths.h" />
+    <ClInclude Include="Code\Services\GlutDependency.h" />
+    <ClInclude Include="Code\Services\Materials.h" />
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\Map\Skybox.h" />
     <ClInclude Include="Code\Objects\Cube.h" />

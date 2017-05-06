@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Utility/GlutDependency.h"
+#include "Services/GlutDependency.h"
 
 class LightManager
 {

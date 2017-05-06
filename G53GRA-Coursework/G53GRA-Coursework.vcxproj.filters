@@ -36,9 +36,6 @@
     <ClCompile Include="Code\StaticObjectCollisionManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Utility\Materials.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Map\Skybox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -75,6 +72,9 @@
     <ClCompile Include="Code\Objects\ObjectModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\Services\Materials.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Engine\Engine.h">
@@ -107,9 +107,6 @@
     <ClInclude Include="Code\StaticObjectCollisionManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Utility\Materials.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\include\json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -131,9 +128,6 @@
     <ClInclude Include="Code\Objects\Object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Utility\GlutDependency.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Objects\ObjectModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -149,13 +143,19 @@
     <ClInclude Include="Code\Lighting\Fire.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Utility\ExtraMaths.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Configuration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Lighting\LightManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Services\ExtraMaths.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Services\GlutDependency.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Code\Services\Materials.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

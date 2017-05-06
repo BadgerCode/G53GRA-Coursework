@@ -1,6 +1,6 @@
 #include "Object.h"
-#include "Utility/Materials.h"
-#include "Utility/ExtraMaths.h"
+#include "Services/Materials.h"
+#include "Services/ExtraMaths.h"
 
 Object::Object(const std::string& objectName, const std::string& customMaterial)
 {

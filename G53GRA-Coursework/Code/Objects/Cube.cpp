@@ -1,6 +1,6 @@
 #include "Cube.h"
 #include "StaticObjectCollisionManager.h"
-#include "Utility/Materials.h"
+#include "Services/Materials.h"
 
 Cube::Cube(float centerPos[], float cubeSize[])
 {

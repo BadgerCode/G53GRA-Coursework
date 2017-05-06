@@ -1,5 +1,5 @@
 #include "Skybox.h"
-#include "Utility/Materials.h"
+#include "Services/Materials.h"
 
 Skybox::Skybox(float sideLength)
 {

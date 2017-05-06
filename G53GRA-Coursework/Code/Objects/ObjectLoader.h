@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "Utility/Materials.h"
+#include "Services/Materials.h"
 #include "ObjectModel.h"
 
 class ObjectLoader
