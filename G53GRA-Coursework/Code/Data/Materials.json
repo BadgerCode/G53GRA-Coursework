@@ -13,5 +13,6 @@
   "material_wood_bookshelf": "./Textures/woodtable.png",
   "material_stone_wall": "./Textures/stonewall.png",
   "material_wood_countertop": "./Textures/woodtable.png",
-  "material_wood_boards": "./Textures/woodplanks.png" 
+  "material_wood_boards": "./Textures/woodplanks.png",
+  "material_metal_dark": "./Textures/metaldark.png" 
 }
