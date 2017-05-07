@@ -8,8 +8,6 @@ public:
 	void Display() override;
 private:
 	void RenderSide(float textureOriginX, float textureOriginY) const;
-	static void disableAllLights();
-	static void enableAllLights();
 
 	int _material;
 	float _halfSideLength;
