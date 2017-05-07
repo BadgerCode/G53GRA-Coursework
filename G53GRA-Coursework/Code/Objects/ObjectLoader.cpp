@@ -23,7 +23,7 @@ std::string ObjectLoader::GetPath(const std::string& name)
 	return Configuration::ModelsPath + name + ".obj";
 }
 
-ObjectModel* ObjectLoader::LoadObject(const std::string& name, const std::string& customMaterialName)
+ObjectModel* ObjectLoader::LoadObject(const std::string& name)
 {
 	try
 	{
@@ -36,7 +36,7 @@ ObjectModel* ObjectLoader::LoadObject(const std::string& name, const std::string
 	if (!fileStream)
 	{
 		printf("MODEL ERROR: Error opening '%s' model file.\n", name.c_str());
-		return{};
+		return nullptr;
 	}
 
 	std::vector<float*> vertices;
@@ -47,12 +47,6 @@ ObjectModel* ObjectLoader::LoadObject(const std::string& name, const std::string
 
 	auto noRender = false;
 	auto currentMaterial = Materials::NONE;
-
-	auto overrideMaterial = customMaterialName != "";
-	if (overrideMaterial)
-	{
-		currentMaterial = Materials::Get(customMaterialName);
-	}
 
 	std::string line;
 	while (getline(fileStream, line)) {
@@ -104,7 +98,7 @@ ObjectModel* ObjectLoader::LoadObject(const std::string& name, const std::string
 			faces.push_back(face);
 			faceMaterials.push_back(currentMaterial);
 		}
-		else if (firstWord == "usemtl" && !overrideMaterial)
+		else if (firstWord == "usemtl")
 		{
 			std::string materialName;
 			lineStream >> materialName;

@@ -6,7 +6,7 @@
 class ObjectLoader
 {
 public:
-	static ObjectModel* LoadObject(const std::string& name, const std::string& customMaterialName = "");
+	static ObjectModel* LoadObject(const std::string& name);
 	static std::string GetPath(const std::string& name);
 private:
 	static float* parseVector(std::stringstream& lineStream);

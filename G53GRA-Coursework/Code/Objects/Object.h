@@ -5,7 +5,7 @@
 class Object : public DisplayableObject
 {
 public:
-	Object(const std::string& objectName, const std::string& customMaterial = "");
+	Object(const std::string& objectName);
 
 	void Display() override;
 private:

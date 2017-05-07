@@ -2,9 +2,9 @@
 #include "Services/Materials.h"
 #include "Services/ExtraMaths.h"
 
-Object::Object(const std::string& objectName, const std::string& customMaterial)
+Object::Object(const std::string& objectName)
 {
-	_model = ObjectLoader::LoadObject(objectName, customMaterial);
+	_model = ObjectLoader::LoadObject(objectName);
 }
 
 void Object::Display()
