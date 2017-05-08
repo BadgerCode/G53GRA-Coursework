@@ -28,9 +28,9 @@ void Camera::Reset(){
 	vd[2] = 0.0f;
 
 	// set the planar forward direction vector of the camera to be (0,0,-1)
-	forward[0] = 0.0f;
+	forward[0] = -1.0f;
 	forward[1] = 0.0f;
-	forward[2] = -1.0f;
+	forward[2] = 0.0f;
 
 	// set the right vector to point along the x axis
 	right[0] = 1.0f;
