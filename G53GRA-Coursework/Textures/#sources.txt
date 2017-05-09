@@ -8,3 +8,4 @@ stonewall- http://www.highresolutiontextures.com/textures/stones/hrt-stone-textu
 wooden planks- http://bgfons.com/upload/wood_texture3848.jpg
 metal- http://reviveisrael.org/wp-content/uploads/2014/08/bigstock-Aged-metal-texture-Dark-steel-59557520.jpg
 fabric- http://www.mb3d.co.uk/mb3d/Fabric_Seamless_and_Tileable_High_Res_Textures_files/Hassien_01_UV_H_CM_1.jpg
+candle- http://img01.deviantart.net/72a7/i/2011/294/6/5/texture_candle_by_bchamp2-d4dixgi.jpg
