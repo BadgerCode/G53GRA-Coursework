@@ -1,14 +1,14 @@
 /*
 * LIMITATIONS
+* Assumes:
+	* The material name in "usemtl" is a valid material name in materials.json
 * Ignores:
-* mtllib
-* Anything other than v, vt, vn, f, usemtl
-* Material file names in usemtl. Assumes it is a valid material name from materials.json
-* Throws error:
-* If a face has more than 3 vertices
-* If not every face vertex has a vertex index, texture index and normal index
-* If a face has an invalid index for the vertex, texture index or normal
-* If a face tries to use a vertex, texture index or normal before it is defined
+	* mtllib
+	* Anything other than v, vt, vn, f, usemtl
+	* More than 3 vertices per face
+* Throws an error:
+	* If not every face vertex has a vertex index
+	* If a face has an invalid index for the vertex, texture index or normal
 */
 
 #include "ObjectModelFile.h"
@@ -65,22 +65,7 @@ void ObjectModelFile::Load()
 		{
 			if (noRender) continue;
 
-			auto face = new int*[3];
-			auto faceVertices = parseObjectFace(lineStream);
-
-			for (int i = 0; i < 3; i++)
-			{
-				auto faceVertex = faceVertices[i];
-
-				auto faceIndeces = new int[3];
-				faceIndeces[0] = faceVertex[0];
-				faceIndeces[1] = faceVertex[1];
-				faceIndeces[2] = faceVertex[2];
-
-				face[i] = faceIndeces;
-			}
-
-			_faces.push_back(face);
+			_faces.push_back(parseObjectFace(lineStream));
 			_faceMaterials.push_back(currentMaterial);
 		}
 		else if (firstWord == "usemtl")
@@ -119,28 +104,34 @@ float* ObjectModelFile::parseTextureCoordinate(std::stringstream& lineStream)
 	return new float[2]{ x, y };
 }
 
-std::vector<int*> ObjectModelFile::parseObjectFace(std::stringstream& lineStream)
+int** ObjectModelFile::parseObjectFace(std::stringstream& lineStream)
 {
-	std::vector<int*> result;
+	auto result = new int*[3];
 
 	for (int i = 0; i < 3; i++)
 	{
 		auto vertexIndeces = new int[3]{ -1, -1, -1 };
-		std::string faceVertex;
-		lineStream >> faceVertex;
 
-		auto firstSlashPos = faceVertex.find('/');
-		auto secondSlashPos = faceVertex.find('/', firstSlashPos + 1);
+		std::string encodedFaceVertex;
+		lineStream >> encodedFaceVertex;
 
-		vertexIndeces[0] = std::stoi(faceVertex.substr(0, firstSlashPos).c_str()) - 1;
-		if (secondSlashPos - firstSlashPos > 1) {
-			vertexIndeces[1] = std::stoi(faceVertex.substr(firstSlashPos + 1, secondSlashPos - firstSlashPos).c_str()) - 1;
+		auto firstSlashPos = encodedFaceVertex.find('/');
+		auto secondSlashPos = encodedFaceVertex.find('/', firstSlashPos + 1);
+
+		auto textureCoordinateExists = secondSlashPos - firstSlashPos > 1;
+		auto normalCoordinateExists = encodedFaceVertex.length() - secondSlashPos > 1;
+
+		vertexIndeces[0] = std::stoi(encodedFaceVertex.substr(0, firstSlashPos).c_str()) - 1;
+
+		if (textureCoordinateExists) {
+			vertexIndeces[1] = std::stoi(encodedFaceVertex.substr(firstSlashPos + 1, secondSlashPos - firstSlashPos).c_str()) - 1;
 		}
-		if (faceVertex.length() - secondSlashPos > 1) {
-			vertexIndeces[2] = std::stoi(faceVertex.substr(secondSlashPos + 1, faceVertex.length() - secondSlashPos).c_str()) - 1;
+
+		if (normalCoordinateExists) {
+			vertexIndeces[2] = std::stoi(encodedFaceVertex.substr(secondSlashPos + 1, encodedFaceVertex.length() - secondSlashPos).c_str()) - 1;
 		}
 
-		result.push_back(vertexIndeces);
+		result[i] = vertexIndeces;
 	}
 
 	return result;

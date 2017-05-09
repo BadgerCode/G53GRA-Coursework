@@ -18,5 +18,5 @@ private:
 
 	float* parseVector(std::stringstream& lineStream);
 	float* parseTextureCoordinate(std::stringstream& lineStream);
-	std::vector<int*> parseObjectFace(std::stringstream& lineStream);
+	int** parseObjectFace(std::stringstream& lineStream);
 };
