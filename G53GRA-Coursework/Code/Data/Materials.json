@@ -14,5 +14,6 @@
   "material_stone_wall": "./Textures/stonewall.png",
   "material_wood_countertop": "./Textures/woodtable.png",
   "material_wood_boards": "./Textures/woodplanks.png",
-  "material_metal_dark": "./Textures/metaldark.png" 
+  "material_metal_dark": "./Textures/metaldark.png",
+  "material_stone_single": "./Textures/stone_single.png"
 }
