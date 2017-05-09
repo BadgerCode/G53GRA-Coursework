@@ -1,11 +1,11 @@
 #pragma once
 #include "DisplayableObject.h"
-#include "Objects/ObjectLoader.h"
+#include "ObjectModel.h"
 
 class Object : public DisplayableObject
 {
 public:
-	Object(const std::string& objectName);
+	Object(ObjectModel* model);
 
 	void Display() override;
 private:

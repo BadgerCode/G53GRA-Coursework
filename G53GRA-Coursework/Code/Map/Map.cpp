@@ -4,6 +4,7 @@
 #include "Lighting/Lantern.h"
 #include <fstream>
 #include "Configuration.h"
+#include "Objects/ObjectLoader.h"
 
 Map::Map()
 {
@@ -60,24 +61,24 @@ void Map::loadObjects()
 	std::ifstream fileStream(Configuration::DataPath + "Map.json");
 	fileStream >> parsedJson;
 
-	auto mapObjects = parsedJson.at("objects").get<std::vector<nlohmann::json>>();
+	auto jsonMapObjects = parsedJson.at("objects").get<std::vector<nlohmann::json>>();
 
-	_numObjects = mapObjects.size();
+	_numObjects = jsonMapObjects.size();
 	_mapObjects = new DisplayableObject*[_numObjects];
 
 	for (int i = 0; i < _numObjects; i++)
 	{
-		auto mapObject = mapObjects[i];
+		auto mapObject = jsonMapObjects[i];
+
+		auto objectName = mapObject["name"].get<std::string>();
 		auto pos = mapObject["pos"].get<std::vector<float>>();
 		auto rotation = mapObject["rotation"].get<std::vector<float>>();
 		auto scale = mapObject["scale"].get<std::vector<float>>();
 
-		auto object = new Object(mapObject["name"].get<std::string>());
-		object->position(pos[0], pos[1], pos[2]);
-		object->orientation(rotation[0], rotation[1], rotation[2]);
-		object->size(scale[0], scale[1], scale[2]);
-
-		_mapObjects[i] = object;
+		_mapObjects[i] = ObjectLoader::LoadObject(objectName);
+		_mapObjects[i]->position(pos[0], pos[1], pos[2]);
+		_mapObjects[i]->orientation(rotation[0], rotation[1], rotation[2]);
+		_mapObjects[i]->size(scale[0], scale[1], scale[2]);
 	}
 }
 

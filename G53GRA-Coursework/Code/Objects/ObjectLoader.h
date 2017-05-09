@@ -2,16 +2,21 @@
 #include <vector>
 #include "Services/Materials.h"
 #include "ObjectModel.h"
+#include "Object.h"
 
 class ObjectLoader
 {
 public:
-	static ObjectModel* LoadObject(const std::string& name);
+	static Object* LoadObject(const std::string& name);
+
 	static std::string GetPath(const std::string& name);
 private:
-	static float* parseVector(std::stringstream& lineStream);
-	static float* parseTextureCoordinate(std::stringstream& lineStream);
-	static std::vector<int*> parseObjectFace(std::stringstream& lineStream);
+	static ObjectModel* loadModel(const std::string& name);
+	std::vector<float*> _vertices;
+	std::vector<float*> _textureCoordinates;
+	std::vector<float*> _normals;
+	std::vector<int**> _faces;
+	std::vector<int> _faceMaterials;
 
 	static std::map<std::string, ObjectModel*> _modelsCache;
 };

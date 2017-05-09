@@ -18,6 +18,7 @@
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\Map\Skybox.cpp" />
     <ClCompile Include="Code\Objects\Cube.cpp" />
+    <ClCompile Include="Code\Objects\ObjectModelFile.cpp" />
     <ClCompile Include="Code\Objects\ObjectLoader.cpp" />
     <ClCompile Include="Code\Objects\ObjectModel.cpp" />
     <ClCompile Include="Code\StaticObjectCollisionManager.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="Code\Lighting\Lantern.h" />
     <ClInclude Include="Code\Lighting\Light.h" />
     <ClInclude Include="Code\Map\Map.h" />
+    <ClInclude Include="Code\Objects\ObjectModelFile.h" />
     <ClInclude Include="Code\Objects\ObjectLoader.h" />
     <ClInclude Include="Code\Objects\Object.h" />
     <ClInclude Include="Code\Objects\ObjectModel.h" />
