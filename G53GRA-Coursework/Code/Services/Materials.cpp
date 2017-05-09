@@ -5,7 +5,7 @@
 #include "Configuration.h"
 
 
-nlohmann::json Materials::_mappedNames;
+std::map<std::string, std::string> Materials::_mappedNames;
 std::string Materials::_defaultMaterialPath;
 std::map<std::string, GLuint> Materials::_materialCache;
 
@@ -13,8 +13,15 @@ void Materials::ReloadMaterials()
 {
 	printf("Initialising materials list.\n");
 
+	nlohmann::json json;
 	std::ifstream i(Configuration::DataPath + "Materials.json");
-	i >> _mappedNames;
+	i >> json;
+
+	auto jsonMap = json.get<std::map<std::string, nlohmann::json>>();
+	for (auto mapPair : jsonMap)
+	{
+		_mappedNames[mapPair.first] = mapPair.second.get<std::string>();
+	}
 
 	_defaultMaterialPath = "";
 	_defaultMaterialPath = GetPath("material_missing");
@@ -28,7 +35,7 @@ void Materials::ReloadMaterials()
 std::string Materials::GetPath(const std::string& name)
 {
 	try {
-		return _mappedNames.at(name);
+		return Configuration::MaterialsPath + _mappedNames.at(name);
 	}
 	catch (std::out_of_range&)
 	{

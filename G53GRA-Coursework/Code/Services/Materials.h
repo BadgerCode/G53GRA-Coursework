@@ -12,6 +12,6 @@ public:
 	static const int NONE = -1;
 private:
 	static std::string _defaultMaterialPath;
-	static nlohmann::json _mappedNames;
+	static std::map<std::string, std::string> _mappedNames;
 	static std::map<std::string, GLuint> _materialCache;
 };
