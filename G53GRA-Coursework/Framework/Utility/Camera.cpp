@@ -22,20 +22,20 @@ void Camera::Reset(){
 	eyePosition[1] = 110.0f;
 	eyePosition[2] = -58.f;
 
-	// set the view direction vector of the camera to be (0,0,-1)
+	// set the view direction vector of the camera to be (-1,0,0)
 	vd[0] = -1.0f;
 	vd[1] = 0.0f;
 	vd[2] = 0.0f;
 
-	// set the planar forward direction vector of the camera to be (0,0,-1)
+	// set the planar forward direction vector of the camera to be (-1,0,0)
 	forward[0] = -1.0f;
 	forward[1] = 0.0f;
 	forward[2] = 0.0f;
 
-	// set the right vector to point along the x axis
-	right[0] = 1.0f;
+	// set the right vector to point down the z axis
+	right[0] = 0.0f;
 	right[1] = 0.0f;
-	right[2] = 0.0f;
+	right[2] = -1.0f;
 
 	// set the up vector of the camera to be up the y axis
 	up[0] = 0.0f;

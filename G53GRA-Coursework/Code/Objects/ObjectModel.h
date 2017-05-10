@@ -9,8 +9,6 @@ public:
 	void SetNormals(std::vector<float*> normals);
 	void SetFaces(std::vector<int**> faces, std::vector<int> faceMaterials);
 
-	// TODO: Add support for overriding the material
-
 	void Render() const;
 private:
 	float** Vertices;
@@ -28,5 +26,6 @@ private:
 	static const int FACES_MATCOORD_INDEX = 1;
 	static const int FACES_NORMAL_INDEX = 2;
 
+	static void beginRenderingSetOfFaces(int textureId);
 	void renderFace(int** face) const;
 };

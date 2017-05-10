@@ -2,6 +2,73 @@
 #include "Services/GlutDependency.h"
 #include "Services/Materials.h"
 
+void ObjectModel::Render() const
+{
+	auto alreadyRenderedFaces = false;
+	auto currentTextureId = Materials::NONE;
+
+	for (auto faceIdx = 0; faceIdx < NumFaces; faceIdx++)
+	{
+		auto faceMaterial = FaceMaterials[faceIdx];
+		auto textureHasChanged = faceMaterial != currentTextureId;
+
+		if (textureHasChanged || !alreadyRenderedFaces)
+		{
+			currentTextureId = faceMaterial;
+
+			if (alreadyRenderedFaces)
+			{
+				glEnd();
+			}
+
+			beginRenderingSetOfFaces(currentTextureId);
+			alreadyRenderedFaces = true;
+		}
+
+		renderFace(Faces[faceIdx]);
+	}
+
+	if (alreadyRenderedFaces)
+	{
+		glEnd();
+	}
+}
+
+void ObjectModel::beginRenderingSetOfFaces(int textureId)
+{
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_COLOR_MATERIAL);
+
+	glBindTexture(GL_TEXTURE_2D, textureId);
+	glColor4f(1.f, 1.f, 1.f, 1.f);
+
+	glBegin(GL_TRIANGLES);
+}
+
+void ObjectModel::renderFace(int** face) const
+{
+	for (uint32_t vertexIdx = 0; vertexIdx < 3; vertexIdx++)
+	{
+		auto vertex = face[vertexIdx];
+
+		auto normalIndex = vertex[FACES_NORMAL_INDEX];
+		if (normalIndex > -1)
+		{
+			auto normal = Normals[normalIndex];
+			glNormal3f(normal[0], normal[1], normal[2]);
+		}
+
+		auto matCoordIndex = vertex[FACES_MATCOORD_INDEX];
+		if (matCoordIndex > -1) {
+			auto matCoord = UVCoordinates[matCoordIndex];
+			glTexCoord2f(matCoord[0], matCoord[1]);
+		}
+
+		auto vertexCoords = Vertices[vertex[FACES_VERTEX_INDEX]];
+		glVertex3f(vertexCoords[0], vertexCoords[1], vertexCoords[2]);
+	}
+}
+
 void ObjectModel::SetVertices(std::vector<float*> vertices)
 {
 	NumVertices = vertices.size();
@@ -42,64 +109,5 @@ void ObjectModel::SetFaces(std::vector<int**> faces, std::vector<int> faceMateri
 	{
 		Faces[i] = faces[i];
 		FaceMaterials[i] = faceMaterials[i];
-	}
-}
-
-void ObjectModel::Render() const
-{
-	auto firstItem = true;
-	auto currentTextureId = Materials::NONE;
-
-	for (auto faceIdx = 0; faceIdx < NumFaces; faceIdx++) {
-		auto faceMaterial = FaceMaterials[faceIdx];
-
-		if (firstItem || faceMaterial != currentTextureId) {
-			// Texture change
-
-			if (!firstItem)
-			{
-				// Indicates texture change between faces. End the previous set of faces.
-				glEnd();
-			}
-
-			firstItem = false;
-
-			glEnable(GL_TEXTURE_2D);
-			glEnable(GL_COLOR_MATERIAL);
-
-			currentTextureId = faceMaterial;
-			glBindTexture(GL_TEXTURE_2D, currentTextureId);
-			glColor4f(1.f, 1.f, 1.f, 1.f);
-
-			glBegin(GL_TRIANGLES);
-		}
-
-		auto face = Faces[faceIdx];
-		renderFace(face);
-	}
-	glEnd();
-}
-
-void ObjectModel::renderFace(int** face) const
-{
-	for (uint32_t vertexIdx = 0; vertexIdx < 3; vertexIdx++)
-	{
-		auto vertex = face[vertexIdx];
-
-		auto normalIndex = vertex[FACES_NORMAL_INDEX];
-		if (normalIndex > -1)
-		{
-			auto normal = Normals[normalIndex];
-			glNormal3f(normal[0], normal[1], normal[2]);
-		}
-
-		auto matCoordIndex = vertex[FACES_MATCOORD_INDEX];
-		if (matCoordIndex > -1) {
-			auto matCoord = UVCoordinates[matCoordIndex];
-			glTexCoord2f(matCoord[0], matCoord[1]);
-		}
-
-		auto vertexCoords = Vertices[vertex[FACES_VERTEX_INDEX]];
-		glVertex3f(vertexCoords[0], vertexCoords[1], vertexCoords[2]);
 	}
 }
