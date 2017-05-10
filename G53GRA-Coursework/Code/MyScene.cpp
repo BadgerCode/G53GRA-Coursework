@@ -1,7 +1,7 @@
 #include "MyScene.h"
 #include "Services/Materials.h"
 #include "Map/Map.h"
-#include "Lighting/Flashlight.h"
+#include "Lighting/LightManager.h"
 
 MyScene::MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight)
 	: Scene(argc, argv, title, windowWidth, windowHeight)
@@ -27,11 +27,17 @@ void MyScene::Projection()
 
 void MyScene::AddFlashlight()
 {
-	auto flashLight = new Flashlight();
-	flashLight->SetAmbience(0.25f, 0.25f, 0.25f, 1.f);
-	flashLight->SetDiffuse(0.4f, 0.4f, 0.4f, 1.f);
-	flashLight->SetSpecular(1.f, 1.f, 1.f, 1.f);
-	flashLight->SetDistance(300.f);
+	glEnable(GL_LIGHTING);
 
-	AddObjectToScene(flashLight);
+	auto lightNumber = LightManager::AllocateLightNumber();
+
+	glLightfv(lightNumber, GL_AMBIENT, new GLfloat[4] { 1.f, 1.f, 1.f, 1.0 });
+	glLightfv(lightNumber, GL_DIFFUSE, new GLfloat[4] { 1.f, 1.f, 1.f, 1.0 });
+	glLightfv(lightNumber, GL_POSITION, new GLfloat[4] { 0.f, 0.f, 0.f, 1.0 });
+	glLightfv(lightNumber, GL_SPOT_DIRECTION, new GLfloat[3]{ 0.f, 0.f, -1.f });
+	glLightf(lightNumber, GL_QUADRATIC_ATTENUATION, 0.00005f);
+	glLightf(lightNumber, GL_SPOT_CUTOFF, 45.f);
+	glLightf(lightNumber, GL_SPOT_EXPONENT, 10.f);
+
+	glEnable(lightNumber);
 }

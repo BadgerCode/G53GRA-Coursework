@@ -9,7 +9,6 @@
   <ItemGroup>
     <ClCompile Include="Code\Configuration.cpp" />
     <ClCompile Include="Code\Lighting\Fire.cpp" />
-    <ClCompile Include="Code\Lighting\Flashlight.cpp" />
     <ClCompile Include="Code\Lighting\Lantern.cpp" />
     <ClCompile Include="Code\Lighting\Light.cpp" />
     <ClCompile Include="Code\Lighting\LightManager.cpp" />
@@ -34,7 +33,6 @@
     <ClInclude Include="Code\Lighting\Fire.h" />
     <ClInclude Include="Code\Lighting\LightManager.h" />
     <ClInclude Include="Code\Objects\CollisionCube.h" />
-    <ClInclude Include="Code\Lighting\Flashlight.h" />
     <ClInclude Include="Code\include\json.hpp" />
     <ClInclude Include="Code\Lighting\Lantern.h" />
     <ClInclude Include="Code\Lighting\Light.h" />

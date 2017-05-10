@@ -51,9 +51,6 @@
     <ClCompile Include="Code\Objects\Object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Lighting\Flashlight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Lighting\Lantern.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -132,9 +129,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Objects\ObjectModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\Lighting\Flashlight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Lighting\Lantern.h">
