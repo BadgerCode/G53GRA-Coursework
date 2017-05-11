@@ -34,7 +34,7 @@ void Map::Display()
 
 void Map::HandleKey(unsigned char key, int state, int x, int y)
 {
-	if(key == 'f' && state == 0)
+	if(key == 'g' && state == 0)
 	{
 		if(_debugEnableLighting)
 		{

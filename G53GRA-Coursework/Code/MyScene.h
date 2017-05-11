@@ -8,9 +8,13 @@ class MyScene :
 public:
 	MyScene(int argc, char** argv, const char *title, const int& windowWidth, const int& windowHeight);
 	~MyScene() {};
-
+protected:
+	void HandleKey(unsigned char key, int state, int x, int y) override;
 private:
 	void Initialise() override;
 	void Projection() override;
-	static void AddFlashlight();
+
+	bool _flashlightEnabled = true;
+	int _flashlightNumber;
+	void AddFlashlight();
 };

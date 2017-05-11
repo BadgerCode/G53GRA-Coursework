@@ -29,15 +29,34 @@ void MyScene::AddFlashlight()
 {
 	glEnable(GL_LIGHTING);
 
-	auto lightNumber = LightManager::AllocateLightNumber();
+	_flashlightNumber = LightManager::AllocateLightNumber();
 
-	glLightfv(lightNumber, GL_AMBIENT, new GLfloat[4] { 1.f, 1.f, 1.f, 1.0 });
-	glLightfv(lightNumber, GL_DIFFUSE, new GLfloat[4] { 1.f, 1.f, 1.f, 1.0 });
-	glLightfv(lightNumber, GL_POSITION, new GLfloat[4] { 0.f, 0.f, 0.f, 1.0 });
-	glLightfv(lightNumber, GL_SPOT_DIRECTION, new GLfloat[3]{ 0.f, 0.f, -1.f });
-	glLightf(lightNumber, GL_QUADRATIC_ATTENUATION, 0.00005f);
-	glLightf(lightNumber, GL_SPOT_CUTOFF, 45.f);
-	glLightf(lightNumber, GL_SPOT_EXPONENT, 10.f);
+	glLightfv(_flashlightNumber, GL_AMBIENT, new GLfloat[4] { 1.f, 1.f, 1.f, 1.0 });
+	glLightfv(_flashlightNumber, GL_DIFFUSE, new GLfloat[4] { 1.f, 1.f, 1.f, 1.0 });
+	glLightfv(_flashlightNumber, GL_POSITION, new GLfloat[4] { 0.f, 0.f, 0.f, 1.0 });
+	glLightfv(_flashlightNumber, GL_SPOT_DIRECTION, new GLfloat[3]{ 0.f, 0.f, -1.f });
+	glLightf(_flashlightNumber, GL_QUADRATIC_ATTENUATION, 0.00005f);
+	glLightf(_flashlightNumber, GL_SPOT_CUTOFF, 45.f);
+	glLightf(_flashlightNumber, GL_SPOT_EXPONENT, 10.f);
 
-	glEnable(lightNumber);
+	glEnable(_flashlightNumber);
+}
+
+void MyScene::HandleKey(unsigned char key, int state, int x, int y)
+{
+	Scene::HandleKey(key, state, x, y);
+
+	if(key == 'f' && state == 0)
+	{
+		if(_flashlightEnabled)
+		{
+			glDisable(_flashlightNumber);
+		}
+		else
+		{
+			glEnable(_flashlightNumber);
+		}
+
+		_flashlightEnabled = !_flashlightEnabled;
+	}
 }
