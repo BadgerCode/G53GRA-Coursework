@@ -9,13 +9,15 @@ public:
 	Fire(float x, float y, float z);
 	void Update(const double& deltaTime) override;
 	void Display() override;
-private:
-	static const float MaxEmberHeight;
-	static const int MaxEmbers;
 
+	void SetMaxEmbers(int maxEmbers);
+	void SetMaxEmberHeight(float maxHeight);
+	void SetEmberRadius(double emberRadius);
+private:
+	int _maxEmbers;
 	float _maxEmberY;
-	std::vector<float*> _emberPositions;
+
 	std::vector<Ember*> _embers;
 
-	void addEmbers();
+	void setupEmbers();
 };

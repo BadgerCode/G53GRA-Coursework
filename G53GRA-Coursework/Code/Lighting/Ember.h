@@ -14,16 +14,17 @@ public:
 
 	void Randomise();
 	bool IsDisabled() const;
+	void SetEmberRadius(double emberRadius);
 private:
-	static const double EmberRadius;
 	static const float EmberVerticalSpeed;
 	static const float EmberHorizontalSpeed;
 
 	float* _startPosition;
 	float* _spawnArea;
 	float _maxEmberY;
-	double _nextEnableTimeSecs;
+	double _emberRadius;
 
+	double _nextEnableTimeSecs;
 	double _elapsedTimeSecs;
 	bool _isDisabled;
 

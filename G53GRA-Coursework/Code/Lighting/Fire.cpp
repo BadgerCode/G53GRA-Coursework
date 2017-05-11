@@ -1,19 +1,37 @@
 #include "Fire.h"
 
-const float Fire::MaxEmberHeight = 50.0f;
-const int Fire::MaxEmbers = 10;
-
 Fire::Fire(float x, float y, float z): Light(x, y, z)
 {
-	_maxEmberY = pos[1] + MaxEmberHeight;
+	_maxEmberY = pos[1] + 50.0f;
+	_maxEmbers = 10;
 
-	addEmbers();
+	setupEmbers();
 }
 
-void Fire::addEmbers()
+void Fire::setupEmbers()
 {
-	for (auto i = 0; i < MaxEmbers; i++) {
+	_embers.clear();
+	for (auto i = 0; i < _maxEmbers; i++) {
 		_embers.push_back(new Ember(pos, scale, _maxEmberY));
+	}
+}
+
+void Fire::SetMaxEmbers(int maxEmbers)
+{
+	_maxEmbers = maxEmbers;
+	setupEmbers();
+}
+
+void Fire::SetMaxEmberHeight(float maxHeight)
+{
+	_maxEmberY = pos[1] + maxHeight;
+}
+
+void Fire::SetEmberRadius(double emberRadius)
+{
+	for (auto ember : _embers)
+	{
+		ember->SetEmberRadius(emberRadius);
 	}
 }
 

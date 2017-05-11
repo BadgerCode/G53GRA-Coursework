@@ -2,7 +2,7 @@
 #include "Objects/Object.h"
 #include "Fire.h"
 
-class Lantern : public Light
+class Lantern : public Fire
 {
 public:
 	Lantern(float x, float y, float z);

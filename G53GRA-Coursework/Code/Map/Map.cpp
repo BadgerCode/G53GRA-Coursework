@@ -122,11 +122,13 @@ void Map::loadLights()
 	{
 		auto lantern = new Lantern(-180.f, 90.f, 210.f);
 		lights.push_back(lantern);
+		_animatedObjects.push_back(lantern);
 	}
 
 	{
 		auto lantern = new Lantern(175.f, 80.f, 215.f);
 		lights.push_back(lantern);
+		_animatedObjects.push_back(lantern);
 	}
 
 	{

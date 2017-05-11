@@ -1,7 +1,6 @@
 #include "Ember.h"
 #include <cstdlib>
 
-const double Ember::EmberRadius = 0.75;
 const float Ember::EmberVerticalSpeed = 20.0f;
 const float Ember::EmberHorizontalSpeed = 10.0f;
 
@@ -10,6 +9,7 @@ Ember::Ember(float* startPosition, float* spawnArea, float maxEmberY)
 	_startPosition = startPosition;
 	_spawnArea = spawnArea;
 	_maxEmberY = maxEmberY;
+	_emberRadius = 0.75f;
 
 	Colour = new float[4]{};
 	Position = new float[3]{};
@@ -25,7 +25,7 @@ void Ember::Display()
 	{
 		glTranslatef(Position[0], Position[1], Position[2]);
 		glColor4f(Colour[0], Colour[1], Colour[2], Colour[3]);
-		glutSolidSphere(EmberRadius, 5, 5);
+		glutSolidSphere(_emberRadius, 5, 5);
 	}
 	glPopMatrix();
 }
@@ -64,6 +64,11 @@ void Ember::Randomise()
 bool Ember::IsDisabled() const
 {
 	return _isDisabled;
+}
+
+void Ember::SetEmberRadius(double emberRadius)
+{
+	_emberRadius = emberRadius;
 }
 
 float Ember::getRandomPosition(float startPosition, float maxOffset)
