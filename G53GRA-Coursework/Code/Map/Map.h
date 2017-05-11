@@ -1,8 +1,9 @@
 #pragma once
 #include "DisplayableObject.h"
-#include "Skybox.h"
 #include "Lighting/Light.h"
 #include "Animation.h"
+#include "Objects/Object.h"
+#include "Skybox.h"
 
 class Map : public DisplayableObject, public Input, public Animation
 {

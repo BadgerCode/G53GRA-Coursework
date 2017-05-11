@@ -1,15 +1,12 @@
 #pragma once
 #include "DisplayableObject.h"
+#include "Objects/Object.h"
 
 class Skybox : public DisplayableObject
 {
 public:
-	Skybox(float sideLength);
+	Skybox();
 	void Display() override;
 private:
-	void RenderSide(float textureOriginX, float textureOriginY) const;
-
-	int _material;
-	float _halfSideLength;
-	float _yNegativeOffset;
+	Object* _skyboxObject;
 };

@@ -1,6 +1,5 @@
 #include "Map.h"
 #include "Services/Materials.h"
-#include "Objects/Object.h"
 #include "Lighting/Lantern.h"
 #include <fstream>
 #include "Configuration.h"
@@ -10,7 +9,7 @@
 Map::Map()
 {
 	_mapSize = 10000.f;
-	_skybox = new Skybox(_mapSize * 2.f);
+	_skybox = new Skybox();
 
 	_lightLevel = -0.35f;
 

@@ -1,12 +1,12 @@
 #include "Skybox.h"
 #include "Services/Materials.h"
+#include "Objects/ObjectLoader.h"
 
-Skybox::Skybox(float sideLength)
+Skybox::Skybox()
 {
-	_halfSideLength = sideLength / 2.f;
-	_material = Materials::Get("material_skybox");
-
-	_yNegativeOffset = 5.f/6.f * _halfSideLength;
+	_skyboxObject = ObjectLoader::LoadObject("Skybox");
+	_skyboxObject->position(0.f, 0.f, 0.f);
+	_skyboxObject->size(100.f, 100.f, 100.f);
 }
 
 void Skybox::Display()
@@ -16,72 +16,8 @@ void Skybox::Display()
 
 	glDisable(GL_LIGHTING);
 
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, _material);
-	glColor4f(1.f, 1.f, 1.f, 1.f);
-
-	glRotatef(90.f, 0, 1, 0);
-
-	auto lazyEdgeRemovalOffset = 50.f;
-	auto third = 1.f / 3.f;
-
-	// Render sides
-	auto textureOriginX = 0.f;
-	for (int i = 0; i < 4; i++) {
-
-		if(i != 1)
-		{
-			glTranslatef(0.f, 0.f, lazyEdgeRemovalOffset);
-		}
-
-		RenderSide(textureOriginX, third);
-
-		if (i != 1)
-		{
-			glTranslatef(0.f, 0.f, -lazyEdgeRemovalOffset);
-		}
-
-		glRotatef(-90.f, 0.f, 1.f, 0.f);
-		textureOriginX += 0.25;
-	}
-
-	glRotatef(-90.f, 0.f, 1.f, 0.f);
-	glRotatef(-90.f, 1.f, 0.f, 0.f);
-	glTranslatef(0.f, -_halfSideLength + _yNegativeOffset, _halfSideLength - _yNegativeOffset + lazyEdgeRemovalOffset);
-
-	// Bottom
-	RenderSide(0.25, 0.f);
-
-	glRotatef(180.f, 1.f, 0.f, 0.f);
-	glTranslatef(0.f, -_halfSideLength * 2 + _yNegativeOffset * 2, 2 * lazyEdgeRemovalOffset);
-
-	// Top
-	RenderSide(0.25, third * 2);
+	_skyboxObject->Display();
 
 	glPopAttrib();
 	glPopMatrix();
-}
-
-void Skybox::RenderSide(float textureOriginX, float textureOriginY) const
-{
-	float textureEnd[] = { textureOriginX + 0.25f, textureOriginY + 1.f / 3.f };
-	float sideLength = _halfSideLength * 2.f;
-
-	glBegin(GL_TRIANGLES);
-	{
-		glTexCoord2f(textureOriginX, textureEnd[1]);
-		glVertex3f(-_halfSideLength, sideLength - _yNegativeOffset, -_halfSideLength);
-		glTexCoord2f(textureOriginX, textureOriginY);
-		glVertex3f(-_halfSideLength, 0 - _yNegativeOffset, -_halfSideLength);
-		glTexCoord2f(textureEnd[0], textureOriginY);
-		glVertex3f(_halfSideLength, 0 - _yNegativeOffset, -_halfSideLength);
-
-		glTexCoord2f(textureEnd[0], textureOriginY);
-		glVertex3f(_halfSideLength, 0 - _yNegativeOffset, -_halfSideLength);
-		glTexCoord2f(textureEnd[0], textureEnd[1]);
-		glVertex3f(_halfSideLength, sideLength - _yNegativeOffset, -_halfSideLength);
-		glTexCoord2f(textureOriginX, textureEnd[1]);
-		glVertex3f(-_halfSideLength, sideLength - _yNegativeOffset, -_halfSideLength);
-	}
-	glEnd();
 }
