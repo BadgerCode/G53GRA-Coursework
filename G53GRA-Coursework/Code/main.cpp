@@ -15,7 +15,7 @@
  */
 int main(int argc, char* argv[])
 {
-	srand(time(nullptr));
+	srand(static_cast<unsigned>(time(nullptr)));
 
 	// Create new instance of MyScene - the OpenGL context on which your coursework is built
 	MyScene *scene = NULL;

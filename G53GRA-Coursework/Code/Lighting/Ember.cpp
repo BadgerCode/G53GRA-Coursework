@@ -35,7 +35,7 @@ void Ember::Update(const double& deltaTime)
 	_elapsedTimeSecs += deltaTime;
 
 	if (!_isDisabled) {
-		Position[0] += sin((_elapsedTimeSecs - _nextEnableTimeSecs) * EmberHorizontalSpeed) / 100;
+		Position[0] += static_cast<float>(sin((_elapsedTimeSecs - _nextEnableTimeSecs) * EmberHorizontalSpeed)) / 100;
 		Position[1] += static_cast<float>(deltaTime) * EmberVerticalSpeed;
 
 		if (Position[1] > _maxEmberY)
