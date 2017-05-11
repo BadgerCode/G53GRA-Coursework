@@ -6,6 +6,7 @@
 * @date 09/02/16
 */
 #include "MyScene.h"
+#include <ctime>
 
 /**
  * Entry method, takes command line arguments and creates new Scene engine to render your G53GRA Coursework
@@ -14,6 +15,8 @@
  */
 int main(int argc, char* argv[])
 {
+	srand(time(nullptr));
+
 	// Create new instance of MyScene - the OpenGL context on which your coursework is built
 	MyScene *scene = NULL;
 	scene = new MyScene(argc, argv, "G53GRA", static_cast<const int>(1280), static_cast<const int>(720));

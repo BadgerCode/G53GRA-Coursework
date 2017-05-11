@@ -8,6 +8,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Configuration.cpp" />
+    <ClCompile Include="Code\Lighting\Ember.cpp" />
     <ClCompile Include="Code\Lighting\Fire.cpp" />
     <ClCompile Include="Code\Lighting\Lantern.cpp" />
     <ClCompile Include="Code\Lighting\Light.cpp" />
@@ -29,6 +30,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Configuration.h" />
+    <ClInclude Include="Code\Lighting\Ember.h" />
     <ClInclude Include="Code\Lighting\Fire.h" />
     <ClInclude Include="Code\Lighting\LightManager.h" />
     <ClInclude Include="Code\Objects\CollisionCube.h" />

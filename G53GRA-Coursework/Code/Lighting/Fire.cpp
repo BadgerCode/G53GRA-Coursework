@@ -4,31 +4,44 @@ const double Fire::EmberRadius = 0.75;
 const float Fire::EmberVerticalSpeed = 20.0f;
 const float Fire::EmberHorizontalSpeed = 10.0f;
 const float Fire::MaxEmberHeight = 50.0f;
+const int Fire::MaxEmbers = 10;
 
 Fire::Fire(float x, float y, float z): Light(x, y, z)
 {
-	_emberPositions.push_back(new float[3]{ pos[0], pos[1], pos[2] + 10.f });
-	_emberPositions.push_back(new float[3]{ pos[0] - 17.5f, pos[1] + 50.5f, pos[2] + 10.f });
-	_emberPositions.push_back(new float[3]{ pos[0] + 15.f, pos[1] + 35.f, pos[2] + 10.f });
-	_elapsedTime = 0.f;
+	addEmbers();
+
+	_elapsedTimeSecs = 0.f;
+	_nextEmberTime = 0.f;
 
 	_maxEmberY = pos[1] + MaxEmberHeight;
 }
 
+void Fire::addEmbers()
+{
+	for (auto i = 0; i < MaxEmbers; i++) {
+		_embers.push_back(new Ember(pos, scale, _elapsedTimeSecs));
+	}
+}
+
 void Fire::Update(const double& deltaTime)
 {
-	_elapsedTime += deltaTime;
+	_elapsedTimeSecs += deltaTime;
 
-	auto offset = sin(_elapsedTime * EmberHorizontalSpeed) / 100;
+	auto offset = sin(_elapsedTimeSecs * EmberHorizontalSpeed) / 100;
 
-	for (auto emberPosition : _emberPositions)
+	for (auto ember : _embers)
 	{
-		emberPosition[0] += offset;
-		emberPosition[1] += static_cast<float>(deltaTime) * EmberVerticalSpeed;
-
-		if(emberPosition[1] > _maxEmberY)
+		if(ember->IsDisabled(_elapsedTimeSecs))
 		{
-			emberPosition[1] -= floor(emberPosition[1] / _maxEmberY) * _maxEmberY;
+			continue;
+		}
+
+		ember->Position[0] += offset;
+		ember->Position[1] += static_cast<float>(deltaTime) * EmberVerticalSpeed;
+
+		if(ember->Position[1] > _maxEmberY)
+		{
+			ember->Randomise(_elapsedTimeSecs);
 		}
 	}
 }
@@ -40,18 +53,16 @@ void Fire::Display()
 	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
-	glColor3f(1.0f, 0.f, 0.f);
 
 	glDisable(GL_LIGHTING);
-	for (auto emberPosition : _emberPositions)
+	for (auto ember : _embers)
 	{
-		glPushMatrix();
+		if (ember->IsDisabled(_elapsedTimeSecs))
 		{
-			glTranslatef(emberPosition[0], emberPosition[1], emberPosition[2]);
-			glutSolidSphere(EmberRadius, 5, 5);
-
+			continue;
 		}
-		glPopMatrix();
+
+		ember->Display();
 	}
 
 	glPopAttrib();
