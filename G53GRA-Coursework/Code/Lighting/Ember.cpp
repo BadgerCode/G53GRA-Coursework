@@ -2,16 +2,21 @@
 #include <cstdlib>
 
 const double Ember::EmberRadius = 0.75;
+const float Ember::EmberVerticalSpeed = 20.0f;
+const float Ember::EmberHorizontalSpeed = 10.0f;
 
-Ember::Ember(float* startPosition, float* spawnArea, double elapsedTimeSecs)
+Ember::Ember(float* startPosition, float* spawnArea, float maxEmberY)
 {
 	_startPosition = startPosition;
 	_spawnArea = spawnArea;
+	_maxEmberY = maxEmberY;
 
 	Colour = new float[4]{};
 	Position = new float[3]{};
 
-	Randomise(elapsedTimeSecs);
+	_elapsedTimeSecs = 0.f;
+
+	Randomise();
 }
 
 void Ember::Display()
@@ -21,12 +26,28 @@ void Ember::Display()
 		glTranslatef(Position[0], Position[1], Position[2]);
 		glColor4f(Colour[0], Colour[1], Colour[2], Colour[3]);
 		glutSolidSphere(EmberRadius, 5, 5);
-
 	}
 	glPopMatrix();
 }
 
-void Ember::Randomise(double elapsedTimeSecs)
+void Ember::Update(const double& deltaTime)
+{
+	_elapsedTimeSecs += deltaTime;
+
+	if (!_isDisabled) {
+		Position[0] += sin((_elapsedTimeSecs - _nextEnableTimeSecs) * EmberHorizontalSpeed) / 100;
+		Position[1] += static_cast<float>(deltaTime) * EmberVerticalSpeed;
+
+		if (Position[1] > _maxEmberY)
+		{
+			Randomise();
+		}
+	}
+
+	_isDisabled = _elapsedTimeSecs < _nextEnableTimeSecs;
+}
+
+void Ember::Randomise()
 {
 	Colour[0] = static_cast<float>(100 - rand() % 15) / 100.f;
 	Colour[1] = static_cast<float>(rand() % 50 + 1) / 100.f;
@@ -37,12 +58,12 @@ void Ember::Randomise(double elapsedTimeSecs)
 	Position[1] = getRandomPosition(_startPosition[1], _spawnArea[1] / 2);
 	Position[2] = getRandomPosition(_startPosition[2], _spawnArea[2] / 2);
 
-	_nextEnableTimeSecs = elapsedTimeSecs + rand() % 1000 / 100;
+	_nextEnableTimeSecs = _elapsedTimeSecs + rand() % 1000 / 100;
 }
 
-bool Ember::IsDisabled(double elapsedTime) const
+bool Ember::IsDisabled() const
 {
-	return elapsedTime < _nextEnableTimeSecs;
+	return _isDisabled;
 }
 
 float Ember::getRandomPosition(float startPosition, float maxOffset)
