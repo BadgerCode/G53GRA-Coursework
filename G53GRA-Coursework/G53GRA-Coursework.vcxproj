@@ -16,7 +16,6 @@
     <ClCompile Include="Code\Map\Map.cpp" />
     <ClCompile Include="Code\MyScene.cpp" />
     <ClCompile Include="Code\Map\Skybox.cpp" />
-    <ClCompile Include="Code\Objects\Cube.cpp" />
     <ClCompile Include="Code\Objects\ObjectModelFile.cpp" />
     <ClCompile Include="Code\Objects\ObjectLoader.cpp" />
     <ClCompile Include="Code\Objects\ObjectModel.cpp" />
@@ -46,7 +45,6 @@
     <ClInclude Include="Code\Services\Materials.h" />
     <ClInclude Include="Code\MyScene.h" />
     <ClInclude Include="Code\Map\Skybox.h" />
-    <ClInclude Include="Code\Objects\Cube.h" />
     <ClInclude Include="Code\StaticObjectCollisionManager.h" />
     <ClInclude Include="Framework\Engine\Engine.h" />
     <ClInclude Include="Framework\Engine\Scene.h" />
@@ -58,6 +56,7 @@
     <ClInclude Include="Framework\Utility\VectorMath.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Code\Data\CollisionBoxes.json" />
     <None Include="Code\Data\Map.json" />
     <None Include="Code\Data\Materials.json" />
   </ItemGroup>

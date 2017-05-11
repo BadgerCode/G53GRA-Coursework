@@ -2,9 +2,9 @@
 
 std::vector<CollisionCube*> StaticObjectCollisionManager::_collisionCubes;
 
-void StaticObjectCollisionManager::AddCollisionCube(float centerPos[], float size[])
+void StaticObjectCollisionManager::AddCollisionCube(std::vector<float> minPos, std::vector<float> maxPos)
 {
-	_collisionCubes.push_back(new CollisionCube(centerPos, size));
+	_collisionCubes.push_back(new CollisionCube(minPos, maxPos));
 }
 
 float* StaticObjectCollisionManager::RestrainMovement(float currentPos[], float direction[], float size[])

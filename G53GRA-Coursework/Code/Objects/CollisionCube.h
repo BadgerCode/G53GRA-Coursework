@@ -3,14 +3,24 @@
 class CollisionCube
 {
 public:
-	CollisionCube(float centerPos[], float size[])
+	CollisionCube(float* minPos, float* maxPos)
 	{
-		minX = centerPos[0] - size[0] / 2;
-		maxX = centerPos[0] + size[0] / 2;
-		minY = centerPos[1] - size[1] / 2;
-		maxY = centerPos[1] + size[1] / 2;
-		minZ = centerPos[2] - size[2] / 2;
-		maxZ = centerPos[2] + size[2] / 2;
+		minX = minPos[0];
+		minY = minPos[1];
+		minZ = minPos[2];
+		maxX = maxPos[0];
+		maxY = maxPos[1];
+		maxZ = maxPos[2];
+	}
+
+	CollisionCube(std::vector<float> minPos, std::vector<float> maxPos)
+	{
+		minX = minPos[0];
+		minY = minPos[1];
+		minZ = minPos[2];
+		maxX = maxPos[0];
+		maxY = maxPos[1];
+		maxZ = maxPos[2];
 	}
 
 	float minX;

@@ -20,6 +20,8 @@ private:
 	Light* _sunlight;
 	float _mapSize;
 
+	static void loadCollisionCubes();
+
 	void loadObjects();
 	DisplayableObject** _mapObjects;
 	int _numObjects;

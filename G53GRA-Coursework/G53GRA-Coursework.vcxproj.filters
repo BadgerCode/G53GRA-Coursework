@@ -42,9 +42,6 @@
     <ClCompile Include="Code\Map\Map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Code\Objects\Cube.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Code\Objects\ObjectLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -119,9 +116,6 @@
     <ClInclude Include="Code\Objects\CollisionCube.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Code\Objects\Cube.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Code\Objects\ObjectLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -162,5 +156,6 @@
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
     <None Include="Code\Data\Map.json" />
+    <None Include="Code\Data\CollisionBoxes.json" />
   </ItemGroup>
 </Project>

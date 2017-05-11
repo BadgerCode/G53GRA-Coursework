@@ -5,6 +5,7 @@
 #include <fstream>
 #include "Configuration.h"
 #include "Objects/ObjectLoader.h"
+#include "StaticObjectCollisionManager.h"
 
 Map::Map()
 {
@@ -13,6 +14,7 @@ Map::Map()
 
 	_lightLevel = -0.35f;
 
+	loadCollisionCubes();
 	loadObjects();
 	loadLights();
 }
@@ -52,6 +54,20 @@ void Map::HandleKey(unsigned char key, int state, int x, int y)
 		float px, py, pz;
 		Scene::GetCamera()->GetEyePosition(px, py, pz);
 		printf("%f, %f, %f\n", px, py, pz);
+	}
+}
+
+void Map::loadCollisionCubes()
+{
+	nlohmann::json parsedJson;
+	std::ifstream fileStream(Configuration::DataPath + "CollisionBoxes.json");
+	fileStream >> parsedJson;
+
+	for (auto collisionCube : parsedJson.at("staticObjects"))
+	{
+		auto min = collisionCube.at("min").get<std::vector<float>>();
+		auto max = collisionCube.at("max").get<std::vector<float>>();
+		StaticObjectCollisionManager::AddCollisionCube(min, max);
 	}
 }
 

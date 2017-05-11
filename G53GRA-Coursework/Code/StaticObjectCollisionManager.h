@@ -6,7 +6,7 @@
 class StaticObjectCollisionManager
 {
 public:
-	static void AddCollisionCube(float centerPos[], float size[]);
+	static void StaticObjectCollisionManager::AddCollisionCube(std::vector<float> minPos, std::vector<float> maxPos);
 	static float* RestrainMovement(float currentPos[], float direction[], float size[]);
 private:
 	static std::vector<CollisionCube*> _collisionCubes;
