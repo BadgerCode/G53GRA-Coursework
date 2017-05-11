@@ -1,7 +1,8 @@
 #pragma once
 
-#include "json.hpp"
 #include "GlutDependency.h"
+#include <string>
+#include <map>
 
 class Materials
 {

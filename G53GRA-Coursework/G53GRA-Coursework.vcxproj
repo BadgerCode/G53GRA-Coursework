@@ -8,6 +8,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Code\Configuration.cpp" />
+    <ClCompile Include="Code\include\lib_json\json_reader.cpp" />
+    <ClCompile Include="Code\include\lib_json\json_value.cpp" />
+    <ClCompile Include="Code\include\lib_json\json_writer.cpp" />
     <ClCompile Include="Code\Lighting\Ember.cpp" />
     <ClCompile Include="Code\Lighting\Fire.cpp" />
     <ClCompile Include="Code\Lighting\Lantern.cpp" />
@@ -30,11 +33,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code\Configuration.h" />
+    <ClInclude Include="Code\include\lib_json\json_tool.h" />
     <ClInclude Include="Code\Lighting\Ember.h" />
     <ClInclude Include="Code\Lighting\Fire.h" />
     <ClInclude Include="Code\Lighting\LightManager.h" />
     <ClInclude Include="Code\Objects\CollisionCube.h" />
-    <ClInclude Include="Code\include\json.hpp" />
     <ClInclude Include="Code\Lighting\Lantern.h" />
     <ClInclude Include="Code\Lighting\Light.h" />
     <ClInclude Include="Code\Map\Map.h" />
@@ -61,6 +64,7 @@
     <None Include="Code\Data\CollisionBoxes.json" />
     <None Include="Code\Data\Map.json" />
     <None Include="Code\Data\Materials.json" />
+    <None Include="Code\include\lib_json\json_valueiterator.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CE3A8304-475E-425E-BA11-FDAA6293C905}</ProjectGuid>

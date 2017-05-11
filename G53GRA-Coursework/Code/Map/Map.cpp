@@ -5,6 +5,8 @@
 #include "Configuration.h"
 #include "Objects/ObjectLoader.h"
 #include "StaticObjectCollisionManager.h"
+#include "JSON/json.h"
+#include <sstream>
 
 Map::Map()
 {
@@ -66,42 +68,86 @@ void Map::Update(const double& deltaTime)
 
 void Map::loadCollisionCubes()
 {
-	nlohmann::json parsedJson;
-	std::ifstream fileStream(Configuration::DataPath + "CollisionBoxes.json");
-	fileStream >> parsedJson;
+	auto path = Configuration::DataPath + "CollisionBoxes.json";
+	std::ifstream fileStream(path, std::ios_base::in);
 
-	for (auto collisionCube : parsedJson.at("staticObjects"))
+	if (!fileStream)
 	{
-		auto min = collisionCube.at("min").get<std::vector<float>>();
-		auto max = collisionCube.at("max").get<std::vector<float>>();
+		printf("MAP ERROR: Error opening '%s' collision cubes file.\n", path.c_str());
+		return;
+	}
+
+	Json::Value json;
+	fileStream >> json;
+
+	for (Json::Value::iterator collisionCube = json["staticObjects"].begin(); collisionCube != json["staticObjects"].end(); collisionCube++)
+	{
+		auto min = std::vector<float>();
+		auto max = std::vector<float>();
+
+		auto minJson = (*collisionCube)["min"];
+		auto maxJson = (*collisionCube)["max"];
+
+		min.push_back(minJson[0].asFloat());
+		min.push_back(minJson[1].asFloat());
+		min.push_back(minJson[2].asFloat());
+
+		max.push_back(maxJson[0].asFloat());
+		max.push_back(maxJson[1].asFloat());
+		max.push_back(maxJson[2].asFloat());
+
 		StaticObjectCollisionManager::AddCollisionCube(min, max);
 	}
 }
 
 void Map::loadObjects()
 {
-	nlohmann::json parsedJson;
-	std::ifstream fileStream(Configuration::DataPath + "Map.json");
-	fileStream >> parsedJson;
+	auto path = Configuration::DataPath + "Map.json";
+	std::ifstream fileStream(path, std::ios_base::in);
 
-	auto jsonMapObjects = parsedJson.at("objects").get<std::vector<nlohmann::json>>();
+	if (!fileStream)
+	{
+		printf("MAP ERROR: Error opening '%s' map file.\n", path.c_str());
+		return;
+	}
 
-	_numObjects = jsonMapObjects.size();
+	Json::Value json;
+	fileStream >> json;
+
+	_numObjects = json["objects"].size();
 	_mapObjects = new DisplayableObject*[_numObjects];
 
-	for (int i = 0; i < _numObjects; i++)
-	{
-		auto mapObject = jsonMapObjects[i];
+	auto i = 0;
 
-		auto objectName = mapObject["name"].get<std::string>();
-		auto pos = mapObject["pos"].get<std::vector<float>>();
-		auto rotation = mapObject["rotation"].get<std::vector<float>>();
-		auto scale = mapObject["scale"].get<std::vector<float>>();
+	for (Json::Value::iterator mapObject = json["objects"].begin(); mapObject != json["objects"].end(); mapObject++)
+	{
+		auto pos = std::vector<float>();
+		auto rotation = std::vector<float>();
+		auto scale = std::vector<float>();
+
+		auto objectName = (*mapObject)["name"].asString();
+		auto posJson = (*mapObject)["pos"];
+		auto rotJson = (*mapObject)["rotation"];
+		auto scaleJson = (*mapObject)["scale"];
+
+		pos.push_back(posJson[0].asFloat());
+		pos.push_back(posJson[1].asFloat());
+		pos.push_back(posJson[2].asFloat());
+
+		rotation.push_back(rotJson[0].asFloat());
+		rotation.push_back(rotJson[1].asFloat());
+		rotation.push_back(rotJson[2].asFloat());
+
+		scale.push_back(scaleJson[0].asFloat());
+		scale.push_back(scaleJson[1].asFloat());
+		scale.push_back(scaleJson[2].asFloat());
 
 		_mapObjects[i] = ObjectLoader::LoadObject(objectName);
 		_mapObjects[i]->position(pos[0], pos[1], pos[2]);
 		_mapObjects[i]->orientation(rotation[0], rotation[1], rotation[2]);
 		_mapObjects[i]->size(scale[0], scale[1], scale[2]);
+
+		i++;
 	}
 }
 

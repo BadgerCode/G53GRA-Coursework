@@ -47,7 +47,7 @@ void ObjectModel::beginRenderingSetOfFaces(int textureId)
 
 void ObjectModel::renderFace(int** face) const
 {
-	for (uint32_t vertexIdx = 0; vertexIdx < 3; vertexIdx++)
+	for (auto vertexIdx = 0; vertexIdx < 3; vertexIdx++)
 	{
 		auto vertex = face[vertexIdx];
 

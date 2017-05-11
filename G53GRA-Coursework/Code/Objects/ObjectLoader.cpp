@@ -1,5 +1,4 @@
 #include "ObjectLoader.h"
-#include "json.hpp"
 #include <fstream>
 #include "Configuration.h"
 #include "ObjectModelFile.h"

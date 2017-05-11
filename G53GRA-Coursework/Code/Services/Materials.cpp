@@ -3,7 +3,8 @@
 #include "Scene.h"
 #include "SOIL.h"
 #include "Configuration.h"
-
+#include "JSON/json.h"
+#include <sstream>
 
 std::map<std::string, std::string> Materials::_mappedNames;
 std::string Materials::_defaultMaterialPath;
@@ -13,14 +14,21 @@ void Materials::ReloadMaterials()
 {
 	printf("Initialising materials list.\n");
 
-	nlohmann::json json;
-	std::ifstream i(Configuration::DataPath + "Materials.json");
-	i >> json;
+	auto path = Configuration::DataPath + "Materials.json";
+	std::ifstream fileStream(path, std::ios_base::in);
 
-	auto jsonMap = json.get<std::map<std::string, nlohmann::json>>();
-	for (auto mapPair : jsonMap)
+	if (!fileStream)
 	{
-		_mappedNames[mapPair.first] = mapPair.second.get<std::string>();
+		printf("MATERIAL ERROR: Error opening '%s' material file.\n", path.c_str());
+		return;
+	}
+
+	Json::Value json;
+	fileStream >> json;
+
+	for (Json::Value::iterator it = json.begin(); it != json.end(); it++)
+	{
+		_mappedNames.insert(std::make_pair(it.key().asString(), (*it).asString()));
 	}
 
 	_defaultMaterialPath = "";

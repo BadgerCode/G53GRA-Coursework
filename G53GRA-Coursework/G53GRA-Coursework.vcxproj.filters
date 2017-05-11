@@ -75,6 +75,15 @@
     <ClCompile Include="Code\Lighting\Ember.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Code\include\lib_json\json_reader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\include\lib_json\json_value.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Code\include\lib_json\json_writer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Engine\Engine.h">
@@ -105,9 +114,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\StaticObjectCollisionManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Code\include\json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Code\Map\Skybox.h">
@@ -158,10 +164,16 @@
     <ClInclude Include="Code\Lighting\Ember.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Code\include\lib_json\json_tool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\Data\Materials.json" />
     <None Include="Code\Data\Map.json" />
     <None Include="Code\Data\CollisionBoxes.json" />
+    <None Include="Code\include\lib_json\json_valueiterator.inl">
+      <Filter>Header Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

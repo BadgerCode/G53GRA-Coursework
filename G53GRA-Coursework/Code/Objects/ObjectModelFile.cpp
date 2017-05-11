@@ -14,6 +14,7 @@
 #include "ObjectModelFile.h"
 #include "Services/Materials.h"
 #include <fstream>
+#include <sstream>
 
 ObjectModelFile::ObjectModelFile(const std::string& filePath)
 {
