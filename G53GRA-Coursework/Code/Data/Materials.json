@@ -18,5 +18,6 @@
   "material_stone_single": "stone_single.png",
   "material_fabric_grey": "fabric.jpg",
   "material_candle_wax": "candlewax.png",
-  "material_wood_boards_dark": "wood_boards_dark.png"
+  "material_wood_boards_dark": "wood_boards_dark.png",
+  "material_wood_burning": "wood_burning.png" 
 }
