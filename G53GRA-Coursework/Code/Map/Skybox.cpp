@@ -6,7 +6,7 @@ Skybox::Skybox(float sideLength)
 	_halfSideLength = sideLength / 2.f;
 	_material = Materials::Get("material_skybox");
 
-	_yOffset = 2.f * _halfSideLength / 3.f;
+	_yNegativeOffset = 5.f/6.f * _halfSideLength;
 }
 
 void Skybox::Display()
@@ -47,13 +47,13 @@ void Skybox::Display()
 
 	glRotatef(-90.f, 0.f, 1.f, 0.f);
 	glRotatef(-90.f, 1.f, 0.f, 0.f);
-	glTranslatef(0.f, -_halfSideLength + _yOffset, _halfSideLength - _yOffset + lazyEdgeRemovalOffset);
+	glTranslatef(0.f, -_halfSideLength + _yNegativeOffset, _halfSideLength - _yNegativeOffset + lazyEdgeRemovalOffset);
 
 	// Bottom
 	RenderSide(0.25, 0.f);
 
 	glRotatef(180.f, 1.f, 0.f, 0.f);
-	glTranslatef(0.f, -_halfSideLength * 2 + _yOffset * 2, 2 * lazyEdgeRemovalOffset);
+	glTranslatef(0.f, -_halfSideLength * 2 + _yNegativeOffset * 2, 2 * lazyEdgeRemovalOffset);
 
 	// Top
 	RenderSide(0.25, third * 2);
@@ -70,18 +70,18 @@ void Skybox::RenderSide(float textureOriginX, float textureOriginY) const
 	glBegin(GL_TRIANGLES);
 	{
 		glTexCoord2f(textureOriginX, textureEnd[1]);
-		glVertex3f(-_halfSideLength, sideLength - _yOffset, -_halfSideLength);
+		glVertex3f(-_halfSideLength, sideLength - _yNegativeOffset, -_halfSideLength);
 		glTexCoord2f(textureOriginX, textureOriginY);
-		glVertex3f(-_halfSideLength, 0 - _yOffset, -_halfSideLength);
+		glVertex3f(-_halfSideLength, 0 - _yNegativeOffset, -_halfSideLength);
 		glTexCoord2f(textureEnd[0], textureOriginY);
-		glVertex3f(_halfSideLength, 0 - _yOffset, -_halfSideLength);
+		glVertex3f(_halfSideLength, 0 - _yNegativeOffset, -_halfSideLength);
 
 		glTexCoord2f(textureEnd[0], textureOriginY);
-		glVertex3f(_halfSideLength, 0 - _yOffset, -_halfSideLength);
+		glVertex3f(_halfSideLength, 0 - _yNegativeOffset, -_halfSideLength);
 		glTexCoord2f(textureEnd[0], textureEnd[1]);
-		glVertex3f(_halfSideLength, sideLength - _yOffset, -_halfSideLength);
+		glVertex3f(_halfSideLength, sideLength - _yNegativeOffset, -_halfSideLength);
 		glTexCoord2f(textureOriginX, textureEnd[1]);
-		glVertex3f(-_halfSideLength, sideLength - _yOffset, -_halfSideLength);
+		glVertex3f(-_halfSideLength, sideLength - _yNegativeOffset, -_halfSideLength);
 	}
 	glEnd();
 }

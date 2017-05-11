@@ -11,5 +11,5 @@ private:
 
 	int _material;
 	float _halfSideLength;
-	float _yOffset;
+	float _yNegativeOffset;
 };
