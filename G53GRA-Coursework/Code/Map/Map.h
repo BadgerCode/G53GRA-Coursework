@@ -2,8 +2,9 @@
 #include "DisplayableObject.h"
 #include "Skybox.h"
 #include "Lighting/Light.h"
+#include "Animation.h"
 
-class Map : public DisplayableObject, public Input
+class Map : public DisplayableObject, public Input, public Animation
 {
 public:
 	explicit Map();
@@ -14,6 +15,7 @@ public:
 	void HandleMouse(int button, int state, int x, int y) override {};
 	void HandleMouseDrag(int x, int y) override {};
 	void HandleMouseMove(int x, int y) override {};
+	void Update(const double& deltaTime) override;
 
 private:
 	Skybox* _skybox;
@@ -25,6 +27,8 @@ private:
 	void loadObjects();
 	DisplayableObject** _mapObjects;
 	int _numObjects;
+
+	std::vector<Animation*> _animatedObjects;
 	
 	void loadLights();
 	Light** _mapLights;

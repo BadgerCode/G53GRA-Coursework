@@ -14,7 +14,7 @@ private:
 	void Initialise() override;
 	void Projection() override;
 
-	bool _flashlightEnabled = true;
+	bool _flashlightEnabled = false;
 	int _flashlightNumber;
 	void AddFlashlight();
 };

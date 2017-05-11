@@ -39,7 +39,13 @@ void MyScene::AddFlashlight()
 	glLightf(_flashlightNumber, GL_SPOT_CUTOFF, 45.f);
 	glLightf(_flashlightNumber, GL_SPOT_EXPONENT, 10.f);
 
-	glEnable(_flashlightNumber);
+	if (_flashlightEnabled) {
+		glEnable(_flashlightNumber);
+	}
+	else
+	{
+		glDisable(_flashlightNumber);
+	}
 }
 
 void MyScene::HandleKey(unsigned char key, int state, int x, int y)

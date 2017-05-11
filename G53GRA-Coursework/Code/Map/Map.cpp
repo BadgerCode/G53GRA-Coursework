@@ -57,6 +57,14 @@ void Map::HandleKey(unsigned char key, int state, int x, int y)
 	}
 }
 
+void Map::Update(const double& deltaTime)
+{
+	for (auto animatedObject : _animatedObjects)
+	{
+		animatedObject->Update(deltaTime);
+	}
+}
+
 void Map::loadCollisionCubes()
 {
 	nlohmann::json parsedJson;
@@ -114,12 +122,12 @@ void Map::loadLights()
 
 	{
 		auto lantern = new Lantern(-180.f, 90.f, 210.f);
-		lights.push_back(reinterpret_cast<Light*>(lantern));
+		lights.push_back(lantern);
 	}
 
 	{
 		auto lantern = new Lantern(175.f, 80.f, 215.f);
-		lights.push_back(reinterpret_cast<Light*>(lantern));
+		lights.push_back(lantern);
 	}
 
 	{
@@ -130,7 +138,8 @@ void Map::loadLights()
 		fireplace->SetSpecular(0.f, 0.f, 0.f, 1.f);
 		fireplace->SetDistance(350.f);
 
-		lights.push_back(reinterpret_cast<Light*>(fireplace));
+		lights.push_back(fireplace);
+		_animatedObjects.push_back(fireplace);
 	}
 
 	_numLights = lights.size();
