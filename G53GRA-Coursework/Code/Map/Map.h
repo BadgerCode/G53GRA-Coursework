@@ -5,17 +5,11 @@
 #include "Objects/Object.h"
 #include "Skybox.h"
 
-class Map : public DisplayableObject, public Input, public Animation
+class Map : public DisplayableObject, public Animation
 {
 public:
 	explicit Map();
 	void Display() override;
-
-	void HandleKey(unsigned char key, int state, int x, int y) override;
-	void HandleSpecialKey(int key, int state, int x, int y) override {};
-	void HandleMouse(int button, int state, int x, int y) override {};
-	void HandleMouseDrag(int x, int y) override {};
-	void HandleMouseMove(int x, int y) override {};
 	void Update(const double& deltaTime) override;
 
 private:
@@ -36,5 +30,4 @@ private:
 	int _numLights;
 
 	float _lightLevel;
-	bool _debugEnableLighting = true;
 };

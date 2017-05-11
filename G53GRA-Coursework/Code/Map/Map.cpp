@@ -35,29 +35,6 @@ void Map::Display()
 	}
 }
 
-void Map::HandleKey(unsigned char key, int state, int x, int y)
-{
-	if(key == 'g' && state == 0)
-	{
-		if(_debugEnableLighting)
-		{
-			_debugEnableLighting = false;
-			_sunlight->SetAmbience(1, 1, 1, 1.f);
-		}
-		else
-		{
-			_debugEnableLighting = true;
-			_sunlight->SetAmbience(_lightLevel, _lightLevel, _lightLevel, 1.f);
-		}
-	}
-	else if(key == 'r' && state == 0)
-	{
-		float px, py, pz;
-		Scene::GetCamera()->GetEyePosition(px, py, pz);
-		printf("%f, %f, %f\n", px, py, pz);
-	}
-}
-
 void Map::Update(const double& deltaTime)
 {
 	for (auto animatedObject : _animatedObjects)
