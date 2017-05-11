@@ -11,7 +11,6 @@ Skybox::Skybox()
 
 void Skybox::Display()
 {
-	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
 	glDisable(GL_LIGHTING);
@@ -19,5 +18,4 @@ void Skybox::Display()
 	_skyboxObject->Display();
 
 	glPopAttrib();
-	glPopMatrix();
 }

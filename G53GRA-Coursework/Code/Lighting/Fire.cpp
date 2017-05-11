@@ -47,7 +47,6 @@ void Fire::Display()
 {
 	Light::Display();
 
-	glPushMatrix();
 	glPushAttrib(GL_ALL_ATTRIB_BITS);
 
 	glDisable(GL_LIGHTING);
@@ -62,5 +61,4 @@ void Fire::Display()
 	}
 
 	glPopAttrib();
-	glPopMatrix();
 }
