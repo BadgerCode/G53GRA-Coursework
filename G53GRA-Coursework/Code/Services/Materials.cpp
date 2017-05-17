@@ -4,10 +4,9 @@
 #include "SOIL.h"
 #include "Configuration.h"
 #include "JSON/json.h"
-#include <sstream>
 
 std::map<std::string, std::string> Materials::_mappedNames;
-std::string Materials::_defaultMaterialPath;
+std::string Materials::_missingMaterialPath = "";
 std::map<std::string, GLuint> Materials::_materialCache;
 
 void Materials::ReloadMaterials()
@@ -26,15 +25,14 @@ void Materials::ReloadMaterials()
 	Json::Value json;
 	fileStream >> json;
 
-	for (Json::Value::iterator it = json.begin(); it != json.end(); it++)
+	for (auto it = json.begin(); it != json.end(); ++it)
 	{
-		_mappedNames.insert(std::make_pair(it.key().asString(), (*it).asString()));
+		_mappedNames.insert(make_pair(it.key().asString(), (*it).asString()));
 	}
 
-	_defaultMaterialPath = "";
-	_defaultMaterialPath = GetPath("material_missing");
+	_missingMaterialPath = GetPath("material_missing");
 
-	if(_defaultMaterialPath == "")
+	if(_missingMaterialPath == "")
 	{
 		printf("MATERIAL ERROR: Failed to load 'missing texture' material\n");
 	}
@@ -48,7 +46,7 @@ std::string Materials::GetPath(const std::string& name)
 	catch (std::out_of_range&)
 	{
 		printf("MATERIAL ERROR: Unknown material: '%s'\n", name.c_str());
-		return _defaultMaterialPath;
+		return _missingMaterialPath;
 	}
 }
 
@@ -68,7 +66,7 @@ int Materials::Get(const std::string& name)
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 
-	GLuint tex_2d = SOIL_load_OGL_texture
+	auto tex_2d = SOIL_load_OGL_texture
 	(
 		GetPath(name).c_str(),
 		SOIL_LOAD_AUTO,

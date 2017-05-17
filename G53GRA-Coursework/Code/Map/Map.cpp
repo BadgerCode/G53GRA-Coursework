@@ -57,7 +57,8 @@ void Map::loadCollisionCubes()
 	Json::Value json;
 	fileStream >> json;
 
-	for (Json::Value::iterator collisionCube = json["staticObjects"].begin(); collisionCube != json["staticObjects"].end(); collisionCube++)
+	auto staticObjects = json["staticObjects"];
+	for (auto collisionCube = staticObjects.begin(); collisionCube != staticObjects.end(); ++collisionCube)
 	{
 		auto min = std::vector<float>();
 		auto max = std::vector<float>();
@@ -91,12 +92,13 @@ void Map::loadObjects()
 	Json::Value json;
 	fileStream >> json;
 
-	_numObjects = json["objects"].size();
+	auto mapObjects = json["objects"];
+	_numObjects = mapObjects.size();
 	_mapObjects = new DisplayableObject*[_numObjects];
 
 	auto i = 0;
 
-	for (Json::Value::iterator mapObject = json["objects"].begin(); mapObject != json["objects"].end(); mapObject++)
+	for (auto mapObject = mapObjects.begin(); mapObject != mapObjects.end(); ++mapObject)
 	{
 		auto pos = std::vector<float>();
 		auto rotation = std::vector<float>();
@@ -169,7 +171,7 @@ void Map::loadLights()
 	_numLights = lights.size();
 	_mapLights = new Light*[_numLights];
 
-	for(int i = 0; i < _numLights; i++)
+	for(auto i = 0; i < _numLights; i++)
 	{
 		_mapLights[i] = lights[i];
 	}

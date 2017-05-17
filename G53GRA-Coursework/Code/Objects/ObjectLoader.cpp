@@ -31,6 +31,8 @@ ObjectModel* ObjectLoader::loadModel(const std::string& name)
 	model->SetUVCoordinates(file->_textureCoordinates);
 	model->SetNormals(file->_normals);
 
+	delete file;
+
 	return model;
 }
 
