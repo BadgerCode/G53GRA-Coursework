@@ -75,16 +75,9 @@ void Camera::Update(const double& deltaTime)
 	if (sKey)
 		sub(movement, forward, speed);
 
-	float playerPos[3] = { 0, 0, 0 };
-	add(playerPos, eyePosition);
-	add(playerPos, _playerCenterCameraOffset);
-
-	auto updatedPosition = StaticObjectCollisionManager::RestrainMovement(playerPos, movement, _playerSize);
-	sub(updatedPosition, _playerCenterCameraOffset);
-
-	eyePosition[0] = updatedPosition[0];
-	eyePosition[1] = updatedPosition[1];
-	eyePosition[2] = updatedPosition[2];
+	add(eyePosition, _playerCenterCameraOffset);
+	StaticObjectCollisionManager::RestrainMovement(eyePosition, movement, _playerSize);
+	sub(eyePosition, _playerCenterCameraOffset);
 
 	SetupCamera();
 }

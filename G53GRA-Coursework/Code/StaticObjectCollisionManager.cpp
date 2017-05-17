@@ -7,7 +7,7 @@ void StaticObjectCollisionManager::AddCollisionCube(std::vector<float> minPos, s
 	_collisionCubes.push_back(new CollisionCube(minPos, maxPos));
 }
 
-float* StaticObjectCollisionManager::RestrainMovement(float currentPos[], float direction[], float size[])
+void StaticObjectCollisionManager::RestrainMovement(float currentPos[], float direction[], float size[])
 {
 	float x = currentPos[0] + direction[0];
 	float y = currentPos[1] + direction[1];
@@ -26,8 +26,11 @@ float* StaticObjectCollisionManager::RestrainMovement(float currentPos[], float 
 			&& (minY <= cube->maxY && maxY >= cube->minY)
 			&& (minZ <= cube->maxZ && maxZ >= cube->minZ))
 		{
-			return currentPos;
+			return;
 		}
 	}
-	return new float[3]{ x, y, z};
+
+	currentPos[0] = x;
+	currentPos[1] = y;
+	currentPos[2] = z;
 }
