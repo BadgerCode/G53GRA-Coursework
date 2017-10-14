@@ -20,7 +20,7 @@ Models were created using Blender and exported as .obj files. Blender files can 
 
 ![door](/screenshots/door.png?raw=true)
 
-![fireplace](/screenshots/fireplace.png?raw=true)
+![fireplace](/screenshots/fireplace.gif?raw=true)
 
 ![house-structure](/screenshots/house-structure.png?raw=true)
 
