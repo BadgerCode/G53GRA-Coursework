@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GlutDependency.h"
+#include <string>
 #include <map>
 
 class Materials
